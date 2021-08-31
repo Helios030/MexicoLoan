@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <SeekBar
+        android:id="@+id/seek_pro"
+        android:layout_width="match_parent"
+        android:layout_height="64dip"
+        android:layout_centerInParent="true"
+        android:progressDrawable="@drawable/seekbar_define_color_style"
+        android:thumb="@drawable/suretouch_seekbar_thumb"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip"
+        android:paddingBottom="2dip"
+        android:maxHeight="18dp"
+        android:minHeight="18dp"
+        />
+</RelativeLayout>

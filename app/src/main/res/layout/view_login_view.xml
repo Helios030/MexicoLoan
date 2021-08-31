@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+android:background="@drawable/shape_bg_white"
+    android:layout_margin="18dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_phone"
+        style="@style/textStyle_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="18dp"
+        android:text="@string/phone"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_bind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="18dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <TextView
+            style="@style/textStyle_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bind_phone" />
+
+        <TextView
+            style="@style/textStyle_14_aa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/bind_phone_tip"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_number"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="15dp"
+        android:inputType="number"
+        android:layout_marginRight="18dp"
+        android:background="@drawable/shape_input_bg"
+        android:textCursorDrawable="@drawable/shape_login_color_cursor"
+        android:hint="@string/input_phone"
+        android:textColor="@color/blue_ff32"
+        android:textSize="16dp"
+
+        />
+
+
+    <TextView
+        style="@style/textStyle_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="18dp"
+        android:text="@string/code" />
+
+    <com.neutron.mexicoloan.ui.view.verificationcodeview.VCView
+        android:id="@+id/vcv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:background="@drawable/shape_btn_blue_bg"
+        android:text="@string/get_code" />
+
+
+</LinearLayout>

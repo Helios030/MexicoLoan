@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="VerificationCodeView">
+        <attr name="vcv_spacingItem" format="dimension"/>
+        <attr name="vcv_inputWidth" format="dimension"/>
+        <attr name="vcv_inputHeight" format="dimension"/>
+        <attr name="vcv_radius" format="dimension"/>
+        <attr name="vcv_inputCount" format="integer"/>
+        <attr name="vcv_lineColor" format="color"/>
+        <attr name="vcv_lineActiveColor" format="color"/>
+        <attr name="vcv_cursorColor" format="color"/>
+        <attr name="vcv_textColor" format="color"/>
+        <attr name="vcv_textSize" format="dimension"/>
+        <attr name="vcv_lineHeight" format="dimension"/>
+        <attr name="vcv_strokeSize" format="dimension"/>
+        <attr name="vcv_style" format="flags">
+            <flag name="underline" value="0"/>
+            <flag name="box" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="LoginView">
+        <attr name="view_style" format="integer" />
+
+
+    </declare-styleable>
+
+</resources>

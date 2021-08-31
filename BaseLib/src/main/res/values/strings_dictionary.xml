@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_genders">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
+    <string-array name="array_marital_status">
+        <item>单身</item>
+        <item>已婚</item>
+        <item>离婚</item>
+        <item>丧偶</item>
+    </string-array>
+
+    <string-array name="array_education_level">
+        <item>小学</item>
+        <item>初中</item>
+        <item>高中</item>
+        <item>大专</item>
+        <item>本科</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="array_children_num">
+        <item>无</item>
+        <item>1个</item>
+        <item>3个</item>
+        <item>2个</item>
+        <item>4个</item>
+        <item>4个以上</item>
+    </string-array>
+
+    <string-array name="array_home_type">
+        <item>租房</item>
+        <item>贷款中的自有住房</item>
+        <item>没有贷款的自有住房</item>
+        <item>和父母住在一起</item>
+        <item>单位提供</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="array_home_ttime">
+        <item>三个月</item>
+        <item>六个月</item>
+        <item>一年</item>
+        <item>两年</item>
+        <item>两年以上</item>
+    </string-array>
+
+    <string-array name="array_first_contact">
+        <item>父亲</item>
+        <item>母亲</item>
+        <item>配偶</item>
+        <item>儿子</item>
+        <item>女儿</item>
+        <item>哥哥/弟弟</item>
+        <item>姐姐/妹妹</item>
+        <item>侄儿/侄女</item>
+        <item>表弟/表妹</item>
+        <item>叔叔/阿姨</item>
+    </string-array>
+
+    <string-array name="array_second_contact">
+        <item>同学</item>
+        <item>同事</item>
+        <item>朋友</item>
+
+    </string-array>
+
+    <string-array name="array_third_contact">
+        <item>父亲</item>
+        <item>母亲</item>
+        <item>配偶</item>
+        <item>儿子</item>
+        <item>女儿</item>
+        <item>哥哥/弟弟</item>
+        <item>姐姐/妹妹</item>
+        <item>侄儿/侄女</item>
+        <item>表弟/表妹</item>
+        <item>同学</item>
+        <item>同事</item>
+        <item>朋友</item>
+        <item>叔叔/阿姨</item>
+    </string-array>
+
+    <string-array name="array_monthly_income_type">
+        <item>8000以下</item>
+        <item>15000以上</item>
+        <item>在8000和15000之间</item>
+    </string-array>
+
+    <string-array name="array_company_position">
+        <item>正式员工(两年以下)</item>
+        <item>正式员工(两年以上)</item>
+        <item>经理</item>
+        <item>高管</item>
+        <item>外包</item>
+        <item>临时合同工</item>
+    </string-array>
+
+    <string-array name="array_photo_type">
+        <item>身份证正面</item>
+        <item>身份证反面</item>
+        <item>手持身份证</item>
+        <item>工作证</item>
+    </string-array>
+
+    <string-array name="array_source_of_income">
+        <item>Propio</item>
+        <item>Padres</item>
+        <item>Pareja</item>
+        <item>Pariente</item>
+    </string-array>
+
+    <string-array name="array_bank">
+        <item>CLABE</item>
+        <item>tarjeta de débito</item>
+    </string-array>
+
+    <!--  字典偏移 50  -->
+    <string-array name="array_industry">
+        <item>IT</item>
+        <item>医师</item>
+        <item>养殖员</item>
+        <item>农民</item>
+        <item>建筑师</item>
+        <item>司机</item>
+        <item>售货员</item>
+        <item>学生</item>
+        <item>会计</item>
+        <item>生意人</item>
+        <item>警察</item>
+        <item>渔民</item>
+        <item>商贩</item>
+        <item>教师</item>
+        <item>公务员</item>
+        <item>律师</item>
+        <item>军人</item>
+        <item>金融机构</item>
+        <item>餐饮</item>
+        <item>其他</item>
+    </string-array>
+
+
+
+
+
+
+
+
+</resources>

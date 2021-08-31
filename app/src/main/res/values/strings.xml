@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MexicoLoan</string>
+    <string name="welcome_tip">提供专业的无抵押贷款服务</string>
+    <string name="re_get">重新获取</string>
+    <string name="get_code">发送验证码</string>
+    <string name="input_phone">输入手机号</string>
+    <string name="bind_phone_tip">为了您的账户安全 请绑定手机号</string>
+    <string name="bind_phone">绑定手机号</string>
+    <string name="phone">电话号</string>
+    <string name="code">验证码</string>
+    <string name="input_code_error">验证码输入有误！</string>
+    <string name="pls_input_phone">请输入手机号</string>
+    <string name="login_success">登录成功</string>
+
+
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/img_welcome_bg"
+    android:orientation="vertical"
+    tools:context=".ui.login.LoginActivity">
+
+
+
+    <com.hanks.htextview.evaporate.EvaporateTextView
+        android:id="@+id/tv_count_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="60dp"
+        android:text="60 s"
+        android:visibility="invisible"
+        android:textColor="@color/blue_ff9f"
+        android:textSize="40dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="28dp"
+        android:textStyle="bold"
+
+        />
+
+    <com.neutron.mexicoloan.ui.view.LoginVIew
+        android:id="@+id/lv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:view_style="1"
+        android:layout_centerHorizontal="true" />
+
+</LinearLayout>

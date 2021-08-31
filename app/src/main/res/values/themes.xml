@@ -1,0 +1,49 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MexicoLoan" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue_ff32</item>
+        <item name="colorPrimaryVariant">@color/blue_ff32</item>
+        <item name="colorOnPrimary">@color/blue_ff32</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue_ff32</item>
+        <item name="colorSecondaryVariant">@color/blue_ff32</item>
+        <item name="colorOnSecondary">@color/blue_ff32</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="textStyle_14_aa" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="android:textSize">16dp</item>
+
+        <item name="android:color">@color/gray_ffaa</item>
+    </style>
+
+    <style name="textStyle_16" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:color">@color/black_ff0d</item>
+    </style>
+    <style name="textStyle_20" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:color">@color/black_ff0d</item>
+    </style>
+
+
+    <style name="inputStyle" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="android:background">@drawable/shape_input_line</item>
+        <item name="android:textColor">@color/black_ff0d</item>
+        <item name="android:textCursorDrawable">@drawable/shape_login_color_cursor</item>
+
+        <item name="android:maxLength">1</item>
+        <item name="android:inputType">number</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:layout_margin">8dp</item>
+
+    </style>
+
+</resources>

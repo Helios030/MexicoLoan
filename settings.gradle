@@ -1,0 +1,8 @@
+rootProject.name = "MexicoLoan"
+include ':app'
+include ':BaseLib'
+include ':liveness'
+include ':picture'
+include ':ucrop'
+include ':VersionPlugin'
+include ':Camera'
