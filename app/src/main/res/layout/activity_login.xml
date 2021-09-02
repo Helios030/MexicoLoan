@@ -38,7 +38,7 @@
         android:id="@+id/lv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:view_style="1"
+        app:view_style="login"
         android:layout_centerHorizontal="true" />
 
 </LinearLayout>

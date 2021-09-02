@@ -32,30 +32,27 @@ class LoginVIew : RelativeLayout {
     ) {
         LayoutInflater.from(context).inflate(R.layout.view_login_view, this, true);
         val ta = context.obtainStyledAttributes(attrs, R.styleable.LoginView);
-        blueDrawable= context.getDrawable(R.drawable.shape_btn_blue_bg)
-        grayDrawable= context.getDrawable(R.drawable.shape_btn_gray_bg)
+        blueDrawable = context.getDrawable(R.drawable.shape_btn_blue_bg)
+        grayDrawable = context.getDrawable(R.drawable.shape_btn_gray_bg)
 
-        sendStr=context.getString(R.string.get_code)
-        regetStr=context.getString(R.string.re_get)
+        sendStr = context.getString(R.string.get_code)
+        regetStr = context.getString(R.string.re_get)
         initAttr(ta)
 
     }
 
 
-
-
-
-    fun getEditText() =  et_number.text.toString()
+    fun getEditText() = et_number.text.toString()
 
 
     var view_style = VIEW_STYLE_BIND
 
 
-    var blueDrawable: Drawable?=null
-    var grayDrawable: Drawable?=null
+    var blueDrawable: Drawable? = null
+    var grayDrawable: Drawable? = null
 
-    var sendStr=""
-    var regetStr=""
+    var sendStr = ""
+    var regetStr = ""
 
 
     private fun initAttr(ta: TypedArray) {
@@ -70,19 +67,19 @@ class LoginVIew : RelativeLayout {
         }
         btn_next.setOnClickListener {
             listener?.onClickStart()
+            vcv.inputStart()
 
-        
         }
 
-        vcv.setOnVerifyCodeListener(object :VCView.OnVerifyCodeListener{
+        vcv.setOnVerifyCodeListener(object : VCView.OnVerifyCodeListener {
             override fun onTextChange(view: View, content: String) {
 
             }
 
             override fun onComplete(view: View, content: String) {
-                if(content.isNullOrEmpty()){
+                if (content.isNullOrEmpty()) {
                     listener?.onInputError(content)
-                }else{
+                } else {
                     listener?.onInputComplete(content)
                 }
             }
@@ -97,9 +94,9 @@ class LoginVIew : RelativeLayout {
 
             listener?.onChage(count)
 
-            if(view_style== VIEW_STYLE_BIND){
+            if (view_style == VIEW_STYLE_BIND) {
                 btn_next.text = "$regetStr ($count)"
-            }else{
+            } else {
                 btn_next.text = regetStr
             }
 
@@ -108,8 +105,8 @@ class LoginVIew : RelativeLayout {
 
         override fun onFinish() {
             listener?.onFinish()
-            btn_next.isEnabled=true
-            btn_next.background=blueDrawable
+            btn_next.isEnabled = true
+            btn_next.background = blueDrawable
             btn_next.text = sendStr
 
         }
@@ -118,7 +115,7 @@ class LoginVIew : RelativeLayout {
     private var listener: loginViewListener? = null
 
     interface loginViewListener {
-        
+
         fun onClickStart()
 
         fun onChage(count: String)
@@ -140,8 +137,8 @@ class LoginVIew : RelativeLayout {
         timer.start()
 
 
-        btn_next.isEnabled=false
-        btn_next.background=grayDrawable
+        btn_next.isEnabled = false
+        btn_next.background = grayDrawable
     }
 
 

@@ -33,6 +33,12 @@
     </style>
 
 
+    <style name="textStyle_regular" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="android:textSize">14dp</item>
+        <item name="android:color">@color/black_ff0d</item>
+    </style>
+
+
     <style name="inputStyle" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="android:background">@drawable/shape_input_line</item>
         <item name="android:textColor">@color/black_ff0d</item>

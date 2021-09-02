@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.main.fragment.product.ProductFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/img_bg_main"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="最高可借金额"
+            android:textColor="@color/blue_ff9f" />
+
+
+        <com.hanks.htextview.evaporate.EvaporateTextView
+            android:id="@+id/etv_max"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:text="$00.00"
+            android:textSize="40dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="您想借"
+            android:textColor="@color/blue_ff9f" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="14dp"
+            android:layout_height="wrap_content">
+
+
+            <com.hanks.htextview.evaporate.EvaporateTextView
+                android:id="@+id/etv_money"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:text="$00.00"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+
+
+            <ImageView
+                android:id="@+id/iv_lock"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_lock"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+
+        <com.neutron.mexicoloan.ui.view.verificationcodeview.ProSeekBar
+            android:id="@+id/sb_money"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"/>
+
+        <com.hanks.htextview.evaporate.EvaporateTextView
+           android:id="@+id/etv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/repay_date"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:drawableEnd="@mipmap/icon_money_card"
+            />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_loan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/shape_pink_btn"
+        android:text="@string/loan_now"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+</RelativeLayout>

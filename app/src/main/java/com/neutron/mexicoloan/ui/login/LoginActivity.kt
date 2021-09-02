@@ -2,12 +2,13 @@ package com.neutron.mexicoloan.ui.login
 
 
 import android.view.View
-import androidx.lifecycle.Observer
 import com.neutron.baselib.base.BaseVMActivity
+import com.neutron.baselib.bean.UserInfo
+import com.neutron.baselib.utils.PreferencesHelper
 import com.neutron.baselib.utils.startTo
 import com.neutron.baselib.utils.toast
 import com.neutron.mexicoloan.R
-import com.neutron.mexicoloan.ui.MainActivity
+import com.neutron.mexicoloan.ui.main.MainActivity
 import com.neutron.mexicoloan.ui.view.LoginVIew
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -52,7 +53,9 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
             }
         })
 
-        observeValue()
+
+
+
 
     }
 
@@ -64,14 +67,27 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
             }
         })
 
-        mViewModel.isSuccess.observe(this, {
-            if (it) {
+        mViewModel.loginResult.observe(this, {
                 toast(getString(R.string.login_success))
+            val vCode = it.vcode.toString()?:""
+            val register = it.register.toString()?:""
+        PreferencesHelper.setUserID( it.user_id)
+            PreferencesHelper.setUserInfo(
+                UserInfo(
+                    it.user_id,
+                    it.userName,
+                    it.signKeyToken,
+                    vCode,
+                    it.phone,
+                    it.phonepre,
+                    register
+                )
+            )
                 startTo(MainActivity::class.java, true)
-            }
-
-
         })
+    }
 
+    override fun initData() {
+        observeValue()
     }
 }

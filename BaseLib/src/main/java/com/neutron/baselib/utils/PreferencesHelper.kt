@@ -5,6 +5,14 @@ import com.neutron.baselib.bean.UserInfo
 
 object PreferencesHelper {
 
+     fun exitApp() {
+         setUserID("")
+//         setPhone("")
+         setUploadTime(0L)
+         setUserInfo(UserInfo(null,null,null,null,null,null,null ))
+         setShowFeiled(true)
+
+    }
 
     fun getUserInfo(): UserInfo {
         val beanStr = PreferencesUtil.getString(PreferencesKey.USERINFO, "")
@@ -15,12 +23,12 @@ object PreferencesHelper {
         PreferencesUtil.saveValue(PreferencesKey.USERINFO, Utils.fromBean(user))
 
 
-    fun getPhoneEPRE(): String = PreferencesUtil.getString(PreferencesKey.PHONEPRE, "")
-    fun setPhoneEPRE(phone: String) = PreferencesUtil.saveValue(PreferencesKey.PHONEPRE, phone)
+//    fun getPhoneEPRE(): String = PreferencesUtil.getString(PreferencesKey.PHONEPRE, "")
+//    fun setPhoneEPRE(phone: String) = PreferencesUtil.saveValue(PreferencesKey.PHONEPRE, phone)
 
 
-    fun getPhone(): String = PreferencesUtil.getString(PreferencesKey.USERPHONE, "")
-    fun setPhone(phone: String) = PreferencesUtil.saveValue(PreferencesKey.USERPHONE, phone)
+//    fun getPhone(): String = PreferencesUtil.getString(PreferencesKey.USERPHONE, "")
+//    fun setPhone(phone: String) = PreferencesUtil.saveValue(PreferencesKey.USERPHONE, phone)
 
     fun getUserID(): String = PreferencesUtil.getString(PreferencesKey.USERID, "")
     fun setUserID(id: String) = PreferencesUtil.saveValue(PreferencesKey.USERID, id)
@@ -30,9 +38,9 @@ object PreferencesHelper {
     fun setIMEI(imei: String) = PreferencesUtil.saveValue(PreferencesKey.DEVICE_IMEI, imei)
 
 
-    fun isFirstStart(): Boolean = PreferencesUtil.getBoolean(PreferencesKey.IS_FIRST, true)
-    fun setFirstStart(isFirst: Boolean) =
-        PreferencesUtil.saveValue(PreferencesKey.IS_FIRST, isFirst)
+//    fun isFirstStart(): Boolean = PreferencesUtil.getBoolean(PreferencesKey.IS_FIRST, true)
+//    fun setFirstStart(isFirst: Boolean) =
+//        PreferencesUtil.saveValue(PreferencesKey.IS_FIRST, isFirst)
 
 
     fun getAboutUs(): String = PreferencesUtil.getString(PreferencesKey.ABOUT_US, "")

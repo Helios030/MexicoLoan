@@ -21,8 +21,39 @@
     </declare-styleable>
 
     <declare-styleable name="LoginView">
-        <attr name="view_style" format="integer" />
 
+        <attr name="view_style" format="flags">
+            <flag name="bind" value="0"/>
+            <flag name="login" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BottomBar">
+
+
+    </declare-styleable>
+
+    <declare-styleable name="CertificationItemView">
+        <attr name="c_view_style" format="flags">
+
+        <flag name="input" value="0"/>
+        <flag name="text" value="1"/>
+        <flag name="show" value="2"/>
+
+        </attr>
+        <attr name="title_text_color" format="color|reference" />
+        <attr name="title_text" format="string" />
+        <attr name="tv_text" format="string" />
+        <attr name="title_text_size" format="integer" />
+        <attr name="et_text_color" format="color|reference" />
+        <attr name="et_text" format="string" />
+        <attr name="et_hint" format="string" />
+        <attr name="et_hint_text_color" format="color|reference" />
+        <attr name="tv_right_icon" format="reference|color" />
+        <attr name="et_text_size" format="integer" />
+        <attr name="tv_left_text" format="string" />
+        <attr name="is_show_line" format="boolean" />
+        <attr name="is_number" format="boolean" />
 
     </declare-styleable>
 

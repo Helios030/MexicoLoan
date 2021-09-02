@@ -196,7 +196,7 @@
 # Gson
 -keep class com.google.gson.stream.** { *; }
 -keepattributes EnclosingMethod
--keep class com.neutron.creditline.bean.**{*;} # 自定义数据模型的bean目录
+-keep class "com.neutron.mexicoloan.ui.main.bean.**{*;} # 自定义数据模型的bean目录
 -keep class com.polidea.rxandroidble2.**{*;} # RxandroidBle
 
 #AppsFlyer

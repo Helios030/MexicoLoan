@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Point
+import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
@@ -199,7 +200,9 @@ private fun ImageView.getOptions(
 
 //----------toast----------
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_LONG) {
-    Toast.makeText(this, text, duration).show()
+     if(text.isNotEmpty()) {
+         Toast.makeText(this, text, duration).show()
+     }
 }
 fun BaseApplication.toast(text: CharSequence, duration: Int = Toast.LENGTH_LONG) {
     Toast.makeText(this, text, duration).show()
@@ -372,7 +375,10 @@ fun TextView.setDrawableRight(resId: Int) {
     drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
     this.setCompoundDrawables(null, null, drawable, null)
 }
+fun TextView.setDrawableRight(drawable: Drawable) {
 
+    this.setCompoundDrawables(null, null, drawable, null)
+}
 
 fun TextView.setDrawableTop(resId: Int) {
     var drawable = this.context.resources.getDrawable(resId)
@@ -508,6 +514,7 @@ fun isWIFIConnection(context: Context): Boolean {
     val networkInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
     return networkInfo != null && networkInfo.isConnected
 }
+
 
 
 

@@ -9,6 +9,7 @@ class LiveRepository : BaseRetrofitClient(){
 
     val mApiService by lazy { getService(NetWorkService::class.java, BaseConstant.BaseUri) }
     suspend fun getSmsCode(body: RequestBody) = mApiService.sendSms(body).getResponse()
+    suspend fun getRequestState(body: RequestBody) = mApiService.getRequestState(body).getResponse()
     suspend fun smsLogin(body: RequestBody) = mApiService.smsLogin(body).getResponse()
     suspend fun socialLogin(body: RequestBody) = mApiService.socialLogin(body).getResponse()
     suspend fun getUploadImg(body: RequestBody) = mApiService.getUploadImg(body).getResponse()

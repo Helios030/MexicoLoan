@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:background="@mipmap/img_bg"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="18dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+
+        android:layout_height="410dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="18dp"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/img_user_icon"/>
+
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_ff32"
+
+                    android:layout_toRightOf="@+id/iv_icon"
+                    android:layout_alignTop="@+id/iv_icon"
+                    android:layout_marginLeft="18dp"
+                    android:textSize="20dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_ff0d"
+                    android:layout_toRightOf="@+id/iv_icon"
+                    android:layout_alignBottom="@+id/iv_icon"
+                    android:layout_marginLeft="18dp"
+                    android:text="123456789"
+                    android:textSize="18dp"
+
+                    />
+
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_loan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_ff0d"
+                android:drawableLeft="@mipmap/icon_loan"
+                android:drawablePadding="14dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/my_loan"
+                android:drawableRight="@mipmap/icon_arror"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_ff0d"
+                android:drawableLeft="@mipmap/icon_info"
+                android:drawablePadding="14dp"
+                android:text="@string/user_info"
+                android:layout_marginTop="20dp"
+                android:drawableRight="@mipmap/icon_arror"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_money_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_ff0d"
+                android:drawableLeft="@mipmap/icon_card"
+                android:drawablePadding="14dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/money_caed"
+                android:drawableRight="@mipmap/icon_arror"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_ff0d"
+                android:drawableLeft="@mipmap/icon_call"
+                android:drawablePadding="14dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/call_us"
+                android:drawableRight="@mipmap/icon_arror"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_ff0d"
+                android:drawableLeft="@mipmap/icon_about"
+                android:drawablePadding="14dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/about_us"
+                android:drawableRight="@mipmap/icon_arror"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_exit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_ff0d"
+                android:drawableLeft="@mipmap/icon_exit"
+                android:drawablePadding="14dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/exit_app"
+                android:drawableRight="@mipmap/icon_arror"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl_user"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="245dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:paddingTop="40dp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_phone"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="13dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:drawableLeft="@mipmap/icon_user_img"-->
+<!--            android:drawablePadding="11dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="xxxxx"-->
+<!--            android:textColor="#FFDDC4"-->
+<!--            android:textSize="16dp"-->
+<!--            android:textStyle="bold" />-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_money"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/tv_str"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:gravity="center"-->
+<!--            android:text="0"-->
+<!--            android:textColor="#FFDDC4"-->
+<!--            android:textSize="54dp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_str"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_marginStart="13dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/amount_repaid"-->
+<!--            android:textColor="#FFDDC4"-->
+<!--            android:textSize="16dp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_date"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:textColor="#FFDDC4"-->
+<!--            android:layout_marginBottom="14dp"-->
+<!--            android:layout_marginEnd="17dp"-->
+<!--            android:textSize="16dp"-->
+<!--        />-->
+
+<!--    </RelativeLayout>-->
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@+id/rl_user"-->
+<!--        android:background="@color/white"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_pay"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:paddingTop="8dp"-->
+<!--            android:paddingBottom="8dp"-->
+<!--            android:drawableLeft="@mipmap/icon_my_loan"-->
+<!--            android:drawablePadding="16dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:maxLines="1"-->
+<!--            android:text="@string/pay_order"-->
+<!--            android:textColor="@color/text_color"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_marginLeft="65dp"-->
+<!--            android:background="@color/gray_f5" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_info"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:paddingTop="8dp"-->
+<!--            android:paddingBottom="8dp"-->
+<!--            android:drawableLeft="@mipmap/icon_my_info"-->
+<!--            android:drawablePadding="16dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:maxLines="1"-->
+<!--            android:text="@string/my_info"-->
+<!--            android:textColor="@color/text_color"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="10dp"-->
+
+<!--            android:background="@color/gray_f5" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_about"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:drawableLeft="@mipmap/icon_about"-->
+<!--            android:drawablePadding="16dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:maxLines="1"-->
+<!--            android:paddingTop="8dp"-->
+<!--            android:paddingBottom="8dp"-->
+<!--            android:text="@string/about_us"-->
+<!--            android:textColor="@color/text_color"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_marginLeft="65dp"-->
+<!--            android:background="@color/gray_f5" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_call"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:paddingTop="8dp"-->
+<!--            android:paddingBottom="8dp"-->
+<!--            android:drawableLeft="@mipmap/icon_call"-->
+<!--            android:drawablePadding="16dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:maxLines="1"-->
+<!--            android:text="@string/call_user"-->
+<!--            android:textColor="@color/text_color"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_marginLeft="65dp"-->
+<!--            android:background="@color/gray_f5" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_exit"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:paddingTop="8dp"-->
+<!--            android:paddingBottom="8dp"-->
+<!--            android:drawableLeft="@mipmap/icon_exit"-->
+<!--            android:drawablePadding="16dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:maxLines="1"-->
+<!--            android:text="@string/exit_login"-->
+<!--            android:textColor="@color/text_color"-->
+<!--            android:textStyle="bold" />-->
+
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:background="@color/gray_f5" />-->
+
+<!--    </LinearLayout>-->
+
+
+</RelativeLayout>

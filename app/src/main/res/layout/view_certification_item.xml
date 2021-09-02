@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/textStyle_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:maxLines="1"
+        android:text="姓名" />
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLength="16"
+        android:background="@drawable/shape_input_bg"
+        android:hint="请输入"
+        android:maxLines="1"
+        android:paddingStart="6dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+
+        android:textCursorDrawable="@drawable/shape_login_color_cursor"
+        android:textSize="14dp"
+        android:textStyle="bold"
+  />
+
+    <TextView
+        android:id="@+id/tv_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"
+        android:background="@drawable/shape_input_bg"
+        android:drawableEnd="@mipmap/icon_arror"
+        android:maxLines="1"
+        android:paddingStart="6dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="6dp"
+        android:text="@string/please_select"
+        android:textColor="@color/blue_ff9f"
+        android:textSize="16dp"
+        android:textStyle="bold"
+      />
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tv_item_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/tv_item_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F4F4F4"
+        android:visibility="gone" />
+
+</LinearLayout>

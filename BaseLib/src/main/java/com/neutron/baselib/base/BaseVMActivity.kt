@@ -14,19 +14,21 @@ abstract class BaseVMActivity<VM : BaseViewModel>(private val viewModelClass: Cl
         createViewModel()
         observer()
         initView()
+        initData()
+
     }
 
     abstract fun initView()
+    abstract fun initData()
 
     private fun observer() {
         mViewModel.registerListener {
             showLoading {
-                Slog.d("===showLoading===")
+               showLoading()
             }
             closeLoading {
-                Slog.d("===closeLoading===")
+                hideLoading()
             }
-
             showErrorTip {
                 toast(it)
             }

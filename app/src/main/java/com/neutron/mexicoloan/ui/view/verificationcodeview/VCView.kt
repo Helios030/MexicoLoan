@@ -1,7 +1,6 @@
 package com.neutron.mexicoloan.ui.view.verificationcodeview
 
 import android.content.Context
-import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -35,8 +34,6 @@ class VCView : LinearLayout, View.OnFocusChangeListener, TextWatcher, View.OnKey
         etList.add(etFour)
         etList.add(etFive)
         etList.add(etSix)
-        KeyboardUtils.showSoftInput(etOne)
-        etOne.isFocusable = true
 
         etList.forEach {
             it.setOnKeyListener(this)
@@ -121,6 +118,13 @@ class VCView : LinearLayout, View.OnFocusChangeListener, TextWatcher, View.OnKey
                 return
             }
         }
+    }
+
+    fun inputStart(){
+        KeyboardUtils.showSoftInput(etOne)
+
+        etOne.isFocusable = true
+
     }
 
 

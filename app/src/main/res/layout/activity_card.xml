@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.authentication.card.CardActivity">
+
+
+    <include layout="@layout/layout_toolbar" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="164dp"
+        android:layout_margin="18dp"
+        android:background="@mipmap/img_card_bg">
+
+
+        <com.hanks.htextview.evaporate.EvaporateTextView
+            android:id="@+id/tv_bank_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="34dp"
+            android:text="****"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+
+        <com.hanks.htextview.evaporate.EvaporateTextView
+            android:id="@+id/tv_bank_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="22dp"
+            android:gravity="center"
+            android:text="**** **** **** ****"
+            android:textColor="@color/gray_ffaa"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="18dp"
+        app:cardCornerRadius="18dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <com.neutron.mexicoloan.ui.view.CertificationItemView
+                android:id="@+id/civ_bank_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:c_view_style="text"
+                app:title_text="@string/bank"
+                />
+
+            <com.neutron.mexicoloan.ui.view.CertificationItemView
+                android:id="@+id/civ_bank_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:c_view_style="input"
+                app:title_text="@string/bank_code"
+
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="36dp"
+        android:textColor="@color/blue_ff32"
+        android:text="@string/bank_code_tip"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_btn_blue"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="@string/submit"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

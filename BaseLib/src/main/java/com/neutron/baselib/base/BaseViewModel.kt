@@ -26,9 +26,7 @@ abstract class BaseViewModel : ViewModel() {
             runCatching {
                 if (isShowLoading)
                     mOnLoadingListener?.onShowLoading?.invoke(loadingMsg)
-
                 block()
-
             }.onSuccess {
                 mOnLoadingListener?.onCloseLoading?.invoke()
                 it?.let { result(it) }
@@ -36,6 +34,7 @@ abstract class BaseViewModel : ViewModel() {
 
             }.onFailure {
                 mOnLoadingListener?.onCloseLoading?.invoke()
+                it.printStackTrace()
                 error(it)
                 it.message?.let {
                     BaseApplication.sContext.toast(it)

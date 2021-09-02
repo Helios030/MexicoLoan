@@ -1,10 +1,9 @@
 package com.neutron.mexicoloan.ui.login
 
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.neutron.baselib.base.BaseViewModel
-import com.neutron.baselib.bean.LoginResuleResult
+import com.neutron.baselib.bean.SmsLoginResult
 import com.neutron.baselib.utils.LoginType
 import com.neutron.baselib.utils.Slog
 import com.neutron.baselib.utils.createBody
@@ -12,7 +11,7 @@ import com.neutron.baselib.utils.createBody
 class LoginVM :BaseViewModel() {
 
     val isSend: MutableLiveData<Boolean> = MutableLiveData()
-    val isSuccess: MutableLiveData<Boolean> = MutableLiveData()
+    val loginResult: MutableLiveData<SmsLoginResult> = MutableLiveData()
 
 
 
@@ -22,6 +21,7 @@ class LoginVM :BaseViewModel() {
             map["phone"] = phone
             map["type"] = LoginType.type_login
             mLiveApiRepository.getSmsCode(map.createBody())
+
         }, {
             Slog.d("request  ==  $this")
             isSend.postValue(true)
@@ -41,7 +41,7 @@ class LoginVM :BaseViewModel() {
             mLiveApiRepository.smsLogin(map.createBody())
         }, {
             Slog.d("request  ==  $this")
-            isSuccess.postValue(true)
+            loginResult.postValue(this)
         }, {
 
         }, isShowLoading = true)

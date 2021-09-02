@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.authentication.userinfo.PersonalInfoActivity">
+
+
+    <include layout="@layout/layout_toolbar" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@mipmap/img_progress3"
+
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!--信息-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                app:cardCornerRadius="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_education_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/education_level" />
+
+
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_children_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/children_number" />
+
+             <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_home_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/home_type" />
+
+             <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_postal_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/postal_code" />
+
+             <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:tv_right_icon="@mipmap/icon_location"
+                        app:title_text="@string/location" />
+
+             <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_info_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/state" />
+
+             <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_home_detail_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="input"
+                        app:title_text="@string/detail_address" />
+
+             <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="input"
+                        app:title_text="Email" />
+
+
+
+
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_btn_blue"
+                android:text="@string/next_step"
+                android:layout_margin="32dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

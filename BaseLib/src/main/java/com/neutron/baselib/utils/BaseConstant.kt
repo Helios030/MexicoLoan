@@ -5,11 +5,12 @@ import android.Manifest
 
 class BaseConstant {
     companion object {
+        const val Intent_URI: String = "Intent_URI"
         const val SIGNKEY = "signkey1"
         const val SIGNRANDOMCODE = "signkey2"
         const val AF_APP_KEY = "yGBMuxgzaU8tuLWvbjqrA8"
 //        墨西哥系统 测试
-        val BaseUri = "http://api.mx.golden-union.top/api/"
+        val BaseUri = "http://api.mx.golden-union.top/app/"
 
 
 

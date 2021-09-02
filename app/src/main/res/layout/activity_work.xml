@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.authentication.work.WorkActivity">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@mipmap/img_progress2"
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!--信息-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                app:cardCornerRadius="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_job"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/job" />
+
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_job_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/job_type" />
+
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_industry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/industry" />
+
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_salary_range"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/salary_range" />
+
+/////////////////////////////////////////
+
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_source_income"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/source_income" />
+
+
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_comp_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="input"
+                        app:title_text="@string/comp_name" />
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/state" />
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_detail_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="input"
+                        app:title_text="@string/detail_address" />
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_comp_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="input"
+                        app:title_text="@string/comp_phone" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_btn_blue"
+                android:text="@string/next_step"
+                android:layout_margin="32dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>
