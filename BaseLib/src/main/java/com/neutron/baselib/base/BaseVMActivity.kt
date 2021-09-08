@@ -1,8 +1,6 @@
 package com.neutron.baselib.base
 
-import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.neutron.baselib.utils.Slog
 import com.neutron.baselib.utils.toast
 
 abstract class BaseVMActivity<VM : BaseViewModel>(private val viewModelClass: Class<VM>) :
@@ -15,11 +13,12 @@ abstract class BaseVMActivity<VM : BaseViewModel>(private val viewModelClass: Cl
         observer()
         initView()
         initData()
-
+        observeValue()
     }
 
     abstract fun initView()
     abstract fun initData()
+    abstract fun observeValue()
 
     private fun observer() {
         mViewModel.registerListener {

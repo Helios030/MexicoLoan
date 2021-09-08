@@ -1,89 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/ll_main"
 
     android:orientation="vertical"
     tools:context=".ui.main.fragment.RepaymentFragment">
 
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:gravity="center"-->
-<!--            android:text="@string/app_name"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="18dp"-->
-<!--            android:textStyle="bold" />-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:background="@mipmap/img_bg">
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="25dp"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:text="@string/state_pending_repayment"-->
-<!--            android:textColor="@color/meet_ff"-->
-<!--            android:textSize="26dp"-->
-
-<!--            />-->
-
-<!--        <include layout="@layout/view_money" />-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="16dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginRight="16dp"-->
-<!--            android:background="@drawable/shape_bg_white"-->
-<!--            android:orientation="vertical"-->
-<!--            android:paddingLeft="20dp"-->
-<!--            android:paddingRight="20dp"-->
-<!--            android:paddingTop="20dp">-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="24dp"
+            android:drawableLeft="@mipmap/icon_repay"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:text="@string/repay"
+            android:textColor="@color/white"
+            android:textSize="28dp"
+            android:textStyle="bold" />
 
-<!--            <com.neutron.creditline.view.CertificationItemView-->
-<!--                android:id="@+id/civ_due_time"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:tv_left_text="@string/due_time"-->
-<!--                app:view_style="2" />-->
-
-<!--            <com.neutron.creditline.view.CertificationItemView-->
-<!--                android:id="@+id/civ_interest"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="14dp"-->
-<!--                app:tv_left_text="@string/interest"-->
-<!--                app:view_style="2" />-->
+    </RelativeLayout>
 
 
-<!--        </LinearLayout>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <com.neutron.mexicoloan.ui.view.CardStateView
+                android:id="@+id/csv_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:card_view_style="state_pending_repayment" />
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
+            <include layout="@layout/view_pay_button" />
 
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_next"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/repayment"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:background="@drawable/shape_btn_red"-->
-<!--            android:textStyle="bold"-->
-<!--            android:layout_margin="30dp"-->
-<!--            android:textSize="17dp" />-->
-
-<!--    </RelativeLayout>-->
-
-
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

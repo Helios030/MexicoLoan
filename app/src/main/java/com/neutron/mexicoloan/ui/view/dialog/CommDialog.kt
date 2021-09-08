@@ -5,11 +5,17 @@ import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.widget.AdapterView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnItemLongClickListener
 import com.neutron.baselib.bean.BankInfoResult
+import com.neutron.baselib.utils.Slog
+import com.neutron.baselib.utils.sethalfWith
+import com.neutron.baselib.utils.toast
 import com.neutron.mexicoloan.R
 
 
@@ -39,7 +45,6 @@ class CommDialog : Dialog {
     var title: String? = null
 
     fun setTitle(title: String?): CommDialog {
-
         this.title = title
         return this
     }
@@ -92,21 +97,27 @@ class CommDialog : Dialog {
         tvMessage = findViewById<View>(R.id.tv_message) as TextView
         llList = findViewById<View>(R.id.ll_list) as LinearLayout
         tvTitle = findViewById<View>(R.id.tv_title) as TextView
-        rvMenu = findViewById(R.id.rv_menu)
+        rvMenu = findViewById<RecyclerView>(R.id.rv_menu)
+
+        Slog.d("=========  initView ")
+
         rvMenu2 = findViewById(R.id.rv_menu_2)
 
         initMenuAdapter(rvMenu)
         initMenuAdapter2(rvMenu2)
         btn_ok?.setOnClickListener {
-            listener?.OnOkListener(currItem)
-            dismiss()
+
+            if(currItem==null){
+                mContext?.toast(R.string.please_select)
+            }else{
+                onOkListener?.invoke(currItem)
+                dismiss()
+            }
         }
         btn_cancel?.setOnClickListener {
             dismiss()
         }
         refreshView()
-
-
     }
 
     var mContext: Context? = null
@@ -123,7 +134,6 @@ class CommDialog : Dialog {
         menuList.clear()
         menuList.addAll(list)
         adapter?.notifyDataSetChanged()
-
         return this
     }
 
@@ -133,7 +143,9 @@ class CommDialog : Dialog {
         list2?.let {
             menuList2.addAll(it)
         }
+        rvMenu?.sethalfWith()
         adapter2?.notifyDataSetChanged()
+        adapter?.notifyDataSetChanged()
         return this
     }
 
@@ -155,8 +167,16 @@ class CommDialog : Dialog {
                 menuList2[position].isSelected = true
                 adapter2?.notifyDataSetChanged()
                 currItem=menuList2[position]
+                onSelectedListener?.invoke(currItem)
 
             }
+
+            adapter2?.setOnItemLongClickListener { _, _, position ->
+
+                mContext?.toast( menuList2[position].menuName)
+                true
+            }
+
         }
     }
 
@@ -171,12 +191,20 @@ class CommDialog : Dialog {
                 currMenu?.isSelected = true
                 adapter?.notifyDataSetChanged()
                 currItem=currMenu
-
+                onSelectedListener?.invoke(currItem)
+            }
+            adapter?.setOnItemLongClickListener { _, _, position ->
+                mContext?.toast( menuList[position].menuName)
+                true
             }
         }
     }
 
     fun setBankAdapter(): CommDialog {
+
+
+        Slog.d("setBankAdapter ${rvMenu==null}    ${rvMenu?.visibility==View.VISIBLE}")
+
         rvMenu?.let { rv ->
             bankAdapter = BankAdapter(R.layout.item_bank, bankList)
             rv.layoutManager = LinearLayoutManager(mContext)
@@ -193,24 +221,21 @@ class CommDialog : Dialog {
         return this
     }
 
+    var currItem:Any?=null
 
-    var listener: DialogListener? = null
+    var  onOkListener:((Any?)->Unit)?=null
 
-    fun setDialogListener(listener: DialogListener): CommDialog {
-        this.listener = listener
+    fun setOnOkClick(listener:(Any?)->Unit): CommDialog{
+        onOkListener=listener
         return this
     }
 
 
-    var currItem:Any?=null
+    var  onSelectedListener:((Any?)->Unit)?=null
 
-    interface DialogListener {
-
-//        fun OnCancelListener()
-
-        fun OnOkListener(currItem:Any?)
-
-
+    fun setonSelectedListener(listener: ((Any?) -> Unit)?): CommDialog{
+        onSelectedListener=listener
+        return this
     }
 
 }

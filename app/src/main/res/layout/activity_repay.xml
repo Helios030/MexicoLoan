@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.repay.RePayActivity">
+
+    <include layout="@layout/layout_toolbar" />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_tab"
+        style="@style/NTablayoutstyle"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/rl_toolbar"
+        android:layout_marginLeft="10dp"
+        android:background="@color/color_transparent">
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="164dp"
+                android:layout_margin="18dp"
+                android:background="@mipmap/img_card_bg"
+                android:padding="18dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/loan_money"
+                    android:textColor="@color/gray_b3ff"
+                    android:textSize="16dp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/loan_money"
+                    android:textColor="@color/gray_b3ff"
+                    android:textSize="16dp"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="$xxxx"
+                    android:textColor="@color/white"
+                    android:textSize="28dp"
+
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/repay_sign"
+                    android:textColor="@color/blue_ff32"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+
+                    />
+
+
+            </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rl_sub"
+            android:layout_width="match_parent"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:src="@mipmap/img_sub_pay_icon" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_left"
+                android:layout_alignLeft="@+id/iv_left"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="展期开始时间"
+                    android:textColor="@color/gray_ff48"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/blue_ff32"
+                    android:text="2020-05-12"
+                    android:layout_marginLeft="14dp"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_left"
+                android:layout_alignLeft="@+id/iv_left"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="展期开始时间"
+                    android:textColor="@color/gray_ff48"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/blue_ff32"
+                    android:text="2020-05-12"
+                    android:layout_marginLeft="14dp"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                app:cardCornerRadius="18dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+
+                        android:id="@+id/civ_account_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:is_show_icon="false"
+                        app:title_text="@string/account_name"
+                        app:tv_text="ASD" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.neutron.mexicoloan.ui.view.CertificationItemView
+                            android:id="@+id/civ_bank"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+
+                            app:c_view_style="text"
+                            app:is_show_icon="false"
+                            app:title_text="@string/bank"
+                            android:gravity="center"
+                            app:tv_text="ABCDEFGJ" />
+
+                        <com.neutron.mexicoloan.ui.view.CertificationItemView
+                            android:id="@+id/civ_bank_code"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:c_view_style="text"
+                            app:is_show_icon="false"
+                            android:gravity="center"
+                            app:title_text="@string/bank_code"
+                            app:tv_text="1254-5642-2589-5587" />
+
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height=".5dp"
+                        android:background="@color/blue_ff32"
+
+                        />
+
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="input"
+                        app:is_show_icon="false"
+                        app:title_text="输入CLABE代码或tarjeta de débito账号"
+app:text_Style="bold"
+                        app:title_text_color="@color/black_ff0d"
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="上传还款凭证"
+                        android:textColor="@color/black_ff0d"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_upload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:src="@mipmap/img_upload" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:background="@drawable/shape_btn_blue"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

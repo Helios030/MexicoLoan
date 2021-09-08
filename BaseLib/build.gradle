@@ -71,7 +71,7 @@ dependencies {
     api project(path: ':liveness')
     api project(path: ':picture')
     api project(path: ':ucrop')
-
+    api project(path: ':Camera')
 
 
 }

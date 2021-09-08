@@ -31,7 +31,6 @@ class ProductVM :BaseViewModel() {
             val map = HashMap<String, Any>();
             map["user_id"] = PreferencesHelper.getUserID()
             mLiveApiRepository.getUserStatus(map.createBody())
-
         }, {
             Slog.d("userStatus  ==  $this")
             userStatus.postValue(this)

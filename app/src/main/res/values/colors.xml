@@ -11,10 +11,14 @@
     <color name="blue_ffea">#FFEAEFFF</color>
     <color name="black_ff0d">#FF0D1D4A</color>
     <color name="gray_ffaa">#FFAAAAAA</color>
+    <color name="gray_ff48">#FF484848</color>
 
     <color name="blue_ff9f">#FF9FB7FF</color>
     <color name="gray_fff8">#FFF8F5F5</color>
+    <color name="gray_b3ff">#B3FFFFFF</color>
     <color name="color_transparent">#00000000</color>
+    <color name="color_pink_f4">#FFFF4868</color>
+
 
 
 

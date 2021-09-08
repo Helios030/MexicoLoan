@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_pay_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_pink_btn"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+android:layout_margin="32dp"
+        android:text="@string/pay_now"
+        />
+
+</RelativeLayout>

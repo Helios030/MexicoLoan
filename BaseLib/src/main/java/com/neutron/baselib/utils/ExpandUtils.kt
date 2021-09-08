@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Point
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
@@ -17,14 +18,16 @@ import android.os.Build
 import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.Transformation
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
-import android.widget.SeekBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -32,8 +35,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
 import com.neutron.baselib.base.BaseApplication
+import com.permissionx.guolindev.PermissionX
 import okhttp3.MediaType
 import okhttp3.RequestBody
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 
 /**
@@ -484,7 +490,9 @@ fun Context.checkNet(): Boolean {
 
 fun Context.getStr(resId:Int):String = this.resources.getString(resId)
 fun Context.getStrArray(resId:Int):List<String> = this.resources.getStringArray(resId).toList()
+
 fun Context.getStrByIndex(resId:Int,index:Int,offset:Int=1):String = getStrArray(resId)[index-offset]
+
 fun Context.getIndexByStr(resId:Int,str:String,offset:Int=1):Int = getStrArray(resId).indexOf(str)+offset
 
 
@@ -515,6 +523,150 @@ fun isWIFIConnection(context: Context): Boolean {
     return networkInfo != null && networkInfo.isConnected
 }
 
+
+fun View.expand() {
+
+  val   v=this
+
+    val matchParentMeasureSpec =
+        View.MeasureSpec.makeMeasureSpec((v.parent as View).width, View.MeasureSpec.EXACTLY)
+    val wrapContentMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+    v.measure(matchParentMeasureSpec, wrapContentMeasureSpec)
+    val targetHeight = v.measuredHeight
+
+    // Older versions of android (pre API 21) cancel animations for views with a height of 0.
+    v.layoutParams.height = 1
+    v.visibility = View.VISIBLE
+    val a: Animation = object : Animation() {
+         override fun applyTransformation(interpolatedTime: Float, t: Transformation?) {
+            v.layoutParams.height =
+                if (interpolatedTime == 1f) ViewGroup.LayoutParams.WRAP_CONTENT else (targetHeight * interpolatedTime).toInt()
+            v.requestLayout()
+        }
+
+        override fun willChangeBounds(): Boolean {
+            return true
+        }
+    }
+
+    // Expansion speed of 1dp/ms
+    a.setDuration((targetHeight / v.context.resources.displayMetrics.density).toLong())
+    v.startAnimation(a)
+}
+
+//收起
+fun View.collapse() {
+    val   v=this
+    val initialHeight = v.measuredHeight
+    val a: Animation = object : Animation() {
+         override fun applyTransformation(interpolatedTime: Float, t: Transformation?) {
+            if (interpolatedTime == 1f) {
+                v.visibility = View.GONE
+            } else {
+                v.layoutParams.height = initialHeight - (initialHeight * interpolatedTime).toInt()
+                v.requestLayout()
+            }
+        }
+        override fun willChangeBounds(): Boolean {
+            return true
+        }
+    }
+
+    // Collapse speed of 1dp/ms
+    a.duration = (initialHeight / v.context.resources.displayMetrics.density).toLong()
+    v.startAnimation(a)
+}
+
+fun Activity.hideSoftInputWindow(){
+    val imm: InputMethodManager =
+        this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    if (this.isInputMethodShowing()) {
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS)
+    }
+}
+fun Activity.isInputMethodShowing(): Boolean{
+    //获取当前屏幕内容的高度
+    val screenHeight: Int = this.getWindow().getDecorView().getHeight()
+    //获取View可见区域的bottom
+    val rect = Rect()
+    this.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect)
+    return (screenHeight - rect.bottom - this.getSoftButtonsBarHeight()) > 0
+}
+
+
+fun Activity.getSoftButtonsBarHeight(): Int{
+    val metrics = DisplayMetrics()
+    //这个方法获取可能不是真实屏幕的高度
+    this.getWindowManager().getDefaultDisplay().getMetrics(metrics)
+    val usableHeight = metrics.heightPixels
+    //获取当前屏幕的真实高度
+    this.getWindowManager().getDefaultDisplay().getRealMetrics(metrics)
+    val realHeight = metrics.heightPixels
+    return if (realHeight > usableHeight) {
+        realHeight - usableHeight
+    } else {
+        0
+    }
+}
+
+
+
+fun FragmentActivity.checkPerByX(permissions:List<String>,onAllGranted:() -> Unit,notTip:Int,ok:Int,calcel:Int){
+
+    val notTipStr=UIUtils.getString(notTip)
+    val okStr=UIUtils.getString(ok)
+    val cancelStr=UIUtils.getString(calcel)
+
+        PermissionX.init(this)
+            .permissions(permissions)
+            .onExplainRequestReason { scope, deniedList ->
+                scope.showRequestReasonDialog(
+                    deniedList,
+                    notTipStr,
+                    okStr,
+                    cancelStr
+                )
+            }.onForwardToSettings { scope, deniedList ->
+                scope.showForwardToSettingsDialog(
+                    deniedList,
+                    notTipStr,
+                    okStr,
+                    cancelStr
+                )
+            }  .request { allGranted, _, _ ->
+                if (allGranted) {
+                    onAllGranted.invoke()
+
+                } else {
+                    toast(notTipStr)
+                }
+            }
+
+
+
+}
+
+
+
+fun Double.getNoMoreThanTwoDigits(): Double {
+    val format = DecimalFormat("0.########")
+    //未保留小数的舍弃规则，RoundingMode.FLOOR表示直接舍弃。
+    format.roundingMode = RoundingMode.FLOOR
+    return format.format(this).toDouble()
+}
+
+
+var rawWidth=0
+
+fun RecyclerView.sethalfWith(){
+
+    if(rawWidth==0){
+        rawWidth=width/2
+        this.layoutParams.width=rawWidth
+    }
+
+
+}
 
 
 

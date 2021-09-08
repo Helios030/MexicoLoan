@@ -68,7 +68,7 @@
                         android:id="@+id/civ_postal_code"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:c_view_style="text"
+                        app:c_view_style="input"
                         app:title_text="@string/postal_code" />
 
              <com.neutron.mexicoloan.ui.view.CertificationItemView

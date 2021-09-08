@@ -45,6 +45,7 @@
                         android:text="@string/upload_id_tip" />
 
                     <ImageView
+                        android:id="@+id/iv_true"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:layout_marginTop="10dp"
@@ -63,6 +64,8 @@
 
 
                     <ImageView
+
+              android:id="@+id/iv_false"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:layout_marginTop="10dp"

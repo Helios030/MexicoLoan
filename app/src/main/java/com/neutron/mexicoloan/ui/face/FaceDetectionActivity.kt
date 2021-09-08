@@ -18,4 +18,8 @@ class FaceDetectionActivity : BaseVMActivity<FaceDetectionVM>(FaceDetectionVM::c
     override fun initData() {
         
     }
+
+    override fun observeValue() {
+
+    }
 }

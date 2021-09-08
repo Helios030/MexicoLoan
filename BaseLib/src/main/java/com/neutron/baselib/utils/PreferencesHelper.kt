@@ -14,9 +14,9 @@ object PreferencesHelper {
 
     }
 
-    fun getUserInfo(): UserInfo {
+    fun getUserInfo(): UserInfo? {
         val beanStr = PreferencesUtil.getString(PreferencesKey.USERINFO, "")
-        return Utils.toBean(beanStr) as UserInfo
+        return Utils.toBean(beanStr) as UserInfo?
     }
 
     fun setUserInfo(user: UserInfo) =

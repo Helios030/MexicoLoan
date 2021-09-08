@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="18dp"
+        android:layout_margin="18dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/icon_card_blue"
+                android:gravity="center_vertical"
+                android:text="@string/loan_money"
+                android:textSize="16dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:textColor="@color/gray_ffaa" />
+
+
+            <TextView
+                android:id="@+id/tv_loan_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_ff32"
+                android:layout_marginLeft="18dp"
+                android:textSize="32dp"
+                android:text="$3200"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/tv_loan_term"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_ff0d"
+                android:layout_marginLeft="18dp"
+                android:textSize="18dp"
+                android:text="@string/loan_time"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                />
+
+            <com.neutron.mexicoloan.ui.view.CertificationItemView
+                android:id="@+id/civ_app_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:c_view_style="show"
+                app:tv_left_text="@string/app_time"
+                app:tv_left_text_color="@color/black_ff0d"
+                app:tv_right_text="2021-09-03"
+                app:tv_right_text_color="@color/blue_ff32"
+
+                />
+
+            <LinearLayout
+                android:id="@+id/ll_detail_bg"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@color/blue_ff32"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
+
+                    android:layout_height="wrap_content">
+
+                    <TextView
+android:id="@+id/str_loan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amount"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        />
+
+                    <TextView
+
+                        android:id="@+id/tv_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@mipmap/icon_open"
+                        android:drawablePadding="11dp"
+                        android:text="$7300.00"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_detail"
+
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_below="@+id/tv_amount"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp"
+                        android:background="@color/gray_b3ff"
+
+                        />
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_loan_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="show"
+                        app:tv_left_text="@string/loan_amount"
+                        app:tv_right_text="$00.00"
+                        />
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_interest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="show"
+                        android:visibility="gone"
+                        app:tv_left_text="@string/loan_amount"
+                        app:tv_right_text="$00.00"
+                        />
+
+
+
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_late_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="show"
+                        android:visibility="gone"
+                        app:tv_left_text="@string/late_fee"
+                        app:tv_right_text="$00.00"
+                        />
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_pen_interset"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="show"
+                        android:visibility="gone"
+                        app:tv_left_text="@string/pen_interset"
+                        app:tv_right_text="$00.00"
+                        />
+
+
+
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_pay_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="show"
+                        app:tv_left_text="@string/pay_fee"
+                        app:tv_right_text="$00.00"
+                        />
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_fees_service"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="show"
+                        app:tv_left_text="@string/fees_service"
+                        app:tv_right_text="$00.00"
+                        />
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_audit_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="show"
+                        app:tv_left_text="@string/audit_fee"
+                        app:tv_right_text="$00.00"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_margin="12dp"
+                android:textColor="@color/black_ff0d"
+                android:text="@string/review_tip"
+                />
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

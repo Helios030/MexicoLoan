@@ -24,8 +24,8 @@ class UserFragment : BaseFragment() {
 
     override fun lazyLoad() {
         val userInfo=PreferencesHelper.getUserInfo()
-        tv_name.text=userInfo.userName
-        tv_phone.text=userInfo.phone
+        tv_name.text=userInfo?.userName
+        tv_phone.text=userInfo?.phone
 
 
         tv_call.setOnClickListener {
@@ -37,13 +37,10 @@ class UserFragment : BaseFragment() {
 
         tv_exit.setOnClickListener {
             mActivity.showCommMessageDialog(
-                getString(R.string.confirm_exit_app),
-                object : CommDialog.DialogListener {
-                    override fun OnOkListener(currItem: Any?) {
-                        PreferencesHelper.exitApp()
-                        mActivity.startTo(WelcomeActivity::class.java, true)
-                    }
-                })
+                getString(R.string.confirm_exit_app)){
+                PreferencesHelper.exitApp()
+                mActivity.startTo(WelcomeActivity::class.java, true)
+            }
         }
 
 

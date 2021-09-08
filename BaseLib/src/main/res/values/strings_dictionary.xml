@@ -12,6 +12,13 @@
         <item>丧偶</item>
     </string-array>
 
+    <string-array name="array_job_type">
+        <item>私营业主</item>
+        <item>上班族</item>
+        <item>自由职业（摩的司机/农民/渔夫等、）</item>
+        <item>退休/待业/无业/家庭主妇</item>
+    </string-array>
+
     <string-array name="array_education_level">
         <item>小学</item>
         <item>初中</item>
@@ -111,6 +118,8 @@
         <item>Pareja</item>
         <item>Pariente</item>
     </string-array>
+
+
 
     <string-array name="array_bank">
         <item>CLABE</item>

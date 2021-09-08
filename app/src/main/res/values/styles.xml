@@ -72,5 +72,15 @@
 <!--        <item name="android:textColor">@color/red_e8</item>-->
 <!--    </style>-->
 
+    <style name="NTablayoutstyle" parent="Base.Widget.Design.TabLayout">
+        <item name="android:textStyle">bold</item>
+        <item name="tabBackground">@color/color_transparent</item>
+        <item name="tabIndicatorColor">@color/blue_ff32</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabSelectedTextColor">@color/blue_ff32</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray_ffaa</item>
+        <item name="tabTextColor">@color/gray_ffaa</item>
 
+    </style>
 </resources>

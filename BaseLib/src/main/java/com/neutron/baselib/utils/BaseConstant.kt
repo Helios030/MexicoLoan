@@ -1,7 +1,5 @@
 package com.neutron.baselib.utils
 
-import android.Manifest
-
 
 class BaseConstant {
     companion object {
@@ -10,7 +8,7 @@ class BaseConstant {
         const val SIGNRANDOMCODE = "signkey2"
         const val AF_APP_KEY = "yGBMuxgzaU8tuLWvbjqrA8"
 //        墨西哥系统 测试
-        val BaseUri = "http://api.mx.golden-union.top/app/"
+        const val BaseUri = "http://api.mx.golden-union.top/app/"
 
 
 
@@ -39,25 +37,25 @@ class MoneyState {
     companion object {
 
         //可借款 ---显示借款界面
-        val STATE_BORROWABLE = 1
+        const val STATE_BORROWABLE = 1
 
         //        申请中
-        val STATE_APPLYING = 2
+        const val STATE_APPLYING = 2
 
         //        审批拒绝---显示借款界面
-        val STATE_APPROVAL_REJECTED = 3
+        const  val STATE_APPROVAL_REJECTED = 3
 
         //        4．待还款-未逾期
-        val STATE_PENDING_REPAYMENT = 4
+        const val STATE_PENDING_REPAYMENT = 4
 
         //        5．放款中
-        val STATE_LOANING = 5
+        const val STATE_LOANING = 5
 
         //        6．待还款-逾期
-        val STATE_OVERDUE = 6
+        const  val STATE_OVERDUE = 6
 
         //        7．确认申请中
-        val STATE_CONFIRM_APPLYING = 7
+        const val STATE_CONFIRM_APPLYING = 7
 
 
     }
@@ -66,8 +64,8 @@ class MoneyState {
 
 class LoginType {
     companion object {
-        val type_register = 1
-        val type_login = 2
+      const val type_register = 1
+      const val type_login = 2
     }
 
 }

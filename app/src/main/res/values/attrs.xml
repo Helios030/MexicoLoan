@@ -35,7 +35,6 @@
 
     <declare-styleable name="CertificationItemView">
         <attr name="c_view_style" format="flags">
-
         <flag name="input" value="0"/>
         <flag name="text" value="1"/>
         <flag name="show" value="2"/>
@@ -51,10 +50,42 @@
         <attr name="et_hint_text_color" format="color|reference" />
         <attr name="tv_right_icon" format="reference|color" />
         <attr name="et_text_size" format="integer" />
+
         <attr name="tv_left_text" format="string" />
+
+        <attr name="tv_right_text" format="string" />
+
+        <attr name="tv_left_text_color" format="color|reference" />
+
+        <attr name="tv_right_text_color" format="color|reference" />
         <attr name="is_show_line" format="boolean" />
+        <attr name="is_show_icon" format="boolean" />
+
         <attr name="is_number" format="boolean" />
 
+        <attr name="text_Style">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+
+
     </declare-styleable>
+
+
+    <declare-styleable name="CardStateView">
+        <attr name="card_view_style" format="flags">
+
+            <flag name="state_applying" value="2"/>
+            <flag name="state_approval_rejected" value="3"/>
+            <flag name="state_pending_repayment" value="4"/>
+            <flag name="state_overdue" value="6"/>
+
+
+        </attr>
+
+
+    </declare-styleable>
+
 
 </resources>

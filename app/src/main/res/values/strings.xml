@@ -61,6 +61,41 @@
     <string name="bank_code">账号</string>
     <string name="bank_code_tip">确认账户的16位数字是正确的</string>
     <string name="submit">提交</string>
+    <string name="clabe_code">CLABE代码</string>
+    <string name="clabe_tip">输入以058开头的CLABE</string>
+    <string name="bank_tip">输入16位数字卡号</string>
+    <string name="curr">当前</string>
+    <string name="history">历史</string>
+    <string name="not_order">暂无订单</string>
+    <string name="loan_money">贷款金额</string>
+    <string name="amount">到账金额</string>
+    <string name="review_tip">您提交的贷款申请正在审核中.请注意通知，按时还款可提高信用额度</string>
+    <string name="loan_amount">借款金额</string>
+    <string name="pay_fee">支付费用</string>
+    <string name="fees_service">技术服务费</string>
+    <string name="audit_fee">审核咨询费</string>
+    <string name="loan_time">贷款期限：120天</string>
+    <string name="app_time">申请时间</string>
+    <string name="interest">利息</string>
+    <string name="review_error_tip">您提交的贷款申请暂不符合我们的审核条件，请保持良好的信用，七天后可再次申请。</string>
+    <string name="repay_tip">您的贷款已经到账，请留意还款时间</string>
+    <string name="late_fee">滞纳金</string>
+    <string name="pen_interset">罚息</string>
+    <string name="over_tip">您的贷款已逾期，请尽快还款避免产生额外费用</string>
+    <string name="review">审核中</string>
+    <string name="rejected">审核失败</string>
+    <string name="repay">待还款</string>
+    <string name="over">已逾期</string>
+    <string name="pay_now">立即付款</string>
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="submit_ok">提交成功</string>
+    <string name="not_pp">缺少必要权限无法运行，请前往设置开启！</string>
+    <string name="two_contact">第二联系人</string>
+    <string name="repay_sign">还款标志：</string>
+    <string name="account_name">账户名</string>
+    <string name="repay_submit_success">还款提交成功</string>
 
-
+    <string name="all_pay">全部还款</string>
+    <string name="sub_pay">展期还款</string>
 </resources>

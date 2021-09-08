@@ -2,16 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="339dp"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:background="@drawable/shape_bg_white"
     android:orientation="vertical"
-    android:padding="20dp">
+
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="20dp">
 
 
     <LinearLayout
         android:id="@+id/ll_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+
         android:orientation="vertical"
      >
 
@@ -20,7 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
-
             android:paddingBottom="12dp"
             android:text="title"
             android:textColor="@color/black_ff0d"
@@ -36,19 +40,21 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
+
             android:orientation="horizontal">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_menu"
+                android:background="@color/ucrop_color_progress_wheel_line"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_menu_2"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:visibility="gone" />
 
@@ -83,11 +89,10 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="10dp"
 
-            android:layout_marginBottom="32dp"
             android:layout_weight="1"
             android:gravity="center"
             android:padding="9dp"
-            android:text="取消"
+            android:text="@string/dialog_cancel"
             android:textColor="@color/gray_ffaa"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -98,12 +103,12 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
+
             android:layout_weight="2"
             android:background="@drawable/shape_btn_blue_bg"
             android:gravity="center"
             android:padding="9dp"
-            android:text="确定"
+            android:text="@string/dialog_ok"
             android:textColor="@color/white"
             android:textSize="17dp"
             android:textStyle="bold" />

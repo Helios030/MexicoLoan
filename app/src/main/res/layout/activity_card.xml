@@ -11,6 +11,17 @@
     <include layout="@layout/layout_toolbar" />
 
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_tab"
+        style="@style/NTablayoutstyle"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/rl_toolbar"
+        android:layout_marginLeft="10dp"
+        android:background="@color/color_transparent">
+
+    </com.google.android.material.tabs.TabLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="164dp"
@@ -73,8 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:c_view_style="input"
-                app:title_text="@string/bank_code"
-
+                app:title_text="@string/clabe_code"
+                app:et_hint="@string/clabe_tip"
                 />
 
         </LinearLayout>

@@ -73,7 +73,6 @@
                         app:c_view_style="text"
                         app:title_text="@string/salary_range" />
 
-/////////////////////////////////////////
 
 
                     <com.neutron.mexicoloan.ui.view.CertificationItemView
@@ -110,6 +109,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:c_view_style="input"
+                        app:is_number="true"
                         app:title_text="@string/comp_phone" />
 
 

@@ -1,16 +1,16 @@
 package com.neutron.baselib.base
 
-import android.content.Context
+import android.Manifest
+import android.content.Intent
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
-import androidx.activity.ComponentActivity
+import android.provider.ContactsContract
 import androidx.appcompat.app.AppCompatActivity
 import com.leaf.library.StatusBarUtil
 import com.neutron.baselib.R
 import com.neutron.baselib.utils.checkNet
 import com.neutron.baselib.utils.toast
 import com.neutron.baselib.view.LoadingDialog
+import com.permissionx.guolindev.PermissionX
 
 abstract class IBaseActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,5 +50,15 @@ abstract class IBaseActivity: AppCompatActivity() {
             loadding = null
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 }

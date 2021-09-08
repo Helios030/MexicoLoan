@@ -8,7 +8,7 @@ import com.neutron.mexicoloan.R
 class OverdueFragment : BaseFragment() {
 
 
-    var loanStatusResult: LoanStatusResult? = null
+//    var loanStatusResult: LoanStatusResult? = null
 
 //    override fun onResume() {
 //        super.onResume()

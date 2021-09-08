@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.order.OrderActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_tab"
+        style="@style/NTablayoutstyle"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/rl_toolbar"
+        android:layout_marginLeft="10dp"
+        android:background="@color/color_transparent">
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+android:visibility="gone"
+        android:layout_below="@+id/tl_tab"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/tv_not_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="43dp"
+        android:drawableTop="@mipmap/img_not_order"
+        android:text="@string/not_order"
+        android:gravity="center"
+        android:textColor="@color/gray_ffaa"
+        android:textSize="16dp"
+        android:drawablePadding="10dp"
+        />
+
+</LinearLayout>

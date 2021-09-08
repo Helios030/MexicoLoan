@@ -13,17 +13,11 @@ import com.neutron.mexicoloan.ui.view.LoginVIew
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
-
-
     override fun getLayoutId(): Int {
         return R.layout.activity_login
     }
-
-
     var phone = ""
-
     override fun initView() {
-
         lv_login.setloginViewListener(object : LoginVIew.loginViewListener {
             override fun onClickStart() {
                 val text = lv_login.getEditText()
@@ -59,7 +53,7 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
 
     }
 
-    private fun observeValue() {
+     override fun observeValue() {
         mViewModel.isSend.observe(this, {
             if (it) {
                 tv_count_down.visibility = View.VISIBLE
@@ -88,6 +82,6 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
     }
 
     override fun initData() {
-        observeValue()
+
     }
 }

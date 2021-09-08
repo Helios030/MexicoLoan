@@ -18,12 +18,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseVMActivity<MainVM>(MainVM::class.java) {
 
-    var mProductFragment = ProductFragment()
-    val mUserFragment = UserFragment()
-    val mReviewFragment = ReviewFragment()
-    val mRejectedFragment = RejectedFragment()
-    val mRepaymentFragment = RepaymentFragment()
-    val mOverdueFragment = OverdueFragment()
+    val mProductFragment by lazy { ProductFragment() }
+    val mUserFragment by lazy { UserFragment() }
+    val mReviewFragment by lazy { ReviewFragment() }
+    val mRejectedFragment by lazy { RejectedFragment() }
+    val mRepaymentFragment by lazy { RepaymentFragment() }
+    val mOverdueFragment by lazy { OverdueFragment() }
+
+
     var fragmentList = listOf(
         mProductFragment,
         mUserFragment,
@@ -57,13 +59,21 @@ class MainActivity : BaseVMActivity<MainVM>(MainVM::class.java) {
         bb_main.setonItemSelected(object : BottomBar.onItemSelected {
             override fun onSelected(item: Int) {
                 when (item) {
-                    0 -> { if (sfl_main.isRefreshing) sfl_main.isRefreshing = false
-                        showStateView(currLoanStatus); nsv_main.setCurrentItem(indexFragmentByName(currFragment.javaClass.simpleName), false) }
-                    1 -> nsv_main.setCurrentItem(indexFragmentByName(mUserFragment.javaClass.simpleName), false)
+                    0 -> {
+                        if (sfl_main.isRefreshing) sfl_main.isRefreshing = false
+                        showStateView(currLoanStatus); nsv_main.setCurrentItem(
+                            indexFragmentByName(
+                                currFragment.javaClass.simpleName
+                            ), false
+                        )
+                    }
+                    1 -> nsv_main.setCurrentItem(
+                        indexFragmentByName(mUserFragment.javaClass.simpleName),
+                        false
+                    )
                 }
             }
         })
-
 
 
     }
@@ -74,7 +84,9 @@ class MainActivity : BaseVMActivity<MainVM>(MainVM::class.java) {
 
     var currLoanStatus = MoneyState.STATE_BORROWABLE
 
+
     var currFragment: Fragment = mProductFragment
+
 
     private fun initVPAdapter() {
         nsv_main.adapter = MainAdapter(supportFragmentManager, fragmentList!!)
@@ -146,43 +158,47 @@ class MainActivity : BaseVMActivity<MainVM>(MainVM::class.java) {
     }
 
     override fun initData() {
+
         mViewModel.getRequestState()
 
         mViewModel.getUserConfig()
 
-        observerValue()
-    }
-
-    var loanStatusResult:LoanStatusResult?=null
-    var configResult: UserConfigResult?=null
-
-     fun observerValue() {
-         mViewModel.statusResult.observe(this,{
-             loanStatusResult=it
-             currLoanStatus = it.loan_status.toInt()
-             showStateView(currLoanStatus)
-             nsv_main.setCurrentItem(
-                 indexFragmentByName(currFragment.javaClass.simpleName),
-                 false
-             )
-             currFragment.onResume()
-
-         })
-
-
-         mViewModel.configResult.observe(this,{
-                 it?.let { config->
-                     configResult=config
-                     PreferencesHelper.setAboutUs(config.about_us)
-                     PreferencesHelper.setHotTel(config.hot_tel)
-                     PreferencesHelper.setPPrivate(config.k_private)
-                 }
-         })
 
     }
+
+    var loanStatusResult: LoanStatusResult? = null
+    var configResult: UserConfigResult? = null
+
 
     fun getloanStatusResult(): LoanStatusResult? {
         return loanStatusResult
+    }
+
+    override fun observeValue() {
+        mViewModel.statusResult.observe(this, {
+            loanStatusResult = it
+            currLoanStatus = it.loan_status.toInt()
+
+            showStateView(currLoanStatus)
+
+
+            nsv_main.setCurrentItem(
+                indexFragmentByName(currFragment.javaClass.simpleName),
+                false
+            )
+            currFragment.onResume()
+
+        })
+
+
+        mViewModel.configResult.observe(this, {
+            it?.let { config ->
+                configResult = config
+                PreferencesHelper.setAboutUs(config.about_us)
+                PreferencesHelper.setHotTel(config.hot_tel)
+                PreferencesHelper.setPPrivate(config.k_private)
+            }
+        })
     }
 
 }

@@ -3,11 +3,10 @@ package com.neutron.baselib.base
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.neutron.baselib.net.LiveRepository
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-
 import com.neutron.baselib.utils.Slog
 import com.neutron.baselib.utils.toast
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 
 abstract class BaseViewModel : ViewModel() {
@@ -30,7 +29,7 @@ abstract class BaseViewModel : ViewModel() {
             }.onSuccess {
                 mOnLoadingListener?.onCloseLoading?.invoke()
                 it?.let { result(it) }
-                Slog.e("API访问正常  $it")
+                Slog.d("API访问正常  $it")
 
             }.onFailure {
                 mOnLoadingListener?.onCloseLoading?.invoke()
