@@ -15,11 +15,8 @@ import com.bigkoo.pickerview.view.TimePickerView
 import com.bumptech.glide.Glide
 import com.contrarywind.view.WheelView
 import com.neutron.baselib.base.BaseVMActivity
+import com.neutron.baselib.utils.*
 
-import com.neutron.baselib.utils.Slog
-import com.neutron.baselib.utils.UIUtils
-import com.neutron.baselib.utils.getStrArray
-import com.neutron.baselib.utils.startTo
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.authentication.work.WorkActivity
 import com.neutron.mexicoloan.ui.view.dialog.MenuItem
@@ -148,6 +145,13 @@ class IDCardActivity : BaseVMActivity<IDCardVM>(IDCardVM::class.java) {
 
             Slog.d("数据上传返回 $this")
 
+//todo daixiugai
+            PreferencesHelper.setRealname(it.name)
+            PreferencesHelper.setBirthday(it.birthday)
+            PreferencesHelper.setKTP(it.idNumber)
+            PreferencesHelper.setFName(it.first_name)
+            PreferencesHelper.setLNAME(it.last_name)
+            PreferencesHelper.setsex(it.sex)
         })
     }
 

@@ -109,17 +109,17 @@
         >
 
         <Button
+            android:id="@+id/btn_submit_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_btn_blue"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
+            android:background="@drawable/shape_btn_blue"
+            android:text="@string/submit"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="@string/submit"
-            android:layout_centerInParent="true"
-            />
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

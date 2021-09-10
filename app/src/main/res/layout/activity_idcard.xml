@@ -97,6 +97,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingTop="20dp"
+                    android:padding="18dp"
                     android:paddingBottom="20dp">
 
                     <com.neutron.mexicoloan.ui.view.CertificationItemView

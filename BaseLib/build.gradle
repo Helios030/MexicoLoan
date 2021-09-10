@@ -48,7 +48,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     //utility
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
-    api 'com.tencent:mmkv-static:1.2.7'
     // Koin for Kotlin apps
     api "org.koin:koin-core:$koin_version"
     api "org.koin:koin-android:$koin_version"

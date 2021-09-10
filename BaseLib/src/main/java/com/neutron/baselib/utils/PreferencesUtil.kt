@@ -19,13 +19,10 @@ import com.neutron.baselib.base.BaseApplication
  */
 object PreferencesUtil {
     private val fileName = "OSport_config"
-
-
     //传统sp
 //    private val prefs: SharedPreferences by lazy { UIUtils.getContext().getSharedPreferences(name, Context.MODE_PRIVATE) }
     //加密sp
     private val prefs: SharedPreferences by lazy {
-
         if (Build.VERSION.SDK_INT >= 23) {
             val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 
@@ -40,8 +37,6 @@ object PreferencesUtil {
 //            加密方式仅支持sdk23以上 SP 里面没有保存任何重要的个人信息
             BaseApplication.sContext.getSharedPreferences(fileName, Context.MODE_PRIVATE)
         }
-
-
     }
 
     fun createSP() {

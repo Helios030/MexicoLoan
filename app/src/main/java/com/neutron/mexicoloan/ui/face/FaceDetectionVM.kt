@@ -9,7 +9,12 @@ import java.util.HashMap
 
 class FaceDetectionVM:BaseViewModel() {
     val advanceLicenseResult: MutableLiveData<AdvanceLicenseResult> = MutableLiveData()
-    fun getAdvancelicense(map: HashMap<String, Any>){
+    fun getAdvancelicense(){
+
+
+        val map = HashMap<String, Any>()
+        map["user_id"] = PreferencesHelper.getUserID()
+
         request({
             mLiveApiRepository.getAdvancelicense(map.createBody())
         }, {

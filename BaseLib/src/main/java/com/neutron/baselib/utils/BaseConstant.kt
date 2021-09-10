@@ -57,6 +57,12 @@ class MoneyState {
         //        7．确认申请中
         const val STATE_CONFIRM_APPLYING = 7
 
+        //        8.订单取消
+        const val STATE_ORDER = 10
+
+        const val STATE_ORDER_CLEAR = 11
+
+
 
     }
 
@@ -78,6 +84,11 @@ class PreferencesKey {
         const val PPRIVATE = "PPRIVATE"
         const val HOT_TEL = "HOT_TEL"
         const val NAME = "NAME"
+        const val KTP = "KTP"
+        const val FNAME = "FNAME"
+        const val LNAME = "LNAME"
+        const val BIRTHDAY = "BIRTHDAY"
+        const val SEX = "SEX"
         const val LIVENESSID = "LIVENESSID"
         const val REFERRER = "REFERRER"
         const val ISSHOWFEILED = "ISSHOWFEILED"

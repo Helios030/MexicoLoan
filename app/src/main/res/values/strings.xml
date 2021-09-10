@@ -98,4 +98,15 @@
 
     <string name="all_pay">全部还款</string>
     <string name="sub_pay">展期还款</string>
+    <string name="refuse">审核拒绝</string>
+    <string name="cancel">已取消</string>
+    <string name="settle">已结清</string>
+    <string name="face_detection">人脸识别</string>
+    <string name="sub_end_time">展期结束时间</string>
+    <string name="sub_start_time">展期开始时间</string>
+    <string name="upload_repay_tip">上传还款凭证</string>
+    <string name="input_code_tip">输入CLABE代码或tarjeta de débito账号</string>
+    <string name="select_bank_account">请选择开户银行</string>
+    <string name="select_bank_number" >请填写银行账号</string>
+
 </resources>

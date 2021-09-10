@@ -11,5 +11,6 @@ data class UserInfo(
     val phonepre: String? = null,
     val register: String? = null
 
-) : Serializable
 
+
+) : Serializable

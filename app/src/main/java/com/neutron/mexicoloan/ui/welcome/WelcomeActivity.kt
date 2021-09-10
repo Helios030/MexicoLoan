@@ -19,9 +19,6 @@ class WelcomeActivity : IBaseActivity() {
 
     override fun initBaseView() {
        DeviceInfoFactory.getInstance().getIMEI()
-
-
-
         Handler(Looper.getMainLooper()).postDelayed({
             if (PreferencesHelper.getUserID().isNullOrEmpty()) {
                 startTo(LoginActivity::class.java, true)

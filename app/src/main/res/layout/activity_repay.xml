@@ -72,6 +72,7 @@
 
 
                 <TextView
+                    android:id="@+id/tv_mark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -112,13 +113,15 @@
                 android:layout_alignLeft="@+id/iv_left"
                 android:layout_height="wrap_content">
                 <TextView
+
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:text="展期开始时间"
+                    android:text="@string/sub_start_time"
                     android:textColor="@color/gray_ff48"
                     android:textStyle="bold"
                     />
                 <TextView
+                    android:id="@+id/tv_sub_start_time"
                     android:layout_width="wrap_content"
                     android:textColor="@color/blue_ff32"
                     android:text="2020-05-12"
@@ -140,11 +143,12 @@
                 <TextView
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:text="展期开始时间"
+                    android:text="@string/sub_end_time"
                     android:textColor="@color/gray_ff48"
                     android:textStyle="bold"
                     />
                 <TextView
+                    android:id="@+id/tv_sub_end_time"
                     android:layout_width="wrap_content"
                     android:textColor="@color/blue_ff32"
                     android:text="2020-05-12"
@@ -222,11 +226,12 @@
 
 
                     <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_bank_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:c_view_style="input"
                         app:is_show_icon="false"
-                        app:title_text="输入CLABE代码或tarjeta de débito账号"
+                        app:title_text="@string/input_code_tip"
 app:text_Style="bold"
                         app:title_text_color="@color/black_ff0d"
 
@@ -236,15 +241,15 @@ app:text_Style="bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="上传还款凭证"
+                        android:text="@string/upload_repay_tip"
                         android:textColor="@color/black_ff0d"
                         android:textStyle="bold" />
 
 
                     <ImageView
                         android:id="@+id/iv_upload"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="120dp"
                         android:layout_marginTop="10dp"
                         android:src="@mipmap/img_upload" />
 

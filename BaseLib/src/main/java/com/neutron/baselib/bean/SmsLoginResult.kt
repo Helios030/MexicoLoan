@@ -17,12 +17,12 @@ data class SmsLoginResult(
     val phone: String,
     val phonepre: String,
     val realName: String,
-    val register: Boolean,
+    val register: Boolean?,
     val signKeyToken: String,
     val userInfoMap: UserInfoMap,
     val userName: String,
     val user_id: String,
-    val vcode: Any
+    val vcode: Any?
 )
 
 data class UserInfoMap(

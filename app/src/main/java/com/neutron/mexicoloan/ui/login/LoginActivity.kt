@@ -2,9 +2,11 @@ package com.neutron.mexicoloan.ui.login
 
 
 import android.view.View
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.neutron.baselib.base.BaseVMActivity
 import com.neutron.baselib.bean.UserInfo
 import com.neutron.baselib.utils.PreferencesHelper
+import com.neutron.baselib.utils.Slog
 import com.neutron.baselib.utils.startTo
 import com.neutron.baselib.utils.toast
 import com.neutron.mexicoloan.R
@@ -63,18 +65,24 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
 
         mViewModel.loginResult.observe(this, {
                 toast(getString(R.string.login_success))
-            val vCode = it.vcode.toString()?:""
-            val register = it.register.toString()?:""
+
+            Slog.d("it  $it")
+
+            val vCode = it.vcode?:""
+            val register = it.register?:""
+
+
+
         PreferencesHelper.setUserID( it.user_id)
             PreferencesHelper.setUserInfo(
                 UserInfo(
                     it.user_id,
                     it.userName,
                     it.signKeyToken,
-                    vCode,
+                    vCode.toString(),
                     it.phone,
                     it.phonepre,
-                    register
+                    register.toString()
                 )
             )
                 startTo(MainActivity::class.java, true)

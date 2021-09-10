@@ -1,7 +1,9 @@
 package com.neutron.mexicoloan.ui.order
 
+import android.annotation.SuppressLint
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chad.library.adapter.base.animation.SlideInLeftAnimation
 import com.google.android.material.tabs.TabLayout
 import com.neutron.baselib.base.BaseVMActivity
 import com.neutron.baselib.bean.OrderBeanResult
@@ -13,8 +15,6 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 class OrderActivity : BaseVMActivity<OrderVM>(OrderVM::class.java) {
 
 
-
-
     override fun getLayoutId(): Int {
         return R.layout.activity_order
     }
@@ -24,13 +24,15 @@ class OrderActivity : BaseVMActivity<OrderVM>(OrderVM::class.java) {
         tv_title.text = getString(R.string.my_loan)
 
 
-
     }
 
     override fun initData() {
         initTab()
         initRecycleView()
+        mViewModel.getOrderList()
+
     }
+
 
     var tab1: TabLayout.Tab? = null
     var tab2: TabLayout.Tab? = null
@@ -48,38 +50,12 @@ class OrderActivity : BaseVMActivity<OrderVM>(OrderVM::class.java) {
         }
 
 
+
         tl_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
 
-                tab?.let {
-                    if (it == tab1) {
-                        val inproOrder = mutableListOf<OrderBeanResult>()
-                        orders.forEach {order->
-                            if (order.loan_status != 2 && order.loan_status != 3 && order.loan_status != 8 && order.loan_status != 6 && order.loan_status != 9) {
-                                inproOrder.add(order)
-                            }
-                        }
-                        Slog.d("inproOrder $orders")
-                        showRv(inproOrder)
-                        adapter?.setNewData(inproOrder.toMutableList())
-                    } else {
-                        val successOrder = mutableListOf<OrderBeanResult>()
-                        orders.forEach {order->
-                            if (order.loan_status == 2 || order.loan_status == 3 || order.loan_status == 8 || order.loan_status == 6 || order.loan_status == 9) {
-                                successOrder.add(order)
-                            }
-                        }
-
-                        val newOder=orders.map {order->
-                            order.loan_status == 2 || order.loan_status == 3 || order.loan_status == 8 || order.loan_status == 6 || order.loan_status == 9
-                        }
-
-                        Slog.d("successOrder  $orders")
-                        Slog.d("successOrder  newOder $newOder")
-                        showRv(successOrder)
-                        adapter?.setNewData(successOrder.toMutableList())
-
-                    }
+                tab?.let { it ->
+                    showList(it == tab1)
                 }
 
             }
@@ -97,6 +73,27 @@ class OrderActivity : BaseVMActivity<OrderVM>(OrderVM::class.java) {
 
     }
 
+    val inproList = listOf<Int>(2, 3, 8, 6, 9)
+
+    fun showList(b: Boolean) {
+        if (b) {
+            var inproOrder = orders.filter { result ->
+                result.loan_status !in inproList
+            }
+            Slog.d("inproOrder $inproOrder")
+            showRv(inproOrder)
+            adapter?.setNewData(inproOrder.toMutableList())
+        } else {
+            var successOrder = orders.filter { result ->
+                result.loan_status in inproList
+            }
+            Slog.d("successOrder  $successOrder")
+            showRv(successOrder)
+            adapter?.setNewData(successOrder.toMutableList())
+
+        }
+    }
+
     var orders = mutableListOf<OrderBeanResult>()
     var adapter: OrderAdapter? = null
     private fun initRecycleView() {
@@ -106,6 +103,7 @@ class OrderActivity : BaseVMActivity<OrderVM>(OrderVM::class.java) {
         rv_order.adapter = adapter
 
     }
+
     private fun showRv(inproOrder: List<OrderBeanResult>) {
         if (inproOrder.isEmpty()) {
             tv_not_order.visibility = View.VISIBLE
@@ -116,8 +114,17 @@ class OrderActivity : BaseVMActivity<OrderVM>(OrderVM::class.java) {
         }
     }
 
-    override fun observeValue() {
 
+    override fun observeValue() {
+        mViewModel.OrderBeanResults.observe(this, {
+
+            Slog.d("it $it")
+            orders.clear()
+            orders.addAll(it)
+            adapter?.notifyDataSetChanged()
+            showList(true)
+
+        })
     }
 
 

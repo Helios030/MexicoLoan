@@ -3,16 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/drawable/ripple_bg.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/drawable/shape_bg_white_six.xml" value="0.36666666666666664" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_card.xml" value="0.33" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_confirm.xml" value="0.35052083333333334" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_contact.xml" value="0.20153985507246377" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_face_detection.xml" value="0.17046605876393112" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_idcard.xml" value="0.20153985507246377" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_login.xml" value="0.17046605876393112" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_login_method.xml" value="0.35052083333333334" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_order.xml" value="0.17046605876393112" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_personal_info.xml" value="0.20153985507246377" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_repay.xml" value="0.411619283065513" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_welcome.xml" value="0.17046605876393112" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/activity_work.xml" value="0.1308876811594203" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/comm_img_dialog_layout.xml" value="0.35052083333333334" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/common_dialog_layout.xml" value="0.1514690982776089" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/fragment_overdue.xml" value="0.17046605876393112" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/fragment_product.xml" value="0.2817028985507246" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/fragment_user.xml" value="0.25" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/item_bank.xml" value="0.17046605876393112" />
-        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/view_card_state.xml" value="0.17046605876393112" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/item_order.xml" value="0.2817028985507246" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/layout_toolbar.xml" value="0.17046605876393112" />
+        <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/view_card_state.xml" value="0.5933429811866859" />
         <entry key="..\:/Android/MexicoLoan/app/src/main/res/layout/view_certification_item.xml" value="0.17046605876393112" />
       </map>
     </option>

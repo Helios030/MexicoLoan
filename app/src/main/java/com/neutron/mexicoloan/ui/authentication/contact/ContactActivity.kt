@@ -2,6 +2,7 @@ package com.neutron.mexicoloan.ui.authentication.contact
 
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor
 import android.provider.ContactsContract
@@ -25,7 +26,7 @@ class ContactActivity : BaseVMActivity<ContactVM>(ContactVM::class.java) {
     val dataMap = HashMap<String, Any>()
     override fun initData() {
         dataMap["user_id"] = PreferencesHelper.getUserID()
-
+mViewModel.getServiceContactInfo()
 
     }
 
@@ -107,6 +108,7 @@ class ContactActivity : BaseVMActivity<ContactVM>(ContactVM::class.java) {
         }
     }
 
+    @SuppressLint("Range")
     private fun getContacts(data: Intent, code: Int) {
         var name = ""
         var phoneNumber = ""
@@ -169,6 +171,23 @@ class ContactActivity : BaseVMActivity<ContactVM>(ContactVM::class.java) {
             startTo(CardActivity::class.java)
 
         })
+
+        mViewModel.sWorkInfoResult.observe(this,{
+
+            if (it.name_relation_1.isNotEmpty()) {
+                civ_contact_name.setTextStr   (it.name_relation_1)
+                civ_contact_phone.setTextStr   (it.phone_relation_1)
+                civ_contact_name_2.setTextStr  (it.name_relation_2)
+                civ_contact_phone_2.setTextStr(it.phone_relation_2)
+                dataMap["name_relation_1"] =  (it.name_relation_1)
+                dataMap["phone_relation_1"] =  (it.phone_relation_1)
+                dataMap["name_relation_2"] =   (it.name_relation_2)
+                dataMap["phone_relation_2"] = (it.phone_relation_2)
+                setContact1(it.relation_1.toInt())
+                setContact2(it.relation_2.toInt())
+            }
+        })
+
     }
 
 

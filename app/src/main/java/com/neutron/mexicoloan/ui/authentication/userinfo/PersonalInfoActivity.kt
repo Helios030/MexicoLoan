@@ -3,10 +3,8 @@ package com.neutron.mexicoloan.ui.authentication.userinfo
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
-import androidx.core.app.ActivityCompat
 import com.neutron.baselib.base.BaseVMActivity
 import com.neutron.baselib.bean.CityBeanResult
 import com.neutron.baselib.utils.*
@@ -26,13 +24,18 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
 
     val dataMap = HashMap<String, Any>()
     override fun initData() {
+        dataMap["no_ktp"] = PreferencesHelper.getKTP()
+        dataMap["real_name"] =PreferencesHelper.getFName()
+        dataMap["idType"] = "1"
+        dataMap["first_name"] = PreferencesHelper.getFName()
+        dataMap["last_name"] =PreferencesHelper.getLNAME()
+        dataMap["last_name"] =PreferencesHelper.getLNAME()
         dataMap["user_id"] = PreferencesHelper.getUserID()
-
+        dataMap["gender"] = PreferencesHelper.getsex()
         mViewModel.getCityList("-1")
-//        mViewModel.getWorkInfo()
+        mViewModel.getServiceUserInfo()
 
     }
-
 
 
     override fun getLayoutId(): Int {
@@ -49,7 +52,7 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
 //            civ_home_detail_address.getEditTextStr()
 //            civ_email.getEditTextStr()
 //            civ_postal_code.getEditTextStr()
-            dataMap["home_address"] = civ_detail_address.getTextStr()
+            dataMap["home_address"] = civ_home_detail_address.getTextStr()
             dataMap["email"] = civ_email.getTextStr()
             mViewModel.uploadUserInfo(dataMap)
 
@@ -58,25 +61,32 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
         civ_education_level.setOnTVClickListener { showELS() }
         civ_children_number.setOnTVClickListener { showCNS() }
         civ_home_type.setOnTVClickListener { showHTS() }
-//        civ_home_type.setOnTVClickListener { showHTS() }
         civ_location.setOnTVClickListener { getLocation(this) }
+        civ_marital_status.setOnTVClickListener { showMSS() }
+
+        civ_info_state.setOnTVClickListener {
+            showAddressS()
+        }
 
     }
 
 
-
-//教育程度
+    //教育程度
     private fun showELS() {
 
-    showCommSelectDialog(
-        getString(R.string.job), getStrArray(R.array.array_education_level).Str2MenuItem(), {
-            if (it is MenuItem) {
-                setIdentity(it.menuCode)
+        showCommSelectDialog(
+            getString(R.string.education_level),
+            getStrArray(R.array.array_education_level).Str2MenuItem(),
+            {
+                if (it is MenuItem) {
+                    setEducation(it.menuCode)
+                }
             }
-        }
-    )
-}
-    private fun setIdentity(position: Int) {
+        )
+    }
+
+    private fun setEducation(position: Int?) {
+        position?:return
         civ_education_level.setTextStr(getStrByIndex(R.array.array_education_level, position))
         dataMap["education"] = "$position"
     }
@@ -85,35 +95,55 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
     private fun showCNS() {
         showCommSelectDialog(
             getString(R.string.job), getStrArray(R.array.array_children_num).Str2MenuItem(), {
-                if (it is MenuItem) { setCN(it.menuCode) }
+                if (it is MenuItem) {
+                    setCN(it.menuCode)
+                }
             }
         )
     }
 
-    private fun setCN(position: Int) {
+    private fun setCN(position: Int?) {
+        position?:return
         civ_children_number.setTextStr(getStrByIndex(R.array.array_children_num, position))
         dataMap["number_children"] = "$position"
     }
-
 
 
     //居住类型
     private fun showHTS() {
         showCommSelectDialog(
             getString(R.string.job), getStrArray(R.array.array_children_num).Str2MenuItem(), {
-                if (it is MenuItem) { setHT(it.menuCode) }
+                if (it is MenuItem) {
+                    setHT(it.menuCode)
+                }
             }
         )
     }
 
-    private fun setHT(position: Int) {
-        civ_children_number.setTextStr(getStrByIndex(R.array.array_children_num, position))
+    private fun setHT(position: Int?) {
+        position?:return
+        civ_home_type.setTextStr(getStrByIndex(R.array.array_children_num, position))
         dataMap["home_type"] = "$position"
     }
 
+    //婚姻状况
+    private fun showMSS() {
+        showCommSelectDialog(
+            getString(R.string.marital_status),
+            getStrArray(R.array.array_marital_status).Str2MenuItem(),
+            {
+                if (it is MenuItem) {
+                    setMS(it.menuCode)
+                }
+            }
+        )
+    }
 
-
-
+    private fun setMS(position: Int?) {
+        position?:return
+        civ_marital_status.setTextStr(getStrByIndex(R.array.array_marital_status, position))
+        dataMap["marital_status"] = "$position"
+    }
 
 
     var region_1 = ""
@@ -121,13 +151,15 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
     var cityBeanResults = mutableListOf<CityBeanResult>()
 
     //选择地址
-    private fun setCompCity2(no: String, addressName: String) {
-        dataMap["comp_region_2"] = no
+    private fun setHomeCity2(no: String?, addressName: String) {
+        no?:return
+        dataMap["home_region_2"] = no
         region_2 = addressName
     }
 
-    private fun setCompCity1(no: String, addressName: String) {
-        dataMap["comp_region_1"] = no
+    private fun setHomeCity1(no: String?, addressName: String) {
+        no?:return
+        dataMap["home_region_1"] = no
         region_1 = addressName
     }
 
@@ -143,7 +175,7 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
             addressDialog = getCommSelectDialog(
                 getString(R.string.state), cityMenu, {
                     if (dataMap["home_region_1"] != null && dataMap["home_region_2"] != null) {
-                        civ_state.setTextStr("$region_1 $region_2")
+                        civ_info_state.setTextStr("$region_1 $region_2")
                     }
                 }, {
 //                    单项选择
@@ -153,9 +185,9 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
 
                         if (city?.parent_id == -1) {
                             mViewModel.getCityList(city?.address_no.toString())
-                            setCompCity1(city.address_no.toString(), city.address_name)
+                            setHomeCity1(city.address_no.toString(), city.address_name)
                         } else {
-                            setCompCity2(city?.address_no.toString(), city!!.address_name)
+                            setHomeCity2(city?.address_no.toString(), city!!.address_name)
                         }
                     }
                 }
@@ -171,19 +203,16 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
     }
 
 
-
-
-
-
     var locationManager: LocationManager? = null
     var locationProvider: String = ""
     var gpscount = 0
+
     @SuppressLint("MissingPermission")
     private fun getLocation(context: Context) {
         locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         locationManager ?: return
 
-        checkPerByX(listOf(Manifest.permission.ACCESS_COARSE_LOCATION),{
+        checkPerByX(listOf(Manifest.permission.ACCESS_COARSE_LOCATION), {
             //获取所有可用的位置提供器
             val providers: List<String> = locationManager!!.getProviders(true)
             if (providers.contains(LocationManager.NETWORK_PROVIDER)) {
@@ -197,8 +226,7 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
                 }
             }
 
-        },R.string.not_order,R.string.dialog_ok,R.string.dialog_cancel)
-
+        }, R.string.not_order, R.string.dialog_ok, R.string.dialog_cancel)
 
 
     }
@@ -218,15 +246,51 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
 
         })
 
-        mViewModel.isUploadSuccess.observe(this,{
+        mViewModel.isUploadSuccess.observe(this, {
 
             startTo(ContactActivity::class.java)
 
 
         })
+        mViewModel.sUserInfoResult.observe(this, {
+            setEmail(it.email)
+            setHT(it.home_type?.toInt())
+            setHA(it.home_address)
+            setHomeCity1(it.home_region_1, it.home_region_1_value.toString())
+            setHomeCity2(it.home_region_2, it.home_region_2_value.toString())
+            setEducation(it.education?.toInt())
+            setMS(it.marital_status?.toInt())
+            setCN(it.number_children?.toInt())
+            if (dataMap["home_region_1"] != null && dataMap["home_region_2"] != null) {
+                civ_info_state.setTextStr("$region_1 $region_2")
+            }
+            dataMap["no_ktp"] = it.no_ktp?:""
+            dataMap["real_name"] =it.real_name?:""
+            dataMap["idType"] = it.idType?:""
+            dataMap["first_name"] =it.first_name?:""
+            dataMap["last_name"]  =it.last_name?:""
+            dataMap["user_id"]    =it.user_id?:""
+            dataMap["gender"]     =it.gender?:""
+
+//            todo ！！！！ 没有小名
+            dataMap["name_mother"]     =it.name_mother?:""
+
+        })
+
 
     }
 
+    fun setHA(str: String?) {
+        str?:return
+        civ_home_detail_address.setEditTextStr(str)
+        dataMap["home_address"] = str
+    }
+
+    fun setEmail(str: String?) {
+        str?:return
+        civ_email.setEditTextStr(str)
+        dataMap["email"] = str
+    }
 
 //        private fun uploadLocation(latitude: Double, longitude: Double) {
 //        var hashMap = HashMap<String, Any>()

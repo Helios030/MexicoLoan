@@ -6,10 +6,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.RelativeLayout
-import com.neutron.baselib.utils.MoneyState
-import com.neutron.baselib.utils.collapse
-import com.neutron.baselib.utils.expand
-import com.neutron.baselib.utils.setDrawableRight
+import android.widget.TextView
+import com.neutron.baselib.utils.*
+import com.neutron.baselib.utils.UIUtils.Companion.getColor
 import com.neutron.mexicoloan.R
 import kotlinx.android.synthetic.main.fragment_review.*
 import kotlinx.android.synthetic.main.view_card_state.view.*
@@ -53,18 +52,18 @@ class CardStateView : RelativeLayout {
         }
     }
 
-    private fun showStyle(viewStyle: Int,context: Context) {
+     fun showStyle(viewStyle: Int,context: Context) {
         when (viewStyle) {
             MoneyState.STATE_APPLYING -> {
                 tv_title.setDrawableRight(R.mipmap.icon_card_blue)
-                tv_loan_money.setTextColor(context.getColor(R.color.blue_ff32))
+                tv_loan_money.setTextColor(UIUtils.getColor(R.color.blue_ff32))
                 ll_detail_bg.setBackgroundResource(R.color.blue_ff32)
                 tv_bottom.text=  context.getString(R.string.review_tip)
 
             }
             MoneyState.STATE_APPROVAL_REJECTED -> {
                 tv_title.setDrawableRight(R.mipmap.img_card_gray)
-                tv_loan_money.setTextColor(context.getColor(R.color.gray_ffaa))
+                tv_loan_money.setTextColor(UIUtils.getColor(R.color.gray_ffaa))
                 ll_detail_bg.setBackgroundResource(R.color.gray_ffaa)
                 tv_bottom.text=  context.getString(R.string.review_error_tip)
                 civ_app_time.setRightTextColor(R.color.gray_ffaa)
@@ -72,7 +71,7 @@ class CardStateView : RelativeLayout {
 
             MoneyState.STATE_PENDING_REPAYMENT -> {
                 tv_title.setDrawableRight(R.mipmap.icon_card_blue)
-                tv_loan_money.setTextColor(context.getColor(R.color.blue_ff32))
+                tv_loan_money.setTextColor(UIUtils.getColor(R.color.blue_ff32))
                 ll_detail_bg.setBackgroundResource(R.color.blue_ff32)
                 tv_bottom.text=  context.getString(R.string.repay_tip)
 
@@ -89,7 +88,7 @@ class CardStateView : RelativeLayout {
 
             MoneyState.STATE_OVERDUE -> {
                 tv_title.setDrawableRight(R.mipmap.img_card_pink)
-                tv_loan_money.setTextColor(context.getColor(R.color.color_pink_f4))
+                tv_loan_money.setTextColor(UIUtils.getColor(R.color.color_pink_f4))
                 ll_detail_bg.setBackgroundResource(R.color.color_pink_f4)
                 tv_bottom.text=  context.getString(R.string.over_tip)
 
@@ -104,6 +103,22 @@ class CardStateView : RelativeLayout {
 
 
 
+            }
+
+            MoneyState.STATE_ORDER ->{
+                ll_detail_bg.visibility=View.GONE
+                tv_order_tip.visibility=View.VISIBLE
+                tv_title.setDrawableRight(R.mipmap.img_card_gray)
+                tv_loan_money.setTextColor(UIUtils.getColor(R.color.gray_ffaa))
+                ll_detail_bg.setBackgroundResource(R.color.gray_ffaa)
+                civ_app_time.setRightTextColor(R.color.gray_ffaa)
+            }
+
+            MoneyState.STATE_ORDER_CLEAR ->{
+                ll_detail_bg.visibility=View.GONE
+                tv_order_tip.visibility=View.VISIBLE
+                tv_order_tip.setBackgroundColor(getColor(R.color.green_ff12))
+                tv_bottom.visibility=View.GONE
             }
 
 
@@ -176,6 +191,15 @@ class CardStateView : RelativeLayout {
         return this
     }
 
+    fun getTvBottom():TextView{
+        return tv_bottom
+    }
+
+
+    fun  setTvOrderTip(str:String){
+
+        tv_order_tip.text=str
+    }
 
 
 }

@@ -26,7 +26,7 @@ class WorkActivity : BaseVMActivity<WorkVM>(WorkVM::class.java) {
     override fun initData() {
         dataMap["user_id"] = PreferencesHelper.getUserID()
         mViewModel.getCityList("-1")
-//        mViewModel.getWorkInfo()
+        mViewModel.getWorkInfo()
 
     }
 
@@ -217,6 +217,25 @@ class WorkActivity : BaseVMActivity<WorkVM>(WorkVM::class.java) {
         })
 
         mViewModel.sWorkInfoResult.observe(this, {
+            civ_detail_address.setTextStr(it.comp_address.toString())
+            civ_comp_phone.setTextStr(it.company_tel.toString())
+            civ_comp_name.setTextStr(it.company_name.toString())
+            setJobType(it.custemer_type.toString().toInt())
+            setIdentity(it.position.toString().toInt())
+            setCType(it.industry.toString().toInt())
+            setMonthlyType(it.income_type.toString().toInt())
+            setCompCity1(
+                it.comp_region_1.toString(),
+                it.comp_region_1_value.toString()
+            )
+            setCompCity2(
+                it.comp_region_2.toString(),
+                it.comp_region_2_value.toString()
+            )
+
+            if (dataMap["comp_region_1"] != null && dataMap["comp_region_2"] != null) {
+                civ_state.setTextStr("$region_1 $region_2")
+            }
 
         })
 

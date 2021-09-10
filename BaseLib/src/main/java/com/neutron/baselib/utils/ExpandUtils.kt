@@ -401,9 +401,6 @@ fun TextView.setDrawableBottom(resId: Int) {
 
 
 fun HashMap<String, Any>.createCommonParams(): HashMap<String, Any> {
-
-
-
    val  sContext= BaseApplication.sContext
     val version = sContext.getVersionName()
     val IMEI = PreferencesHelper.getIMEI()
@@ -426,7 +423,7 @@ fun HashMap<String, Any>.createBody(): RequestBody {
     newMap["sign"] = newMap.signParameter()
 
     val json = Gson().toJson(newMap)
-    Slog.e("当前API参数  json $json")
+    Slog.d("当前API参数  json $json")
     return RequestBody.create(
         MediaType.parse("application/json;charset=UTF-8"),
         json

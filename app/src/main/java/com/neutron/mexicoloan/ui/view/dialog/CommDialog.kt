@@ -107,12 +107,15 @@ class CommDialog : Dialog {
         initMenuAdapter2(rvMenu2)
         btn_ok?.setOnClickListener {
 
-            if(currItem==null){
+            if (currItem == null && isList) {
                 mContext?.toast(R.string.please_select)
-            }else{
+            } else {
                 onOkListener?.invoke(currItem)
+
                 dismiss()
             }
+
+
         }
         btn_cancel?.setOnClickListener {
             dismiss()
@@ -166,14 +169,14 @@ class CommDialog : Dialog {
                 menuList2.forEach { it.isSelected = false }
                 menuList2[position].isSelected = true
                 adapter2?.notifyDataSetChanged()
-                currItem=menuList2[position]
+                currItem = menuList2[position]
                 onSelectedListener?.invoke(currItem)
 
             }
 
             adapter2?.setOnItemLongClickListener { _, _, position ->
 
-                mContext?.toast( menuList2[position].menuName)
+                mContext?.toast(menuList2[position].menuName)
                 true
             }
 
@@ -190,11 +193,11 @@ class CommDialog : Dialog {
                 currMenu = menuList[position]
                 currMenu?.isSelected = true
                 adapter?.notifyDataSetChanged()
-                currItem=currMenu
+                currItem = currMenu
                 onSelectedListener?.invoke(currItem)
             }
             adapter?.setOnItemLongClickListener { _, _, position ->
-                mContext?.toast( menuList[position].menuName)
+                mContext?.toast(menuList[position].menuName)
                 true
             }
         }
@@ -203,7 +206,7 @@ class CommDialog : Dialog {
     fun setBankAdapter(): CommDialog {
 
 
-        Slog.d("setBankAdapter ${rvMenu==null}    ${rvMenu?.visibility==View.VISIBLE}")
+        Slog.d("setBankAdapter ${rvMenu == null}    ${rvMenu?.visibility == View.VISIBLE}")
 
         rvMenu?.let { rv ->
             bankAdapter = BankAdapter(R.layout.item_bank, bankList)
@@ -215,26 +218,26 @@ class CommDialog : Dialog {
                 currBank?.isSelected = true
                 bankAdapter?.notifyDataSetChanged()
 
-                currItem=currBank
+                currItem = currBank
             }
         }
         return this
     }
 
-    var currItem:Any?=null
+    var currItem: Any? = null
 
-    var  onOkListener:((Any?)->Unit)?=null
+    var onOkListener: ((Any?) -> Unit)? = null
 
-    fun setOnOkClick(listener:(Any?)->Unit): CommDialog{
-        onOkListener=listener
+    fun setOnOkClick(listener: (Any?) -> Unit): CommDialog {
+        onOkListener = listener
         return this
     }
 
 
-    var  onSelectedListener:((Any?)->Unit)?=null
+    var onSelectedListener: ((Any?) -> Unit)? = null
 
-    fun setonSelectedListener(listener: ((Any?) -> Unit)?): CommDialog{
-        onSelectedListener=listener
+    fun setonSelectedListener(listener: ((Any?) -> Unit)?): CommDialog {
+        onSelectedListener = listener
         return this
     }
 

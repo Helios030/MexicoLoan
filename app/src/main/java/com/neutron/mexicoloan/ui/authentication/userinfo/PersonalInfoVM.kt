@@ -36,7 +36,7 @@ class PersonalInfoVM :BaseViewModel() {
     }
 
 
-    fun getServiceUserInfo(map: HashMap<String, Any>) {
+    fun getServiceUserInfo() {
         request({
             val map = HashMap<String, Any>()
             map["user_id"] = PreferencesHelper.getUserID()

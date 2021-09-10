@@ -39,6 +39,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingTop="20dp"
+                    android:padding="18dp"
                     android:paddingBottom="20dp">
 
                     <com.neutron.mexicoloan.ui.view.CertificationItemView
@@ -48,7 +49,12 @@
                         app:c_view_style="text"
                         app:title_text="@string/education_level" />
 
-
+                    <com.neutron.mexicoloan.ui.view.CertificationItemView
+                        android:id="@+id/civ_marital_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:c_view_style="text"
+                        app:title_text="@string/marital_status" />
 
                     <com.neutron.mexicoloan.ui.view.CertificationItemView
                         android:id="@+id/civ_children_number"

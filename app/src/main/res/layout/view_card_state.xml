@@ -62,8 +62,11 @@
                 android:layout_height="wrap_content"
                 app:c_view_style="show"
                 app:tv_left_text="@string/app_time"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
                 app:tv_left_text_color="@color/black_ff0d"
                 app:tv_right_text="2021-09-03"
+                app:is_show_line="false"
                 app:tv_right_text_color="@color/blue_ff32"
 
                 />
@@ -86,14 +89,13 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-android:id="@+id/str_loan"
+                        android:id="@+id/str_loan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/amount"
-                        android:textStyle="bold"
                         android:layout_centerVertical="true"
+                        android:text="@string/amount"
                         android:textColor="@color/white"
-                        />
+                        android:textStyle="bold" />
 
                     <TextView
 
@@ -145,7 +147,7 @@ android:id="@+id/str_loan"
                         android:layout_height="wrap_content"
                         app:c_view_style="show"
                         android:visibility="gone"
-                        app:tv_left_text="@string/loan_amount"
+                        app:tv_left_text="@string/interest"
                         app:tv_right_text="$00.00"
                         />
 
@@ -203,6 +205,24 @@ android:id="@+id/str_loan"
                 </LinearLayout>
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_order_tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/gray_ffaa"
+                android:paddingLeft="18dp"
+                android:visibility="gone"
+                android:layout_marginTop="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center_vertical"
+                android:text="审核拒绝"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+
+                />
 
 
             <TextView

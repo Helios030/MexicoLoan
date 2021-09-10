@@ -62,6 +62,25 @@ object PreferencesHelper {
     fun getRealname(): String = PreferencesUtil.getString(PreferencesKey.NAME, "")
     fun setRealname(str: String) = PreferencesUtil.saveValue(PreferencesKey.NAME, str)
 
+    fun getKTP(): String = PreferencesUtil.getString(PreferencesKey.KTP, "")
+    fun setKTP(str: String) = PreferencesUtil.saveValue(PreferencesKey.KTP, str)
+
+    fun getFName(): String = PreferencesUtil.getString(PreferencesKey.FNAME, "")
+    fun setFName(str: String) = PreferencesUtil.saveValue(PreferencesKey.FNAME, str)
+
+    fun getLNAME(): String = PreferencesUtil.getString(PreferencesKey.LNAME, "")
+    fun setLNAME(str: String) = PreferencesUtil.saveValue(PreferencesKey.LNAME, str)
+
+    fun getBirthday(): String = PreferencesUtil.getString(PreferencesKey.BIRTHDAY, "")
+    fun setBirthday(str: String) = PreferencesUtil.saveValue(PreferencesKey.BIRTHDAY, str)
+
+    fun getsex(): String = PreferencesUtil.getString(PreferencesKey.SEX, "")
+    fun setsex(str: String) = PreferencesUtil.saveValue(PreferencesKey.SEX, str)
+
+
+
+
+
 
     fun getLivenessID(): String = PreferencesUtil.getString(PreferencesKey.LIVENESSID, "")
     fun setLivenessID(str: String) = PreferencesUtil.saveValue(PreferencesKey.LIVENESSID, str)
