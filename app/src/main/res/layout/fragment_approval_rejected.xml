@@ -50,7 +50,7 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
     <com.neutron.mexicoloan.ui.view.CardStateView
-        android:id="@+id/csv_review"
+        android:id="@+id/csv_review_error"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:card_view_style="state_approval_rejected"

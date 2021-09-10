@@ -51,8 +51,6 @@ class OrderAdapter(layoutResId: Int, data: MutableList<OrderBeanResult>) :
 //        10. 还款审核中
         when (item.loan_status) {
             1, 4 -> {
-
-
                 //        1、申请中
                 //        4、申请成功
                 tv_Bottom.text = getString(R.string.review)
@@ -62,12 +60,8 @@ class OrderAdapter(layoutResId: Int, data: MutableList<OrderBeanResult>) :
                 csv.setPayFee(item.paymentAmount)
 //                csv. setFeesService(item.risk)
 //                csv. setAuditFee((item.set)
-
             }
-
-
             2 -> {
-
                 csv.showStyle(MoneyState.STATE_ORDER,mContext)
                 csv.setTvOrderTip(getString(R.string.refuse))
                 csv.setAppTime(item.app_time)
