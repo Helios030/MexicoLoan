@@ -49,11 +49,8 @@ class ProductFragment : BaseVMFragment<ProductVM>(ProductVM::class.java) {
     }
 
     override fun initData() {
-
         observerProducts()
         observerUserState()
-
-
     }
 
     private fun observerUserState() {

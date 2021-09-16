@@ -1,0 +1,13 @@
+<resources>
+
+<!--测试 key-->
+    <string name="facebook_app_id" translatable="false">233573042046234</string>
+
+<!--    <string name="facebook_app_id" translatable="false">522042912213574</string>-->
+
+
+
+    <string name="fb_login_protocol_scheme" translatable="false">fb522042912213574</string>
+
+</resources>
+

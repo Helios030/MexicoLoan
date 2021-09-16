@@ -108,5 +108,10 @@
     <string name="input_code_tip">输入CLABE代码或tarjeta de débito账号</string>
     <string name="select_bank_account">请选择开户银行</string>
     <string name="select_bank_number" >请填写银行账号</string>
+    <string name="read_confirm">我已阅读并同意</string>
+    <string name="pp">《隐私协议》</string>
+    <string name="you_wate">您想借</string>
+    <string name="max_money">最高可借金额</string>
+    <string name="order_detail">订单详情</string>
 
 </resources>

@@ -5,7 +5,7 @@ import com.neutron.baselib.utils.BaseConstant
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
-class LiveRepository : BaseRetrofitClient(){
+object LiveRepository : BaseRetrofitClient(){
 
     val mApiService by lazy { getService(NetWorkService::class.java, BaseConstant.BaseUri) }
     suspend fun getSmsCode(body: RequestBody) = mApiService.sendSms(body).getResponse()

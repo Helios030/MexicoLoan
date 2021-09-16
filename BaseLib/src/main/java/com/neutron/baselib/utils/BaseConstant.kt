@@ -8,20 +8,23 @@ class BaseConstant {
         const val SIGNRANDOMCODE = "signkey2"
         const val AF_APP_KEY = "yGBMuxgzaU8tuLWvbjqrA8"
 //        墨西哥系统 测试
+//        const val BaseUri = "http://api.mx.golden-union.top/app/"
         const val BaseUri = "http://api.mx.golden-union.top/app/"
 
 
 
 
         //AF中的eventName状态值
-        const val AF_APP_INSTALL = "安装"
-        const val AF_APP_ACTIVATION = "激活"
-        const val AF_APP_LOGIN = "登录成功"
-        const val AF_APP_REGISTER = "注册成功"
-        const val AF_SUBMIT_BANK_SUCCESS = "提交银行卡成功"
-        const val AF_APPPLY_SUCCESS = "提交借款成功"
-        const val AF_VA_SUCCESS = "获取还款账号成功"
-        const val AF_CLICK_VA = "点击获取还款账号"
+        const val AF_APP_INSTALL              =  "mexicoloan_install"          //"安装"
+        const val AF_APP_ACTIVATION           =  "mexicoloan_activation"       //"激活"
+        const val AF_APP_LOGIN                =  "mexicoloan_login"            //"登录成功"
+        const val AF_APP_REGISTER             =  "mexicoloan_register"         //"注册成功"
+        const val AF_SUBMIT_BANK_SUCCESS      =  "mexicoloan_submit_bankcard"  //"提交银行卡成功"
+        const val AF_APPPLY_SUCCESS           =  "mexicoloan_apply_loan"       //"提交借款成功"
+        const val AF_VA_SUCCESS               =  "mexicoloan_va_success"       //"获取还款账号成功"
+        const val AF_CLICK_VA                 =  "mexicoloan_click_va"         //"点击获取还款账号"
+
+
         //AF中的eventCode状态值
         const val EVENT_CODE_INSTALL = "install"
         const val EVENT_CODE_LOGIN = "login"
@@ -29,6 +32,7 @@ class BaseConstant {
         const val EVENT_CODE_VA_SUCCESS = "va_success"
         const val EVENT_CODE_APPLY_SUCCESS = "apply_success"
         const val EVENT_NEW_REGISTER = "register"
+
     }
 }
 
@@ -100,6 +104,8 @@ class PreferencesKey {
         const val USERID = "USERID"
         const val PHONEPRE = "PHONEPRE"
         const val USERINFO = "USERINFO"
+
+        const val CONFIRM_PP = "CONFIRM_PP"
     }
 }
 

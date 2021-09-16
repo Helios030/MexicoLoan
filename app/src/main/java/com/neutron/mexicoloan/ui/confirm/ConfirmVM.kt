@@ -6,6 +6,8 @@ import com.neutron.baselib.bean.ConfirmInfoResult
 import com.neutron.baselib.bean.RequestOrderResult
 import com.neutron.baselib.utils.PreferencesHelper
 import com.neutron.baselib.utils.createBody
+import com.neutron.baselib.utils.trackClickVaEvent
+import com.neutron.baselib.utils.trackCommitLoanSuccessEvent
 
 class ConfirmVM :BaseViewModel() {
 
@@ -37,8 +39,13 @@ class ConfirmVM :BaseViewModel() {
 
             requestOrderResult.postValue(this)
 
-//           todo  埋点
-//            trackCommitLoanSuccessEvent()
+
+             PreferencesHelper.getUserInfo()?.let {
+
+                 trackCommitLoanSuccessEvent(it.phone,map["product_id"].toString())
+
+             }
+
 
         }, {}, isShowLoading = true)
     }

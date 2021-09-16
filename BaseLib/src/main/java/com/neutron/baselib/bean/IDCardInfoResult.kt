@@ -8,5 +8,8 @@ data class IDCardInfoResult(
     var first_name: String,
     var last_name: String,
     var sex: String,
-    var name: String
-):Serializable
+    var name: String,
+    var motherLastName: String,
+    var CURP: String,
+    var RFC: String
+) : Serializable

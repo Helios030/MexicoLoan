@@ -6,89 +6,125 @@
     android:background="@mipmap/img_welcome_bg"
     android:orientation="vertical"
 
-    tools:context=".ui.login.method.LoginMethodActivity">
+    tools:context=".ui.login.LoginMethodActivity">
 
 
- <ScrollView
-     android:layout_width="match_parent"
-     android:layout_height="match_parent">
-
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:orientation="vertical"
-         android:layout_height="wrap_content">
-
-
-         <include
-             layout="@layout/layout_welcome"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_centerHorizontal="true"
-             android:layout_gravity="center_horizontal"
-
-             android:layout_marginTop="100dp" />
-
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="32dp"
-        android:paddingRight="32dp"
-        android:layout_marginTop="60dp"
-        >
+        android:layout_height="match_parent">
 
-        <TextView
-
-            android:id="@+id/btn_google"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/shape_bg_white_six"
-            android:textColor="@color/blue_ff32"
-            android:text="Ingresar con Google"
-            android:textSize="16dp"
-            android:gravity="center"
-            />
-
-        <TextView
-
-            android:id="@+id/btn_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/shape_bg_white_six"
-            android:textColor="@color/blue_ff32"
-            android:text="Ingresar con Facebook"
-            android:textSize="16dp"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/btn_msg"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/shape_bg_white_six"
-            android:textColor="@color/blue_ff32"
-            android:text="Ingresar con número móvil"
-            android:layout_marginTop="24dp"
-            android:textSize="16dp"
-            android:gravity="center"
-            />
+            <include
+                layout="@layout/layout_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+
+                android:layout_marginTop="100dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:orientation="vertical"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp">
+
+                <TextView
+                    android:id="@+id/btn_google"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bg_white_six"
+                    android:drawableLeft="@mipmap/icon_login_gg"
+                    android:gravity="center"
+                    android:paddingLeft="9dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="9dp"
+                    android:text="Ingresar con Google"
+                    android:textColor="@color/blue_ff32"
+
+                    android:textSize="16dp" />
+
+                <TextView
+
+                    android:id="@+id/btn_facebook"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/shape_bg_white_six"
+                    android:drawableLeft="@mipmap/icon_login_fb"
+                    android:gravity="center"
+                    android:paddingLeft="9dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="9dp"
+                    android:text="Ingresar con Facebook"
+                    android:textColor="@color/blue_ff32"
+                    android:textSize="16dp" />
+
+
+                <TextView
+                    android:id="@+id/btn_msg"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bg_white_six"
+                    android:drawableLeft="@mipmap/icon_login_msg"
+                    android:gravity="center"
+                    android:paddingLeft="9dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="9dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Ingresar con número móvil"
+                    android:textColor="@color/blue_ff32"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
 
 
 
 
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_alignParentBottom="true"
+                    >
+                    <TextView
+                        android:id="@+id/tv_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/icon_selected_gray"
+                        android:text="@string/read_confirm"
+                        android:drawablePadding="12dp"
+                        android:textColor="@color/gray_b3ff"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_pp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pp"
+                        android:drawablePadding="12dp"
+                        android:textColor="@color/white"
+                        />
+                </LinearLayout>
 
 
-     </LinearLayout>
 
- </ScrollView>
+        </LinearLayout>
 
-
-
+    </ScrollView>
 
 
 </LinearLayout>

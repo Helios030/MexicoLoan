@@ -42,7 +42,6 @@
     <style name="inputStyle" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="android:background">@drawable/shape_input_line</item>
         <item name="android:textColor">@color/black_ff0d</item>
-        <item name="android:textCursorDrawable">@drawable/shape_login_color_cursor</item>
 
         <item name="android:maxLength">1</item>
         <item name="android:inputType">number</item>

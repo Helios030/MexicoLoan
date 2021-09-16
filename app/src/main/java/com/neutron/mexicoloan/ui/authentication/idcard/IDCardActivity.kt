@@ -1,26 +1,19 @@
 package com.neutron.mexicoloan.ui.authentication.idcard
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
 import android.text.TextUtils
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.bigkoo.pickerview.builder.TimePickerBuilder
-import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.bigkoo.pickerview.view.TimePickerView
 import com.bumptech.glide.Glide
 import com.contrarywind.view.WheelView
 import com.neutron.baselib.base.BaseVMActivity
 import com.neutron.baselib.utils.*
-
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.authentication.work.WorkActivity
 import com.neutron.mexicoloan.ui.view.dialog.MenuItem
-
 import com.neutron.mexicoloan.util.Str2MenuItem
 import com.neutron.mexicoloan.util.showCommSelectDialog
 import com.ronal.camera.camera.IDCardCamera
@@ -44,18 +37,22 @@ class IDCardActivity : BaseVMActivity<IDCardVM>(IDCardVM::class.java) {
         iv_false.setOnClickListener {
             openCamera(false)
         }
-        civ_gender.setOnTVClickListener { showCommSelectDialog(getString(R.string.gender), getStrArray(R.array.array_genders).Str2MenuItem(),{
+        civ_gender.setOnTVClickListener {
+            showCommSelectDialog(
+                getString(R.string.gender),
+                getStrArray(R.array.array_genders).Str2MenuItem(),
+                {
 
-            if (it is MenuItem) {
-                Slog.d("选中选项 ${it.menuName} ")
-                civ_gender.setTextStr(it.menuName)
-            }
-        })  }
+                    if (it is MenuItem) {
+                        Slog.d("选中选项 ${it.menuName} ")
+                        civ_gender.setTextStr(it.menuName)
+                    }
+                })
+        }
 
         civ_birthday.setOnTVClickListener {
             showBirthday(getString(R.string.birthday))
         }
-
 
 
     }
@@ -65,7 +62,8 @@ class IDCardActivity : BaseVMActivity<IDCardVM>(IDCardVM::class.java) {
         val startDate = Calendar.getInstance()
         val endDate = Calendar.getInstance()
         startDate.set(1900, 0, 1)
-        selectTime = TimePickerBuilder(this
+        selectTime = TimePickerBuilder(
+            this
         ) { date, _ -> //选中事件回调
             civ_birthday.setTextStr(SimpleDateFormat("dd/MM/yyyy").format(date))
         }.setLayoutRes(R.layout.view_select_birthday) { view ->
@@ -141,21 +139,23 @@ class IDCardActivity : BaseVMActivity<IDCardVM>(IDCardVM::class.java) {
     }
 
     override fun observeValue() {
-        mViewModel.idCardInfoResult.observe(this, {
+        mViewModel.idCardInfoResult.observe(this, { result ->
 
-            Slog.d("数据上传返回 $this")
+            Slog.d("OCR 识别 返回 $result")
+            result?.let {
+                PreferencesHelper.setRealname(it.name)
+                PreferencesHelper.setBirthday(it.birthday)
+                PreferencesHelper.setKTP(it.idNumber)
+                PreferencesHelper.setFName(it.first_name)
+                PreferencesHelper.setLNAME(it.last_name)
+                PreferencesHelper.setsex(it.sex)
+            }
 
-//todo daixiugai
-            PreferencesHelper.setRealname(it.name)
-            PreferencesHelper.setBirthday(it.birthday)
-            PreferencesHelper.setKTP(it.idNumber)
-            PreferencesHelper.setFName(it.first_name)
-            PreferencesHelper.setLNAME(it.last_name)
-            PreferencesHelper.setsex(it.sex)
         })
     }
 
     override fun initData() {
 
     }
+
 }

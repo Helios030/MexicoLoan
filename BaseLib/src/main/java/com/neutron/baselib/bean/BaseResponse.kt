@@ -8,7 +8,7 @@ data class BaseResponse<out T>(
 ) {
     fun getResponse(): T? {
         if (code == "200") {
-            return result
+           return result
         }
         throw ApiException(code, message)
     }

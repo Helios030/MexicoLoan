@@ -39,9 +39,7 @@ object PreferencesUtil {
         }
     }
 
-    fun createSP() {
 
-    }
 
     /**
      * 获取存放数据

@@ -103,49 +103,49 @@ fun trackCommitLoanSuccessEvent(mobile: String?, loanId: String?) {
 }
 
 
-fun trackAFEvent(eventName: String?) {
-    eventName?.let {
-        AppsFlyerLib.getInstance().trackEvent(BaseApplication.sContext, it, HashMap())
-    }
-}
-
-/**
- * 需要手机号回传的数据
- */
-fun trackAFMobileEvent(
-    eventName: String?,
-    eventCode: String?,
-    mobile: String?
-) {
-    eventCode?.let { eventCodes ->
-        val eventValues: MutableMap<String, Any?> =
-            HashMap()
-        mobile?.let { mobile ->
-            eventValues["mobile"] = mobile
-        }
-        eventValues["event_code"] = eventCodes
-        AppsFlyerLib.getInstance().trackEvent(BaseApplication.sContext, eventName, eventValues)
-    }
-}
-
-/**
- * 借款成功回传数据
- */
-fun trackAFLoanSuccessEvent(
-    eventName: String?,
-    loanId: String?,
-    eventCode: String?,
-    mobile: String?
-) {
-    mobile?.let { mobile ->
-        loanId?.let { loanId ->
-            val eventValues: MutableMap<String, Any?> =
-                HashMap()
-            eventValues["mobile"] = mobile
-            eventValues["event_code"] = eventCode
-            eventValues["loan_id"] = loanId
-            AppsFlyerLib.getInstance()
-                .trackEvent(BaseApplication.sContext, eventName, eventValues)
-        }
-    }
-}
+//fun trackAFEvent(eventName: String?) {
+//    eventName?.let {
+//        AppsFlyerLib.getInstance().trackEvent(BaseApplication.sContext, it, HashMap())
+//    }
+//}
+//
+///**
+// * 需要手机号回传的数据
+// */
+//fun trackAFMobileEvent(
+//    eventName: String?,
+//    eventCode: String?,
+//    mobile: String?
+//) {
+//    eventCode?.let { eventCodes ->
+//        val eventValues: MutableMap<String, Any?> =
+//            HashMap()
+//        mobile?.let { mobile ->
+//            eventValues["mobile"] = mobile
+//        }
+//        eventValues["event_code"] = eventCodes
+//        AppsFlyerLib.getInstance().trackEvent(BaseApplication.sContext, eventName, eventValues)
+//    }
+//}
+//
+///**
+// * 借款成功回传数据
+// */
+//fun trackAFLoanSuccessEvent(
+//    eventName: String?,
+//    loanId: String?,
+//    eventCode: String?,
+//    mobile: String?
+//) {
+//    mobile?.let { mobile ->
+//        loanId?.let { loanId ->
+//            val eventValues: MutableMap<String, Any?> =
+//                HashMap()
+//            eventValues["mobile"] = mobile
+//            eventValues["event_code"] = eventCode
+//            eventValues["loan_id"] = loanId
+//            AppsFlyerLib.getInstance()
+//                .trackEvent(BaseApplication.sContext, eventName, eventValues)
+//        }
+//    }
+//}

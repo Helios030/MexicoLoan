@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 abstract class BaseViewModel : ViewModel() {
 
     private var mOnLoadingListener: OnLoadingListener? = null
-    protected val mLiveApiRepository: LiveRepository by lazy { LiveRepository() }
+    protected val mLiveApiRepository = LiveRepository
 
     protected fun <T> request(
         block: suspend () -> T,
@@ -37,9 +37,7 @@ abstract class BaseViewModel : ViewModel() {
                 error(it)
                 it.message?.let {
                     BaseApplication.sContext.toast(it)
-
                 }
-
                 Slog.e("API访问错误  $it")
             }
         }

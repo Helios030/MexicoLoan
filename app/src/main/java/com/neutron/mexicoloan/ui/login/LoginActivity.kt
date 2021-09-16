@@ -2,7 +2,6 @@ package com.neutron.mexicoloan.ui.login
 
 
 import android.view.View
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.neutron.baselib.base.BaseVMActivity
 import com.neutron.baselib.bean.UserInfo
 import com.neutron.baselib.utils.PreferencesHelper
@@ -18,44 +17,33 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
     override fun getLayoutId(): Int {
         return R.layout.activity_login
     }
+
     var phone = ""
     override fun initView() {
-        lv_login.setloginViewListener(object : LoginVIew.loginViewListener {
-            override fun onClickStart() {
-                val text = lv_login.getEditText()
-                if (text.isNullOrEmpty()) {
-                    toast(getString(R.string.pls_input_phone))
-                    return
-                }
+        lv_login.setloginViewListener({
+            val text = lv_login.getEditText()
+            if (text.isNullOrEmpty()) {
+                toast(getString(R.string.pls_input_phone))
+            } else {
                 phone = text
                 mViewModel.sendSmsCode(phone)
             }
-
-            override fun onChage(count: String) {
-                tv_count_down.animateText(count)
+        }, {
+            tv_count_down.animateText(it)
+        }, {
+            Slog.e("输入异常  $it")
+            toast(getString(R.string.input_code_error))
+        }, { comp ->
+            comp?.let {
+                    mViewModel.checkSmsCode(phone, it,socialType,socialId)
             }
-
-            override fun onInputError(count: String?) {
-                toast(getString(R.string.input_code_error))
-            }
-
-            override fun onInputComplete(count: String) {
-                mViewModel.checkSmsCode(phone, count)
-
-            }
-
-            override fun onFinish() {
-                tv_count_down.visibility = View.INVISIBLE
-            }
+        }, {
+            tv_count_down.visibility = View.INVISIBLE
         })
-
-
-
-
 
     }
 
-     override fun observeValue() {
+    override fun observeValue() {
         mViewModel.isSend.observe(this, {
             if (it) {
                 tv_count_down.visibility = View.VISIBLE
@@ -64,16 +52,12 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
         })
 
         mViewModel.loginResult.observe(this, {
-                toast(getString(R.string.login_success))
+            toast(getString(R.string.login_success))
 
             Slog.d("it  $it")
-
-            val vCode = it.vcode?:""
-            val register = it.register?:""
-
-
-
-        PreferencesHelper.setUserID( it.user_id)
+            val vCode = it.vcode ?: ""
+            val register = it.register ?: ""
+            PreferencesHelper.setUserID(it.user_id)
             PreferencesHelper.setUserInfo(
                 UserInfo(
                     it.user_id,
@@ -85,11 +69,20 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
                     register.toString()
                 )
             )
-                startTo(MainActivity::class.java, true)
+            startTo(MainActivity::class.java, true)
         })
     }
 
-    override fun initData() {
+    var loginType = LoginVIew.VIEW_STYLE_LOGIN
 
+  var  socialType=""
+  var  socialId=""
+
+    override fun initData() {
+      val ext=  intent.extras
+        loginType = ext?.getInt("loginType") ?: LoginVIew.VIEW_STYLE_LOGIN
+        socialType= ext?.getString("socialType")?:""
+        socialId= ext?.getString("socialId")?:""
+        lv_login.setViewStyle(loginType)
     }
 }

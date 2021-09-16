@@ -177,11 +177,10 @@ class MainActivity : BaseVMActivity<MainVM>(MainVM::class.java) {
     override fun observeValue() {
         mViewModel.statusResult.observe(this, {
             loanStatusResult = it
-            currLoanStatus = it.loan_status.toInt()
-
-            showStateView(currLoanStatus)
-
-
+            it.loan_status?.let { it
+                currLoanStatus=it.toInt()
+                showStateView(currLoanStatus)
+            }
             nsv_main.setCurrentItem(
                 indexFragmentByName(currFragment.javaClass.simpleName),
                 false

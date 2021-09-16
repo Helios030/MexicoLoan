@@ -3,7 +3,9 @@ package com.neutron.mexicoloan.ui.login
 
 import androidx.lifecycle.MutableLiveData
 import com.neutron.baselib.base.BaseViewModel
+import com.neutron.baselib.bean.ApiException
 import com.neutron.baselib.bean.SmsLoginResult
+import com.neutron.baselib.bean.SocialLoginBeanResult
 import com.neutron.baselib.utils.LoginType
 import com.neutron.baselib.utils.Slog
 import com.neutron.baselib.utils.createBody
@@ -47,5 +49,38 @@ class LoginVM :BaseViewModel() {
         }, isShowLoading = true)
     }
 
+
+    val sLoginResult: MutableLiveData<SocialLoginBeanResult> = MutableLiveData()
+
+
+    val needBind: MutableLiveData<Boolean> = MutableLiveData()
+
+    fun socialLogin(map:HashMap<String, Any>){
+
+
+
+        request({
+            mLiveApiRepository.socialLogin(map.createBody())
+        }, {
+            Slog.d("socialLogin  ==  $this")
+            sLoginResult.postValue(this)
+        }, {
+
+            Slog.e("第三方登录错误 it $it")
+
+           if(it is ApiException){
+
+               if(it.code=="600312"){
+                   needBind.postValue(true)
+               }
+
+
+           }else{
+               needBind.postValue(false)
+           }
+
+        }, isShowLoading = true)
+
+    }
 
 }

@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="最高可借金额"
+            android:text="@string/max_money"
             android:textColor="@color/blue_ff9f" />
 
 
@@ -46,7 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="您想借"
+            android:text="@string/you_wate"
+            android:textSize="16dp"
             android:textColor="@color/blue_ff9f" />
 
 
@@ -61,12 +62,11 @@
                 android:layout_width="match_parent"
 
                 android:layout_height="wrap_content"
-                android:text="$00.00"
-                android:textSize="20dp"
                 android:gravity="center"
+                android:text="$00.00"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                />
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
 
             <ImageView

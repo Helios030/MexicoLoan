@@ -6,12 +6,12 @@ import com.neutron.baselib.bean.UserInfo
 object PreferencesHelper {
 
      fun exitApp() {
-         setUserID("")
-//         setPhone("")
-         setUploadTime(0L)
-         setUserInfo(UserInfo(null,null,null,null,null,null,null ))
-         setShowFeiled(true)
-
+//         setUserID("")
+////         setPhone("")
+//         setUploadTime(0L)
+//         setUserInfo(UserInfo(null,null,null,null,null,null,null ))
+//         setShowFeiled(true)
+         PreferencesUtil.clear()
     }
 
     fun getUserInfo(): UserInfo? {
@@ -38,12 +38,12 @@ object PreferencesHelper {
     fun setIMEI(imei: String) = PreferencesUtil.saveValue(PreferencesKey.DEVICE_IMEI, imei)
 
 
-//    fun isFirstStart(): Boolean = PreferencesUtil.getBoolean(PreferencesKey.IS_FIRST, true)
-//    fun setFirstStart(isFirst: Boolean) =
-//        PreferencesUtil.saveValue(PreferencesKey.IS_FIRST, isFirst)
+    fun isFirstStart(): Boolean = PreferencesUtil.getBoolean(PreferencesKey.IS_FIRST, true)
+    fun setFirstStart(isFirst: Boolean) =
+        PreferencesUtil.saveValue(PreferencesKey.IS_FIRST, isFirst)
 
 
-    fun getAboutUs(): String = PreferencesUtil.getString(PreferencesKey.ABOUT_US, "")
+    fun getAboutUs(): String = PreferencesUtil.getString(PreferencesKey.ABOUT_US, "https://privacy.loanbeer.com")
     fun setAboutUs(str: String) = PreferencesUtil.saveValue(PreferencesKey.ABOUT_US, str)
 
 
@@ -107,6 +107,11 @@ object PreferencesHelper {
 
     fun getUploadTime(): Long = PreferencesUtil.getLong(PreferencesKey.LIVENESSID, 0L)
     fun setUploadTime(time: Long) = PreferencesUtil.saveValue(PreferencesKey.LIVENESSID, time)
+
+    fun getConfirmPP(): Boolean = PreferencesUtil.getBoolean(PreferencesKey.CONFIRM_PP, false)
+    fun setConfirmPP(isCheck: Boolean) = PreferencesUtil.saveValue(PreferencesKey.CONFIRM_PP, isCheck)
+
+
 
 
 }

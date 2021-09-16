@@ -53,7 +53,7 @@
             android:orientation="vertical">
 
             <com.neutron.mexicoloan.ui.view.CardStateView
-                android:id="@+id/csv_review"
+                android:id="@+id/csv_repay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:card_view_style="state_pending_repayment" />

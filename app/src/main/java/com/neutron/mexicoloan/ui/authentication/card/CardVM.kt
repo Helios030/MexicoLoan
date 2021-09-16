@@ -7,6 +7,7 @@ import com.neutron.baselib.bean.SContactInfoResult
 import com.neutron.baselib.bean.SMoneyCardInfoResult
 import com.neutron.baselib.utils.PreferencesHelper
 import com.neutron.baselib.utils.createBody
+import com.neutron.baselib.utils.trackAFBankSuccessEvent
 
 class CardVM:BaseViewModel() {
     val isUploadSuccess: MutableLiveData<Boolean> = MutableLiveData()
@@ -37,6 +38,7 @@ class CardVM:BaseViewModel() {
         request({
             mLiveApiRepository.uploadMoneyCardInfo(map.createBody())
         }, {
+            trackAFBankSuccessEvent()
             isUploadSuccess.postValue(true)
         }, {}, isShowLoading = true)
     }

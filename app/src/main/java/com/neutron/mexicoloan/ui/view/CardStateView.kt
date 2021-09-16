@@ -10,7 +10,6 @@ import android.widget.TextView
 import com.neutron.baselib.utils.*
 import com.neutron.baselib.utils.UIUtils.Companion.getColor
 import com.neutron.mexicoloan.R
-import kotlinx.android.synthetic.main.fragment_review.*
 import kotlinx.android.synthetic.main.view_card_state.view.*
 
 class CardStateView : RelativeLayout {
@@ -52,7 +51,7 @@ class CardStateView : RelativeLayout {
         }
     }
 
-     fun showStyle(viewStyle: Int,context: Context) {
+     fun showStyle(viewStyle: Int,context: Context):CardStateView {
         when (viewStyle) {
             MoneyState.STATE_APPLYING -> {
                 tv_title.setDrawableRight(R.mipmap.icon_card_blue)
@@ -74,9 +73,6 @@ class CardStateView : RelativeLayout {
                 tv_loan_money.setTextColor(UIUtils.getColor(R.color.blue_ff32))
                 ll_detail_bg.setBackgroundResource(R.color.blue_ff32)
                 tv_bottom.text=  context.getString(R.string.repay_tip)
-
-
-
                 civ_audit_fee.visibility=View.GONE
                 civ_fees_service.visibility=View.GONE
                 civ_pay_fee.visibility=View.GONE
@@ -124,6 +120,7 @@ class CardStateView : RelativeLayout {
 
 
         }
+         return this
     }
 
 
@@ -196,9 +193,10 @@ class CardStateView : RelativeLayout {
     }
 
 
-    fun  setTvOrderTip(str:String){
+    fun  setTvOrderTip(str:String):CardStateView{
 
         tv_order_tip.text=str
+        return this
     }
 
 

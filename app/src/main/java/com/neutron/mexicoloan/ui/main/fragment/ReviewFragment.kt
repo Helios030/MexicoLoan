@@ -31,11 +31,11 @@ class ReviewFragment : BaseFragment() {
         val mainActivity = (activity as MainActivity)
         val loanStatusResult=  mainActivity.getloanStatusResult()
         loanStatusResult?.let {
-            csv_review.setTvAmount(it.principal)
-                .setAppTime(it.app_time)
-                .setFeesService(it.risk)
-                .setPayFee(it.pay)
-                .setAuditFee(it.service)
+            csv_review.setTvAmount(it.principal?:"")
+                .setAppTime(it.app_time?:"")
+                .setFeesService(it.risk?:"")
+                .setPayFee(it.pay?:"")
+                .setAuditFee(it.service?:"")
         }
     }
 

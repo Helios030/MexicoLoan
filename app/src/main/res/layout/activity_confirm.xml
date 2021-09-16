@@ -9,8 +9,6 @@
     android:orientation="vertical"
     tools:context=".ui.confirm.ConfirmActivity">
 
-
-
     <include layout="@layout/layout_toolbar"/>
 
     <RelativeLayout
@@ -78,7 +76,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black_ff0d"
         android:layout_marginLeft="18dp"
-        android:text="订单详情"
+        android:text="@string/order_detail"
         android:textStyle="bold"
         />
 
@@ -98,6 +96,7 @@
             android:layout_height="match_parent">
 
             <com.neutron.mexicoloan.ui.view.CertificationItemView
+                android:id="@+id/civ_fees_service"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tv_left_text="@string/fees_service"
@@ -105,6 +104,7 @@
                 app:c_view_style="show"
                />
             <com.neutron.mexicoloan.ui.view.CertificationItemView
+                android:id="@+id/civ_audit_fee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tv_left_text="@string/audit_fee"
@@ -113,6 +113,7 @@
                 />
 
             <com.neutron.mexicoloan.ui.view.CertificationItemView
+                android:id="@+id/civ_pay_fee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tv_left_text="@string/pay_fee"
@@ -135,15 +136,19 @@
         android:layout_height="match_parent">
 
         <Button
+            android:id="@+id/btn_upload"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_pink_btn"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_margin="32dp"
-            android:text="@string/dialog_ok"
             android:layout_centerInParent="true"
-            android:textSize="20dp"/>
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/shape_pink_btn"
+            android:text="@string/dialog_ok"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
 
 

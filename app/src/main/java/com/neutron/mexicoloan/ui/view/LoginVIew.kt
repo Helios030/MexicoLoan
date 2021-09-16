@@ -8,7 +8,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.RelativeLayout
-
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.view.verificationcodeview.VCView
 import kotlinx.android.synthetic.main.view_login_view.view.*
@@ -57,16 +56,11 @@ class LoginVIew : RelativeLayout {
 
     private fun initAttr(ta: TypedArray) {
         view_style = ta.getInt(R.styleable.LoginView_view_style, view_style)
-        when (view_style) {
-            VIEW_STYLE_BIND -> {
-                ll_bind.visibility = View.VISIBLE
-            }
-            VIEW_STYLE_LOGIN -> {
-                tv_phone.visibility = View.VISIBLE
-            }
-        }
+
+        showStyleByView(view_style)
+
         btn_next.setOnClickListener {
-            listener?.onClickStart()
+        onClickStart?.invoke()
             vcv.inputStart()
 
         }
@@ -78,13 +72,26 @@ class LoginVIew : RelativeLayout {
 
             override fun onComplete(view: View, content: String) {
                 if (content.isNullOrEmpty()) {
-                    listener?.onInputError(content)
+                onInputError?.invoke(content)
                 } else {
-                    listener?.onInputComplete(content)
+                    onInputComplete?.invoke(content)
                 }
             }
 
         })
+    }
+
+    private fun showStyleByView(viewStyle: Int) {
+        when (view_style) {
+            VIEW_STYLE_BIND -> {
+                ll_bind.visibility = View.VISIBLE
+                tv_phone.visibility = View.GONE
+            }
+            VIEW_STYLE_LOGIN -> {
+                ll_bind.visibility = View.GONE
+                tv_phone.visibility = View.VISIBLE
+            }
+        }
     }
 
 
@@ -92,7 +99,7 @@ class LoginVIew : RelativeLayout {
         override fun onTick(millisUntilFinished: Long) {
             val count = "${millisUntilFinished / 1000 % 60} s"
 
-            listener?.onChage(count)
+            onChage?.invoke(count)
 
             if (view_style == VIEW_STYLE_BIND) {
                 btn_next.text = "$regetStr ($count)"
@@ -104,7 +111,7 @@ class LoginVIew : RelativeLayout {
         }
 
         override fun onFinish() {
-            listener?.onFinish()
+         onFinish?.invoke()
             btn_next.isEnabled = true
             btn_next.background = blueDrawable
             btn_next.text = sendStr
@@ -112,33 +119,37 @@ class LoginVIew : RelativeLayout {
         }
     }
 
-    private var listener: loginViewListener? = null
+    var onClickStart: (() -> Unit)? = null
+    var onChage: ((String?) -> Unit)? = null
+    var onInputError: ((String?) -> Unit)? = null
+    var onInputComplete: ((String?) -> Unit)? = null
+    var onFinish: (() -> Unit)? = null
 
-    interface loginViewListener {
-
-        fun onClickStart()
-
-        fun onChage(count: String)
-
-        fun onInputError(count: String?)
-
-        fun onInputComplete(count: String)
-
-        fun onFinish()
-
-    }
-
-    fun setloginViewListener(listener: loginViewListener) {
-        this.listener = listener
+    fun setloginViewListener(
+        onClickStart: () -> Unit,
+        onChage: (String?) -> Unit,
+        onInputError: (String?) -> Unit,
+        onInputComplete: (String?) -> Unit,
+        onFinish: () -> Unit
+    ): LoginVIew {
+        this.onClickStart = onClickStart
+        this.onChage = onChage
+        this.onInputError = onInputError
+        this.onInputComplete = onInputComplete
+        this.onFinish = onFinish
+        return this
     }
 
     fun startTime() {
         timer.cancel()
         timer.start()
-
-
         btn_next.isEnabled = false
         btn_next.background = grayDrawable
+    }
+
+    fun setViewStyle(style:Int){
+        view_style=style
+        showStyleByView(style)
     }
 
 

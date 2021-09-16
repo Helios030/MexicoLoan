@@ -4,14 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import com.neutron.baselib.base.BaseFragment
 import com.neutron.baselib.bean.LoanStatusResult
-import com.neutron.baselib.utils.MoneyState
 import com.neutron.baselib.utils.Slog
-import com.neutron.baselib.utils.UIUtils
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.main.MainActivity
 import com.neutron.mexicoloan.ui.repay.RePayActivity
 import kotlinx.android.synthetic.main.fragment_overdue.*
-import kotlinx.android.synthetic.main.fragment_review.*
 import kotlinx.android.synthetic.main.view_pay_button.*
 
 
@@ -53,12 +50,14 @@ class OverdueFragment : BaseFragment() {
         val mainActivity = (activity as MainActivity)
         loanStatusResult = mainActivity.getloanStatusResult()
         loanStatusResult?.let {
-            csv_overdue.setTvAmount(it.amount2Account)
-                .setAppTime(it.app_time)
-                .setFeesService(it.risk)
-                .setPayFee(it.pay)
-                .setLoanAmount(it.principal)
-                .setPayFee(it.service)
+            csv_overdue.setTvAmount(it.amount2Account?:"")
+                .setAppTime(it.app_time?:"")
+                .setFeesService(it.risk?:"")
+                .setPayFee(it.pay?:"")
+                .setLoanAmount(it.principal?:"")
+                .setPayFee(it.service?:"")
+
+
 
         }
     }

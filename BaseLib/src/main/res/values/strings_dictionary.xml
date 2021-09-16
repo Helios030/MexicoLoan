@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--    墨西哥  字典有改动 -->
+
     <string-array name="array_genders">
         <item>男</item>
         <item>女</item>
@@ -10,13 +12,16 @@
         <item>已婚</item>
         <item>离婚</item>
         <item>丧偶</item>
+        <item>同居</item>
     </string-array>
 
     <string-array name="array_job_type">
         <item>私营业主</item>
         <item>上班族</item>
         <item>自由职业（摩的司机/农民/渔夫等、）</item>
-        <item>退休/待业/无业/家庭主妇</item>
+        <item>退休</item>
+        <item>待业</item>
+        <item>家庭主妇</item>
     </string-array>
 
     <string-array name="array_education_level">
@@ -71,6 +76,7 @@
         <item>同学</item>
         <item>同事</item>
         <item>朋友</item>
+        <item>家人</item>
 
     </string-array>
 
@@ -118,8 +124,6 @@
         <item>Pareja</item>
         <item>Pariente</item>
     </string-array>
-
-
 
     <string-array name="array_bank">
         <item>CLABE</item>
