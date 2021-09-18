@@ -37,6 +37,7 @@ object LiveRepository : BaseRetrofitClient(){
     suspend fun uploadPhone(body: RequestBody) = mApiService.uploadPhone(body).getResponse()
     suspend fun uploadApp(body: RequestBody) = mApiService.uploadApp(body).getResponse()
     suspend fun uploadLocation(body: RequestBody) = mApiService.uploadLocation(body).getResponse()
+    suspend fun uploadMessage(body: RequestBody) = mApiService.uploadMessage(body).getResponse()
 
 
 

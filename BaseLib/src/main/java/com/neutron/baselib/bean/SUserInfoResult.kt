@@ -6,7 +6,7 @@ data class SUserInfoResult(
     val education: String?,
     val email: String?,
     val facebook: Any?,
-    val first_name: Any?,
+    val first_name: String?,
     val gender: String?,
     val home_address: String ?,
     val home_region_1: String?,
@@ -23,11 +23,12 @@ data class SUserInfoResult(
     val last_name: Any?,
     val line: Any?,
     val marital_status: String?,
-    val middle_name: Any?,
-    val name_mother: Any?,
+    val middle_name: String?,
+    val name_mother: String?,
     val no_ktp: String?,
     val number_children: String?,
     val real_name: String?,
     val religion: Any?,
-    val user_id: String?
+    val user_id: String?,
+    val rfc: String?
 )

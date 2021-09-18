@@ -15,8 +15,9 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tl_tab"
         style="@style/NTablayoutstyle"
-        android:layout_width="280dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
+
         android:layout_marginTop="14dp"
         android:layout_below="@+id/rl_toolbar"
         android:layout_marginLeft="10dp"

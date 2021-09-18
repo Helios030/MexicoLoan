@@ -34,7 +34,7 @@ class OrderAdapter(layoutResId: Int, data: MutableList<OrderBeanResult>) :
         tv_Bottom.setTextColor(UIUtils.getColor(R.color.blue_ff32))
         tv_Bottom.textSize = 20F
         tv_Bottom.typeface = Typeface.defaultFromStyle(Typeface.BOLD);
-        csv.setTvLoanMoney(item.principal)
+        csv.setTvLoanMoney("$${item.principal?:""}")  .setTvLoanTerm(item.duration?:"")
 
 //        2、放弃借款
 //        3、申请失败
@@ -50,35 +50,42 @@ class OrderAdapter(layoutResId: Int, data: MutableList<OrderBeanResult>) :
                 //        1、申请中
                 //        4、申请成功
                 tv_Bottom.text = getString(R.string.review)
-                csv.setAppTime(item.app_time)
-                    .setTvAmount(item.amount2Account)
-                    .setLoanAmount(item.principal)
+                csv
+                    .setTvAmount  (item.amount2Account?:"")
+                    .setLoanAmount(item.principal?:"")
+                    .setAppTime(item.app_time?:"")
+                    .setFeesServiceGone()
                     .setPayFee(item.paymentAmount)
-//                csv. setFeesService(item.risk)
-//                csv. setAuditFee((item.set)
+                    .setAuditFeeGone()
+                    .setInterest(item.interest?:"")
+
+
+
             }
             2 -> {
                 csv.showStyle(MoneyState.STATE_ORDER, mContext)
-                    .setTvOrderTip(getString(R.string.refuse))
+                    .setTvOrderTip(getString(R.string.cancel))
                     .setAppTime(item.app_time)
+                    .setTvBottomGone()
             }
 
 
             3 -> {
                 csv.showStyle(MoneyState.STATE_ORDER, mContext)
-                    .setTvOrderTip(getString(R.string.cancel))
+                    .setTvOrderTip(getString(R.string.refuse))
                     .setAppTime(item.app_time)
+                    .setTvBottomGone()
             }
 
 
             5 -> {
-                csv.showStyle(MoneyState.STATE_OVERDUE, mContext)
+                csv.showStyle(MoneyState.STATE_PENDING_REPAYMENT, mContext)
                 tv_Bottom.text = getString(R.string.repay)
-
                 csv.setAppTime(item.app_time)
                     .setTvAmount(item.amount2Account)
                     .setLoanAmount(item.principal)
                     .setPayFee(item.paymentAmount)
+                    .setInterest(item.interest?:"")
 
             }
 
@@ -90,14 +97,14 @@ class OrderAdapter(layoutResId: Int, data: MutableList<OrderBeanResult>) :
                     .setTvAmount(item.amount2Account)
                     .setLoanAmount(item.principal)
                     .setPayFee(item.paymentAmount)
-
+                    .setInterest(item.interest?:"")
 
             }
             6, 8 -> {
                 csv.showStyle(MoneyState.STATE_ORDER_CLEAR, mContext)
                     .setTvOrderTip(getString(R.string.settle))
                     .setAppTime(item.app_time)
-
+                    .setTvBottomGone()
 
             }
             9 -> {

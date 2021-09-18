@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    墨西哥  字典有改动 -->
+
+    <string-array name="array_genders">
+        <item>Hombre</item>
+        <item>Mujer</item>
+    </string-array>
+
+    <string-array name="array_marital_status">
+        <item>Soltero/a</item>
+        <item>Casado/a</item>
+        <item>Divorciado/a</item>
+        <item>Viudo/a</item>
+        <item>同居</item>
+    </string-array>
+
+    <string-array name="array_job_type">
+        <item>Dueño </item>
+        <item>Empleado</item>
+        <item>Freelance (conductor de moto / agricultor / pescador, etc.)</item>
+        <item>Jubilado</item>
+        <item>Desempleado</item>
+        <item>Ama de casa</item>
+    </string-array>
+
+    <string-array name="array_education_level">
+        <item>Primaria</item>
+        <item>Secundaria</item>
+        <item>Secundaria</item>
+        <item>Bachillerato</item>
+        <item>Universidad</item>
+        <item>Otros</item>
+    </string-array>
+
+    <string-array name="array_children_num">
+        <item>Ninguna</item>
+        <item>Uno</item>
+        <item>Dos</item>
+        <item>Tres</item>
+        <item>Cuatro</item>
+        <item>más de 4</item>
+    </string-array>
+
+    <string-array name="array_home_type">
+        <item>Rentado</item>
+        <item>Vivienda propia con hipoteca</item>
+        <item>Vivienda propia</item>
+        <item>Vive con los padres</item>
+        <item>Proporcionado por la empresa</item>
+        <item>Otros</item>
+    </string-array>
+
+    <string-array name="array_home_ttime">
+        <item>Tres meses </item>
+        <item>Seis meses </item>
+        <item>Un año </item>
+        <item>Dos años </item>
+        <item>Más de dos años </item>
+    </string-array>
+
+    <string-array name="array_first_contact">
+        <item>Padre </item>
+        <item>Madre </item>
+        <item>Cónyuge </item>
+        <item>hijo </item>
+        <item>hija </item>
+        <item>Hermano / Hermano </item>
+        <item>Hermana / Hermana </item>
+        <item>sobrino / sobrina </item>
+        <item>Primo / Primo </item>
+        <item>Tío / tía </item>
+    </string-array>
+
+    <string-array name="array_second_contact">
+        <item>Compañero/a de colegio</item>
+        <item>Compañero/a de trabajo</item>
+        <item>Amigos</item>
+        <item>Familia </item>
+
+    </string-array>
+
+    <string-array name="array_third_contact">
+        <item>Padre </item>
+        <item>Madre </item>
+        <item>Cónyuge </item>
+        <item>hijo </item>
+        <item>hija </item>
+        <item>Hermano / Hermano </item>
+        <item>Hermana / Hermana </item>
+        <item>sobrino / sobrina </item>
+        <item>Primo / Primo </item>
+        <item>Compañeros de clase </item>
+        <item>Colegas </item>
+        <item>Amigos </item>
+        <item>Tío / tía </item>
+    </string-array>
+
+    <string-array name="array_monthly_income_type">
+        <item>Menos de 8000</item>
+        <item>Entre 8000 y 15000</item>
+        <item>más de 15000</item>
+
+    </string-array>
+
+    <string-array name="array_company_position">
+        <item>Empleados regulares (menos de dos años)</item>
+        <item>Empleados regulares (más de dos años)</item>
+        <item>Administrador </item>
+        <item>Ejecutivos </item>
+        <item>Subcontratación </item>
+        <item>Trabajador con contrato temporal </item>
+    </string-array>
+
+    <string-array name="array_photo_type">
+        <item>Anverso de la tarjeta de identificación </item>
+        <item>Reverso de la tarjeta de identificación </item>
+        <item>Tarjeta de identificación de mano </item>
+        <item>Permiso de trabajo </item>
+    </string-array>
+
+    <string-array name="array_source_of_income">
+        <item>Propio</item>
+        <item>Padres</item>
+        <item>Pareja</item>
+        <item>Pariente</item>
+    </string-array>
+
+    <string-array name="array_bank">
+        <item>CLABE</item>
+        <item>tarjeta de débito</item>
+    </string-array>
+
+    <!--  字典偏移 50  -->
+    <string-array name="array_industry">
+        <item>IT</item>
+        <item>Médico </item>
+        <item>Un agricultor </item>
+        <item>agricultores </item>
+        <item>Arquitecto </item>
+        <item>controlador </item>
+        <item>dependiente de ventas </item>
+        <item>estudiante </item>
+        <item>Contabilidad </item>
+        <item>Hombre de negocios </item>
+        <item>Policía </item>
+        <item>Pescadores </item>
+        <item>Proveedor </item>
+        <item>Profesor </item>
+        <item>Funcionarios públicos </item>
+        <item>Abogado </item>
+        <item>Militar </item>
+        <item>Institución financiera </item>
+        <item>Comedor </item>
+        <item>Otro </item>
+    </string-array>
+
+
+</resources>

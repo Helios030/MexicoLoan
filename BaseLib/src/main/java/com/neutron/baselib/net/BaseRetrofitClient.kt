@@ -1,15 +1,19 @@
 package com.neutron.baselib.net
 
 
+
+import com.parkingwang.okhttp3.LogInterceptor.LogInterceptor
 import okhttp3.OkHttpClient
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 abstract class BaseRetrofitClient {
     companion object {
-        private const val TIME_OUT =60L
+        private const val TIME_OUT = 60L
     }
+
 
     private val client: OkHttpClient
         get() {
@@ -17,6 +21,7 @@ abstract class BaseRetrofitClient {
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .readTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .writeTimeout(TIME_OUT, TimeUnit.SECONDS)
+                .addInterceptor(LogInterceptor())
                 .build()
         }
 

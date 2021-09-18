@@ -89,6 +89,7 @@ class PreferencesKey {
         const val HOT_TEL = "HOT_TEL"
         const val NAME = "NAME"
         const val KTP = "KTP"
+        const val RFC = "RFC"
         const val FNAME = "FNAME"
         const val LNAME = "LNAME"
         const val BIRTHDAY = "BIRTHDAY"
@@ -104,8 +105,11 @@ class PreferencesKey {
         const val USERID = "USERID"
         const val PHONEPRE = "PHONEPRE"
         const val USERINFO = "USERINFO"
+        const val LATLNG = "LATLNG"
+
 
         const val CONFIRM_PP = "CONFIRM_PP"
+        const val INCOMESOURCE = "INCOMESOURCE"
     }
 }
 

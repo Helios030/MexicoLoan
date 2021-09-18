@@ -9,6 +9,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.neutron.baselib.utils.*
 import com.neutron.baselib.utils.UIUtils.Companion.getColor
+import com.neutron.baselib.utils.UIUtils.Companion.getString
 import com.neutron.mexicoloan.R
 import kotlinx.android.synthetic.main.view_card_state.view.*
 
@@ -30,7 +31,7 @@ class CardStateView : RelativeLayout {
     }
 
     var view_style = MoneyState.STATE_APPLYING
-    var isShow=true
+    var isShow=false
     private fun initAttr(ta: TypedArray) {
 
         view_style = ta.getInt(R.styleable.CardStateView_card_view_style, MoneyState.STATE_APPLYING)
@@ -52,25 +53,30 @@ class CardStateView : RelativeLayout {
     }
 
      fun showStyle(viewStyle: Int,context: Context):CardStateView {
+         
+         val ffaa=getColor(R.color.gray_ffaa)
+         val ff32=getColor(R.color.blue_ff32)
+         val f4=getColor(R.color.color_pink_f4)
+
         when (viewStyle) {
             MoneyState.STATE_APPLYING -> {
                 tv_title.setDrawableRight(R.mipmap.icon_card_blue)
-                tv_loan_money.setTextColor(UIUtils.getColor(R.color.blue_ff32))
+                tv_loan_money.setTextColor(ff32)
                 ll_detail_bg.setBackgroundResource(R.color.blue_ff32)
                 tv_bottom.text=  context.getString(R.string.review_tip)
 
             }
             MoneyState.STATE_APPROVAL_REJECTED -> {
                 tv_title.setDrawableRight(R.mipmap.img_card_gray)
-                tv_loan_money.setTextColor(UIUtils.getColor(R.color.gray_ffaa))
+                tv_loan_money.setTextColor(ffaa)
                 ll_detail_bg.setBackgroundResource(R.color.gray_ffaa)
                 tv_bottom.text=  context.getString(R.string.review_error_tip)
-                civ_app_time.setRightTextColor(R.color.gray_ffaa)
+                civ_app_time.setRightTextColor(ffaa)
             }
 
             MoneyState.STATE_PENDING_REPAYMENT -> {
                 tv_title.setDrawableRight(R.mipmap.icon_card_blue)
-                tv_loan_money.setTextColor(UIUtils.getColor(R.color.blue_ff32))
+                tv_loan_money.setTextColor(ff32)
                 ll_detail_bg.setBackgroundResource(R.color.blue_ff32)
                 tv_bottom.text=  context.getString(R.string.repay_tip)
                 civ_audit_fee.visibility=View.GONE
@@ -84,11 +90,11 @@ class CardStateView : RelativeLayout {
 
             MoneyState.STATE_OVERDUE -> {
                 tv_title.setDrawableRight(R.mipmap.img_card_pink)
-                tv_loan_money.setTextColor(UIUtils.getColor(R.color.color_pink_f4))
+                tv_loan_money.setTextColor(f4)
                 ll_detail_bg.setBackgroundResource(R.color.color_pink_f4)
                 tv_bottom.text=  context.getString(R.string.over_tip)
 
-                civ_app_time.setRightTextColor(R.color.color_pink_f4)
+                civ_app_time.setRightTextColor(f4)
 
                 civ_audit_fee.visibility=View.GONE
                 civ_fees_service.visibility=View.GONE
@@ -105,9 +111,9 @@ class CardStateView : RelativeLayout {
                 ll_detail_bg.visibility=View.GONE
                 tv_order_tip.visibility=View.VISIBLE
                 tv_title.setDrawableRight(R.mipmap.img_card_gray)
-                tv_loan_money.setTextColor(UIUtils.getColor(R.color.gray_ffaa))
+                tv_loan_money.setTextColor(ffaa)
                 ll_detail_bg.setBackgroundResource(R.color.gray_ffaa)
-                civ_app_time.setRightTextColor(R.color.gray_ffaa)
+                civ_app_time.setRightTextColor(ffaa)
             }
 
             MoneyState.STATE_ORDER_CLEAR ->{
@@ -137,7 +143,10 @@ class CardStateView : RelativeLayout {
 
     fun setTvLoanTerm(str:String):CardStateView{
         if (!str.isNullOrEmpty()) {
-            tv_loan_term.text = str
+          val newstr=  getString(R.string.loan_time).format(str)
+            tv_loan_term.text = newstr
+
+
         }
         return this
     }
@@ -170,11 +179,25 @@ class CardStateView : RelativeLayout {
         return this
     }
     fun setFeesService(str:String):CardStateView{
+        Slog.d("setFeesService $str")
         if (!str.isNullOrEmpty()) {
             civ_fees_service.setRightText(str)
         }
         return this
     }
+
+
+    fun setFeesServiceGone():CardStateView{
+
+            civ_fees_service.visibility=View.GONE
+        return this
+    }
+    fun setAuditFeeGone():CardStateView{
+
+        civ_audit_fee.visibility=View.GONE
+        return this
+    }
+
     fun setAuditFee(str:String):CardStateView{
         if (!str.isNullOrEmpty()) {
             civ_audit_fee.setRightText(str)
@@ -191,7 +214,10 @@ class CardStateView : RelativeLayout {
     fun getTvBottom():TextView{
         return tv_bottom
     }
-
+    fun setTvBottomGone():CardStateView{
+         tv_bottom.visibility=View.GONE
+        return this
+    }
 
     fun  setTvOrderTip(str:String):CardStateView{
 

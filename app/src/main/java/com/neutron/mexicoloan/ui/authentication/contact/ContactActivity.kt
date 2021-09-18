@@ -174,7 +174,7 @@ mViewModel.getServiceContactInfo()
 
         mViewModel.sWorkInfoResult.observe(this,{
 
-            if (it.name_relation_1.isNotEmpty()) {
+            if (!it.name_relation_1.isNullOrEmpty()) {
                 civ_contact_name.setTextStr   (it.name_relation_1)
                 civ_contact_phone.setTextStr   (it.phone_relation_1)
                 civ_contact_name_2.setTextStr  (it.name_relation_2)

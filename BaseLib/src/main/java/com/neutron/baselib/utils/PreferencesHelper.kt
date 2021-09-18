@@ -1,5 +1,6 @@
 package com.neutron.baselib.utils
 
+import com.neutron.baselib.bean.LatLng
 import com.neutron.baselib.bean.UserInfo
 
 
@@ -21,6 +22,19 @@ object PreferencesHelper {
 
     fun setUserInfo(user: UserInfo) =
         PreferencesUtil.saveValue(PreferencesKey.USERINFO, Utils.fromBean(user))
+
+
+
+    fun getLatLng(): LatLng? {
+        val beanStr = PreferencesUtil.getString(PreferencesKey.LATLNG, "")
+        return Utils.toBean(beanStr) as LatLng?
+    }
+
+    fun setLatLng(latlng: LatLng) =
+        PreferencesUtil.saveValue(PreferencesKey.LATLNG, Utils.fromBean(latlng))
+
+
+
 
 
 //    fun getPhoneEPRE(): String = PreferencesUtil.getString(PreferencesKey.PHONEPRE, "")
@@ -64,6 +78,11 @@ object PreferencesHelper {
 
     fun getKTP(): String = PreferencesUtil.getString(PreferencesKey.KTP, "")
     fun setKTP(str: String) = PreferencesUtil.saveValue(PreferencesKey.KTP, str)
+
+
+    fun getRFC(): String = PreferencesUtil.getString(PreferencesKey.RFC, "")
+    fun setRFC(str: String) = PreferencesUtil.saveValue(PreferencesKey.RFC, str)
+
 
     fun getFName(): String = PreferencesUtil.getString(PreferencesKey.FNAME, "")
     fun setFName(str: String) = PreferencesUtil.saveValue(PreferencesKey.FNAME, str)
@@ -111,6 +130,9 @@ object PreferencesHelper {
     fun getConfirmPP(): Boolean = PreferencesUtil.getBoolean(PreferencesKey.CONFIRM_PP, false)
     fun setConfirmPP(isCheck: Boolean) = PreferencesUtil.saveValue(PreferencesKey.CONFIRM_PP, isCheck)
 
+
+    fun getIncomesource(): String = PreferencesUtil.getString(PreferencesKey.INCOMESOURCE, "")
+    fun setIncomesource(isCheck: String) = PreferencesUtil.saveValue(PreferencesKey.INCOMESOURCE, isCheck)
 
 
 

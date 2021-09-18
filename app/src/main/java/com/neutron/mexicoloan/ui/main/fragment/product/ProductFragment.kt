@@ -7,6 +7,7 @@ import com.neutron.baselib.base.BaseVMFragment
 import com.neutron.baselib.bean.ProductsResult
 import com.neutron.baselib.utils.PreferencesHelper
 import com.neutron.baselib.utils.Slog
+import com.neutron.baselib.utils.UIUtils.Companion.getColor
 import com.neutron.baselib.utils.startTo
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.authentication.card.CardActivity
@@ -87,20 +88,16 @@ class ProductFragment : BaseVMFragment<ProductVM>(ProductVM::class.java) {
                         override fun onSelected(productsResult: ProductsResult) {
                             Slog.d("选中商品  $productsResult")
                             etv_money.animateText("$${productsResult.principal}")
-                            etv_date.animateText(
-                                getString(R.string.repay_date).format(
-                                    productsResult.duration
-                                )
-                            )
+                            etv_date.animateText(getString(R.string.repay_date).format(productsResult.duration))
                             if (productsResult.enable == "2") {
                                 btn_loan.background =
                                     getDrawable(activity!!, R.drawable.shape_gray_btn)
                                 iv_lock.visibility = View.VISIBLE
-                                etv_money.setTextColor(mActivity.getColor(R.color.blue_ff9f))
+                                etv_money.setTextColor(getColor(R.color.blue_ff9f))
                                 btn_loan.isEnabled = false
 
                             } else {
-                                etv_money.setTextColor(mActivity.getColor(R.color.white))
+                                etv_money.setTextColor(getColor(R.color.white))
                                 iv_lock.visibility = View.GONE
                                 btn_loan.background =
                                     getDrawable(activity!!, R.drawable.shape_pink_btn)

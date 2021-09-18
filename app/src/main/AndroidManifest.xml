@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:name=".ui.NAplication"
@@ -22,22 +23,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MexicoLoan"
         tools:replace="appComponentFactory">
+
+        <meta-data
+            android:name="bioassayKey"
+            android:value="vEz0rq459w9S3P71" />
+        <meta-data
+            android:name="bioassaySecret"
+            android:value="aPY8R3IA8gSq4900" />
+
         <activity
             android:name=".ui.login.LoginMethodActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-
-
         <activity
             android:name=".ui.repay.RePayActivity"
-            android:exported="true"></activity>
-        <activity android:name=".ui.confirm.ConfirmActivity"></activity>
+            android:exported="true" />
+        <activity android:name=".ui.confirm.ConfirmActivity" />
 
         <meta-data
             android:name="design_width_in_dp"
@@ -46,7 +55,6 @@
             android:name="design_height_in_dp"
             android:value="667" />
 
-        <activity android:name=".ui.main.fragment.TestActivity" />
         <activity android:name=".ui.order.OrderActivity" />
         <activity
             android:name=".ui.authentication.card.CardActivity"
@@ -118,17 +126,14 @@
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-
-
-        <!--        facebook  -->
-
+            android:windowSoftInputMode="adjustPan" /> <!-- facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -140,7 +145,8 @@
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
-            <intent-filter><action android:name="android.intent.action.VIEW" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -148,6 +154,14 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+<!--        <meta-data-->
+<!--            android:name="bioassayKey"-->
+<!--            android:value="I3tX4J6Jp26Iu381" />-->
+<!--        <meta-data-->
+<!--            android:name="bioassaySecret"-->
+<!--            android:value="67X887622823424o" />-->
+
 
     </application>
 

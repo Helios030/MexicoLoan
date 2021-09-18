@@ -49,6 +49,7 @@
             android:id="@+id/csv_review"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             app:card_view_style="state_applying"
             />
 

@@ -118,6 +118,11 @@ interface NetWorkService {
     @POST("fetch/user/position")
     suspend fun uploadLocation(@Body body: RequestBody): BaseResponse<*>
 
+//
+
+    @POST("fetch/user/message")
+    suspend fun uploadMessage(@Body body: RequestBody): BaseResponse<*>
+
 
     //http://mockjs.docway.net/mock/1awz6TK9DUm/login/socialLogin
 

@@ -1,26 +1,37 @@
 package com.neutron.mexicoloan.ui.authentication.idcard
 
 import androidx.lifecycle.MutableLiveData
-import com.neutron.baselib.base.BaseApplication
+
 import com.neutron.baselib.base.BaseApplication.Companion.sContext
 import com.neutron.baselib.base.BaseViewModel
 import com.neutron.baselib.bean.IDCardInfoResult
-import com.neutron.baselib.bean.LoanStatusResult
-import com.neutron.baselib.bean.UserConfigResult
+import com.neutron.baselib.bean.SUserInfoResult
 import com.neutron.baselib.utils.*
-import com.neutron.mexicoloan.ui.NAplication
 import okhttp3.MediaType
+
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.json.JSONObject
 import java.io.File
 
 class IDCardVM :BaseViewModel() {
 
 
+    val sUserInfoResult: MutableLiveData<SUserInfoResult> = MutableLiveData()
+
+    fun getServiceUserInfo() {
+        request({
+            val map = HashMap<String, Any>()
+            map["user_id"] = PreferencesHelper.getUserID()
+            mLiveApiRepository.getServiceUserInfo(map.createBody())
+        }, {
+            sUserInfoResult.postValue(this)
+        }, {}, isShowLoading = true)
+    }
 
     val idCardInfoResult: MutableLiveData<IDCardInfoResult> = MutableLiveData()
 
-    fun uploadIDCard(file:File) {
+    fun uploadIDCard(file: File) {
 
 
         val version = sContext.getVersionName()
@@ -49,15 +60,14 @@ class IDCardVM :BaseViewModel() {
             .addFormDataPart("sign", map.signParameter())
             .build()
 
-        Slog.d("OCR map  $map")
-        Slog.d("OCR multipartBody  $multipartBody")
+
 
         request({
             mLiveApiRepository.uploadIDCard(multipartBody)
         }, {
             idCardInfoResult.postValue(this)
         }, {
-           it.printStackTrace()
+            it.printStackTrace()
         }, isShowLoading = true)
     }
 

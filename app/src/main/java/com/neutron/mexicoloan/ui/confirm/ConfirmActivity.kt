@@ -3,12 +3,14 @@ package com.neutron.mexicoloan.ui.confirm
 import com.neutron.baselib.base.BaseVMActivity
 import com.neutron.baselib.utils.PreferencesHelper
 import com.neutron.baselib.utils.Slog
+import com.neutron.baselib.utils.UIUtils
 import com.neutron.baselib.utils.startTo
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.main.MainActivity
 import com.neutron.mexicoloan.ui.view.dialog.CommImgDialog
 import com.neutron.mexicoloan.util.showBankDialog
 import kotlinx.android.synthetic.main.activity_confirm.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class ConfirmActivity : BaseVMActivity<ConfirmVM>(ConfirmVM::class.java) {
 
@@ -18,6 +20,10 @@ class ConfirmActivity : BaseVMActivity<ConfirmVM>(ConfirmVM::class.java) {
     }
 
     override fun initView() {
+
+        iv_back.setOnClickListener { finish() }
+        tv_title.text = getString(R.string.confirm_order)
+
         btn_upload.setOnClickListener {
             val userId = PreferencesHelper.getUserID()
             val livenessId = PreferencesHelper.getLivenessID()
@@ -29,7 +35,7 @@ class ConfirmActivity : BaseVMActivity<ConfirmVM>(ConfirmVM::class.java) {
             dataMap["user_id"] = userId
             dataMap["product_id"] = productID!!
             dataMap["file"] = livenessId!!
-            dataMap["method"] = "advance"
+            dataMap["method"] = "flashRisk"
             showLoading()
             mViewModel?.uploadRequest(dataMap)
 
@@ -48,10 +54,17 @@ class ConfirmActivity : BaseVMActivity<ConfirmVM>(ConfirmVM::class.java) {
     override fun observeValue() {
 
         mViewModel.confirmationRequest.observe(this, {
-            Slog.d("确认信息   $it")
+
+            tv_money.text="$${it.amount}"
+            repay_time.text=getString(R.string.loan_time).format(it.duration)
+            val ff32= UIUtils.getColor(R.color.blue_ff32)
             civ_fees_service.setRightText(it.risk)
+            civ_fees_service.setRightTextColor(ff32)
             civ_audit_fee.setRightText(it.service)
             civ_pay_fee.setRightText(it.pay)
+            civ_audit_fee.setRightTextColor(ff32)
+            civ_pay_fee.setRightTextColor(ff32)
+
         })
         mViewModel.requestOrderResult.observe(this, {
             CommImgDialog(this).setTitle(getString(R.string.submit_ok))

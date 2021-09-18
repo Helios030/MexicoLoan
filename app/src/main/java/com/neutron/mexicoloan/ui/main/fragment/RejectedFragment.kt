@@ -5,6 +5,7 @@ import com.neutron.baselib.bean.LoanStatusResult
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_approval_rejected.*
+import kotlinx.android.synthetic.main.fragment_pending_repayment.*
 
 
 class RejectedFragment : BaseFragment() {
@@ -34,13 +35,25 @@ class RejectedFragment : BaseFragment() {
         loanStatusResult?.let {
 
 
+//
+//            csv_review_error.setTvAmount(it.amount2Account?:"")
+//                .setAppTime(it.app_time?:"")
+//                .setFeesService(it.risk?:"")
+//                .setPayFee(it.pay?:"")
+//                .setLoanAmount(it.principal?:"")
+//                .setPayFee(it.service?:"")
 
-            csv_review_error.setTvAmount(it.amount2Account?:"")
+
+            csv_review_error
+                .setTvLoanMoney("$${it.principal?:""}")
+                .setTvAmount  (it.amount2Account?:"")
+                .setLoanAmount(it.principal?:"")
                 .setAppTime(it.app_time?:"")
                 .setFeesService(it.risk?:"")
                 .setPayFee(it.pay?:"")
-                .setLoanAmount(it.principal?:"")
-                .setPayFee(it.service?:"")
+                .setAuditFee(it.service?:"")
+                .setInterest(it.interest?:"")
+                .setTvLoanTerm(it.duration?:"")
 
         }
     }

@@ -19,5 +19,6 @@ data class SWorkInfoResult(
     val pay_date: Any?,
     val industry: Any?,
     val position: Any?,
-    val user_id: String?
+    val user_id: String?,
+    val incomeSource: String?
 )

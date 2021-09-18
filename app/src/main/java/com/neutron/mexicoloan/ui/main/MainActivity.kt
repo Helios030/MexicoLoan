@@ -1,6 +1,10 @@
 package com.neutron.mexicoloan.ui.main
 
+import android.Manifest
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
+import android.provider.ContactsContract
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -9,6 +13,7 @@ import com.neutron.baselib.bean.LoanStatusResult
 import com.neutron.baselib.bean.UserConfigResult
 import com.neutron.baselib.utils.MoneyState
 import com.neutron.baselib.utils.PreferencesHelper
+import com.neutron.baselib.utils.checkPerByX
 import com.neutron.baselib.utils.toast
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.main.fragment.*
@@ -16,7 +21,8 @@ import com.neutron.mexicoloan.ui.main.fragment.product.ProductFragment
 import com.neutron.mexicoloan.ui.view.BottomBar
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseVMActivity<MainVM>(MainVM::class.java) {
+class
+MainActivity : BaseVMActivity<MainVM>(MainVM::class.java) {
 
     val mProductFragment by lazy { ProductFragment() }
     val mUserFragment by lazy { UserFragment() }
@@ -53,7 +59,13 @@ class MainActivity : BaseVMActivity<MainVM>(MainVM::class.java) {
     override fun initView() {
         initVPAdapter()
         sfl_main.setOnRefreshListener {
+
             initData()
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (sfl_main.isRefreshing) sfl_main.isRefreshing = false
+            },2000)
+
         }
 
         bb_main.setonItemSelected(object : BottomBar.onItemSelected {
@@ -75,6 +87,11 @@ class MainActivity : BaseVMActivity<MainVM>(MainVM::class.java) {
             }
         })
 
+
+
+        checkPerByX(listOf(Manifest.permission.ACCESS_NETWORK_STATE), {
+
+        }, R.string.not_pp, R.string.dialog_ok, R.string.dialog_cancel)
 
     }
 

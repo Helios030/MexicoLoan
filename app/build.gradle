@@ -80,5 +80,9 @@ dependencies {
     implementation 'com.facebook.android:facebook-core:8.2.0'
     // Facebook Login only
     implementation 'com.facebook.android:facebook-login:8.2.0'
+    implementation "androidx.startup:startup-runtime:1.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.5.21"
+
+//    implementation 'com.fc.face:face:1.4.885'
 
 }

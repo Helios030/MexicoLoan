@@ -36,6 +36,7 @@ class OrderActivity : BaseVMActivity<OrderVM>(OrderVM::class.java) {
 
     var tab1: TabLayout.Tab? = null
     var tab2: TabLayout.Tab? = null
+
     private fun initTab() {
         tab1 = tl_tab.newTab()
         tab2 = tl_tab.newTab()
@@ -73,25 +74,25 @@ class OrderActivity : BaseVMActivity<OrderVM>(OrderVM::class.java) {
 
     }
 
-    val inproList = listOf<Int>(2, 3, 8, 6, 9)
+    val inproList = listOf<Int>(2, 3, 6, 8, 9)
 
     fun showList(b: Boolean) {
+
+        var newOrder =listOf<OrderBeanResult>()
         if (b) {
-            var inproOrder = orders.filter { result ->
+            newOrder = orders.filter { result ->
                 result.loan_status !in inproList
             }
-            Slog.d("inproOrder $inproOrder")
-            showRv(inproOrder)
-            adapter?.setNewData(inproOrder.toMutableList())
+            Slog.d("inproOrder $newOrder")
         } else {
-            var successOrder = orders.filter { result ->
+            newOrder = orders.filter { result ->
                 result.loan_status in inproList
             }
-            Slog.d("successOrder  $successOrder")
-            showRv(successOrder)
-            adapter?.setNewData(successOrder.toMutableList())
-
+            Slog.d("successOrder  $newOrder")
         }
+        showRv(newOrder)
+        adapter = OrderAdapter(R.layout.item_order, newOrder.toMutableList())
+        rv_order.adapter = adapter
     }
 
     var orders = mutableListOf<OrderBeanResult>()

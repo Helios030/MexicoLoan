@@ -7,6 +7,7 @@ import android.location.Location
 import android.location.LocationManager
 import com.neutron.baselib.base.BaseVMActivity
 import com.neutron.baselib.bean.CityBeanResult
+import com.neutron.baselib.bean.LatLng
 import com.neutron.baselib.utils.*
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.authentication.contact.ContactActivity
@@ -24,14 +25,12 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
 
     val dataMap = HashMap<String, Any>()
     override fun initData() {
-        dataMap["no_ktp"] = PreferencesHelper.getKTP()
-        dataMap["real_name"] =PreferencesHelper.getFName()
-        dataMap["idType"] = "1"
-        dataMap["first_name"] = PreferencesHelper.getFName()
-        dataMap["last_name"] =PreferencesHelper.getLNAME()
-        dataMap["last_name"] =PreferencesHelper.getLNAME()
-        dataMap["user_id"] = PreferencesHelper.getUserID()
-        dataMap["gender"] = PreferencesHelper.getsex()
+
+
+
+
+
+
         mViewModel.getCityList("-1")
         mViewModel.getServiceUserInfo()
 
@@ -48,12 +47,19 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
         tv_title.text = getString(R.string.user_info)
 
         btn_next.setOnClickListener {
-
-//            civ_home_detail_address.getEditTextStr()
-//            civ_email.getEditTextStr()
-//            civ_postal_code.getEditTextStr()
+            dataMap["no_ktp"] = PreferencesHelper.getKTP()
+            dataMap["real_name"] =PreferencesHelper.getRealname()
+            dataMap["idType"] = "1"
+            dataMap["first_name"] = PreferencesHelper.getFName()
+            dataMap["last_name"] =PreferencesHelper.getLNAME()
+            dataMap["name_mother"] =PreferencesHelper.getLNAME()
+            dataMap["user_id"] = PreferencesHelper.getUserID()
+            dataMap["gender"] = PreferencesHelper.getsex()
+            dataMap["rfc"] = PreferencesHelper.getRFC()
+            dataMap["incomeSource"] = PreferencesHelper.getIncomesource()
             dataMap["home_address"] = civ_home_detail_address.getTextStr()
             dataMap["email"] = civ_email.getTextStr()
+            Slog.d("PersonalInfoActivity  ${dataMap} ")
             mViewModel.uploadUserInfo(dataMap)
 
         }
@@ -112,7 +118,7 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
     //居住类型
     private fun showHTS() {
         showCommSelectDialog(
-            getString(R.string.job), getStrArray(R.array.array_children_num).Str2MenuItem(), {
+            getString(R.string.home_type), getStrArray(R.array.array_home_type).Str2MenuItem(), {
                 if (it is MenuItem) {
                     setHT(it.menuCode)
                 }
@@ -122,7 +128,7 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
 
     private fun setHT(position: Int?) {
         position?:return
-        civ_home_type.setTextStr(getStrByIndex(R.array.array_children_num, position))
+        civ_home_type.setTextStr(getStrByIndex(R.array.array_home_type, position))
         dataMap["home_type"] = "$position"
     }
 
@@ -223,6 +229,7 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
                 val location: Location? = locationManager?.getLastKnownLocation(locationProvider)
                 location?.let {
                     civ_location.setTextStr("${it.latitude.getNoMoreThanTwoDigits()}/${it.longitude.getNoMoreThanTwoDigits()}")
+                    PreferencesHelper.setLatLng(LatLng("${it.latitude.getNoMoreThanTwoDigits()}","${it.longitude.getNoMoreThanTwoDigits()}"))
                 }
             }
 
@@ -247,10 +254,7 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
         })
 
         mViewModel.isUploadSuccess.observe(this, {
-
             startTo(ContactActivity::class.java)
-
-
         })
         mViewModel.sUserInfoResult.observe(this, {
             setEmail(it.email)
@@ -272,7 +276,6 @@ class PersonalInfoActivity : BaseVMActivity<PersonalInfoVM>(PersonalInfoVM::clas
             dataMap["user_id"]    =it.user_id?:""
             dataMap["gender"]     =it.gender?:""
 
-//            todo ！！！！ 没有小名
             dataMap["name_mother"]     =it.name_mother?:""
 
         })

@@ -42,24 +42,24 @@
             android:id="@+id/tv_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="$xxxx"
             android:layout_marginTop="30dp"
+            android:text="$xxxx"
+            android:textColor="@color/white"
             android:textSize="28dp"
 
             />
 
 
-
         <TextView
+            android:id="@+id/repay_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/blue_ff32"
-            android:textStyle="bold"
-            android:text="@string/loan_time"
-            android:textSize="16dp"
-            android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/loan_time"
+            android:textColor="@color/blue_ff32"
+            android:textSize="16dp"
+            android:textStyle="bold"
 
             />
 

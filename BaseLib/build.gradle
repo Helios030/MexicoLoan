@@ -29,6 +29,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+
 }
 
 dependencies {
@@ -72,5 +74,7 @@ dependencies {
     api project(path: ':ucrop')
     api project(path: ':Camera')
 
+    api 'com.parkingwang:okhttp3-loginterceptor:0.5'
 
+    api 'com.fc.face:face:1.4.885'
 }

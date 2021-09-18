@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import android.widget.RelativeLayout
 import androidx.core.widget.addTextChangedListener
 import com.neutron.baselib.utils.Slog
@@ -52,18 +53,34 @@ class CertificationItemView : RelativeLayout {
         val tv_left_text = ta.getString(R.styleable.CertificationItemView_tv_left_text)
         val tv_text = ta.getString(R.styleable.CertificationItemView_tv_text)
         val title_text_size = ta.getInt(R.styleable.CertificationItemView_title_text_size, 16)
-        val title_text_color = ta.getColor(R.styleable.CertificationItemView_title_text_color, UIUtils.getColor(R.color.black_ff0d))
+        val title_text_color = ta.getColor(
+            R.styleable.CertificationItemView_title_text_color,
+            UIUtils.getColor(R.color.black_ff0d)
+        )
         val et_text = ta.getString(R.styleable.CertificationItemView_et_text)
         val et_hint = ta.getString(R.styleable.CertificationItemView_et_hint)
-        val et_text_color = ta.getColor(R.styleable.CertificationItemView_et_text_color,  UIUtils.getColor(R.color.black))
-        val et_hint_text_color = ta.getColor(R.styleable.CertificationItemView_et_hint_text_color,  UIUtils.getColor(R.color.blue_ff9f))
+        val et_text_color = ta.getColor(
+            R.styleable.CertificationItemView_et_text_color,
+            UIUtils.getColor(R.color.black)
+        )
+        val et_hint_text_color = ta.getColor(
+            R.styleable.CertificationItemView_et_hint_text_color,
+            UIUtils.getColor(R.color.blue_ff9f)
+        )
 
-       val tv_right_text  = ta.getString(R.styleable.CertificationItemView_tv_right_text)
+        val tv_right_text = ta.getString(R.styleable.CertificationItemView_tv_right_text)
 
-       val tv_left_text_color= ta.getColor(R.styleable.CertificationItemView_tv_left_text_color,  UIUtils.getColor(R.color.black_ff0d))
-       val tv_right_text_color= ta.getColor(R.styleable.CertificationItemView_tv_right_text_color,  UIUtils.getColor(R.color.blue_ff32))
+        val tv_left_text_color = ta.getColor(
+            R.styleable.CertificationItemView_tv_left_text_color,
+            UIUtils.getColor(R.color.black_ff0d)
+        )
+        val tv_right_text_color = ta.getColor(
+            R.styleable.CertificationItemView_tv_right_text_color,
+            UIUtils.getColor(R.color.gray_b3ff)
+        )
 
-        val tv_right_icon= ta.getResourceId(R.styleable.CertificationItemView_tv_right_icon,  R.mipmap.icon_arror)
+        val tv_right_icon =
+            ta.getResourceId(R.styleable.CertificationItemView_tv_right_icon, R.mipmap.icon_arror)
 
 
         val et_text_size = ta.getInt(R.styleable.CertificationItemView_et_text_size, 16)
@@ -90,27 +107,25 @@ class CertificationItemView : RelativeLayout {
                 tv_select.visibility = GONE
             }
 
+
         }
 
 
-
-
-
 //        if (rl_item.visibility == VISIBLE) {
-            if (!tv_left_text.isNullOrEmpty()) {
-                tv_item_left.text = tv_left_text
-                tv_item_left.setTextColor(tv_left_text_color)
-            }
-            if (!tv_right_text.isNullOrEmpty()) {
-                tv_item_right.text = tv_right_text
-                tv_item_right.setTextColor(tv_right_text_color)
-            }
+        if (!tv_left_text.isNullOrEmpty()) {
+            tv_item_left.text = tv_left_text
+            tv_item_left.setTextColor(tv_left_text_color)
+        }
+        if (!tv_right_text.isNullOrEmpty()) {
+            tv_item_right.text = tv_right_text
+            tv_item_right.setTextColor(tv_right_text_color)
+        }
 //        }
         if (title_text != null) {
             if (title_text.isNotBlank()) {
                 tv_title.text = title_text
 
-                if(text_Style==1){
+                if (text_Style == 1) {
                     tv_title.typeface = Typeface.defaultFromStyle(Typeface.BOLD);
                 }
 
@@ -129,7 +144,7 @@ class CertificationItemView : RelativeLayout {
         }
 
 
-        if(isShowIcon){
+        if (isShowIcon) {
             tv_select.setDrawableRight(tv_right_icon)
 
         }
@@ -178,19 +193,16 @@ class CertificationItemView : RelativeLayout {
     }
 
 
-
-
-
     var mOnClickListener: ((View) -> Unit)? = null
 
     fun setOnTVClickListener(lisenter: (View) -> Unit) {
         mOnClickListener = lisenter
     }
 
-    var mOnTextChageListener:((String) -> Unit)?=null
+    var mOnTextChageListener: ((String) -> Unit)? = null
 
-    fun setOnTextListener(lisenter:(String) -> Unit ){
-        mOnTextChageListener=lisenter
+    fun setOnTextListener(lisenter: (String) -> Unit) {
+        mOnTextChageListener = lisenter
     }
 
 
@@ -202,19 +214,17 @@ class CertificationItemView : RelativeLayout {
 //=================
 
 
-
-
     fun setEditTextStr(str: String): CertificationItemView {
 
         if (str.isNotEmpty()) {
-            et_input.setTextColor( UIUtils.getColor(R.color.blue_ff32))
+            et_input.setTextColor(UIUtils.getColor(R.color.blue_ff32))
             et_input.setText(str)
 
         }
         return this
     }
 
-    fun setEditHintStr(str: String):CertificationItemView {
+    fun setEditHintStr(str: String): CertificationItemView {
         if (str.isNotEmpty()) {
             et_input.setHint(str)
         }
@@ -227,11 +237,15 @@ class CertificationItemView : RelativeLayout {
         return et_input.text.toString()
 
     }
+    fun getEditText(): EditText {
 
+        return et_input
+
+    }
     fun setSelectText(str: String) {
         if (str.isNotEmpty()) {
 
-            tv_select.setTextColor( UIUtils.getColor(R.color.blue_ff32))
+            tv_select.setTextColor(UIUtils.getColor(R.color.blue_ff32))
             tv_select.text = str
         }
 
@@ -267,6 +281,7 @@ class CertificationItemView : RelativeLayout {
     }
 
     fun setRightText(str: String) {
+
         if (str.isNotEmpty()) {
             tv_item_right.text = str
 
@@ -274,19 +289,28 @@ class CertificationItemView : RelativeLayout {
 
     }
 
+    fun getRightText(): String {
+        return tv_item_right.text.toString()
+    }
+
     fun setRightTextColor(color: Int) {
 
-            tv_item_right.setTextColor(color)
+        tv_item_right.setTextColor(color)
 
 
     }
 
-    fun setTitle(str: String):CertificationItemView {
+    fun setTitle(str: String): CertificationItemView {
         if (str.isNotEmpty()) {
             tv_title.text = str
         }
         return this
     }
+
+    fun getTitle(): String {
+        return tv_title.text.toString()
+    }
+
 
 
     fun hideLine(isHide: Boolean) {

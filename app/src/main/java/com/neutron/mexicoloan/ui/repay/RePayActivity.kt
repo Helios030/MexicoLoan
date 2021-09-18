@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_repay.civ_bank_code
 import kotlinx.android.synthetic.main.activity_repay.tl_tab
 import kotlinx.android.synthetic.main.activity_repay.view.*
 import kotlinx.android.synthetic.main.fragment_user.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 import java.io.File
 
 class RePayActivity : BaseVMActivity<RePayVM>(RePayVM::class.java) {
@@ -41,6 +42,13 @@ class RePayActivity : BaseVMActivity<RePayVM>(RePayVM::class.java) {
 
         userInfo=  PreferencesHelper.getUserInfo()
 
+        dataMap["user_id"]=PreferencesHelper.getUserID()
+
+        getVA()
+
+        }
+
+    private fun getVA() {
         if (amount != null && applicationId != null ) {
             val vaMap = HashMap<String, Any>()
             vaMap["user_id"] = PreferencesHelper.getUserID()
@@ -53,10 +61,9 @@ class RePayActivity : BaseVMActivity<RePayVM>(RePayVM::class.java) {
                 trackClickVaEvent(it.phone)
             }
 
-          mViewModel.getVa(vaMap)
-
-        }
+            mViewModel.getVa(vaMap)
     }
+}
 
     override fun observeValue() {
 
@@ -68,11 +75,14 @@ class RePayActivity : BaseVMActivity<RePayVM>(RePayVM::class.java) {
         })
 
         mViewModel.VABeanResult.observe(this,{
+
+            Slog.d("VA 信息  $it")
+
             userInfo?.let {
                 trackVaSuccessEvent(it.phone)
             }
 
-            tv_money.text=it.amount?:""
+            tv_money.text="$${it.amount?:""}"
             tv_mark.text="${getString(R.string.repay_sign)} ${it.uniqueId?:""}"
             tv_sub_start_time.text=it.startTime?:""
             tv_sub_end_time.text=it.endTime?:""
@@ -96,6 +106,11 @@ class RePayActivity : BaseVMActivity<RePayVM>(RePayVM::class.java) {
     }
 
     override fun initView() {
+
+        iv_back.setOnClickListener { finish() }
+        tv_title.text = getString(R.string.pay)
+
+
         initTab()
         btn_submit.setOnClickListener {
 
@@ -127,11 +142,14 @@ class RePayActivity : BaseVMActivity<RePayVM>(RePayVM::class.java) {
         tab1?.let {
             it.text = getString(R.string.all_pay)
             tl_tab.addTab(it)
+
         }
 
         tab2?.let {
             it.text = getString(R.string.sub_pay)
             tl_tab.addTab(it)
+
+
         }
         tl_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -150,7 +168,7 @@ class RePayActivity : BaseVMActivity<RePayVM>(RePayVM::class.java) {
                     }
 
                 }
-
+                getVA()
 
             }
 

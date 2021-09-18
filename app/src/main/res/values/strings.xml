@@ -74,7 +74,7 @@
     <string name="pay_fee">支付费用</string>
     <string name="fees_service">技术服务费</string>
     <string name="audit_fee">审核咨询费</string>
-    <string name="loan_time">贷款期限：120天</string>
+    <string name="loan_time">贷款期限：%s天</string>
     <string name="app_time">申请时间</string>
     <string name="interest">利息</string>
     <string name="review_error_tip">您提交的贷款申请暂不符合我们的审核条件，请保持良好的信用，七天后可再次申请。</string>
@@ -95,7 +95,6 @@
     <string name="repay_sign">还款标志：</string>
     <string name="account_name">账户名</string>
     <string name="repay_submit_success">还款提交成功</string>
-
     <string name="all_pay">全部还款</string>
     <string name="sub_pay">展期还款</string>
     <string name="refuse">审核拒绝</string>
@@ -107,11 +106,14 @@
     <string name="upload_repay_tip">上传还款凭证</string>
     <string name="input_code_tip">输入CLABE代码或tarjeta de débito账号</string>
     <string name="select_bank_account">请选择开户银行</string>
-    <string name="select_bank_number" >请填写银行账号</string>
+    <string name="select_bank_number">请填写银行账号</string>
     <string name="read_confirm">我已阅读并同意</string>
     <string name="pp">《隐私协议》</string>
     <string name="you_wate">您想借</string>
     <string name="max_money">最高可借金额</string>
     <string name="order_detail">订单详情</string>
+    <string name="plese_input">请输入</string>
+    <string name="confirm_order">确认订单</string>
+    <string name="pay">还款</string>
 
 </resources>

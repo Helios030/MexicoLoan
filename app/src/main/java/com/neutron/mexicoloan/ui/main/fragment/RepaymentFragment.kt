@@ -51,12 +51,25 @@ class RepaymentFragment : BaseFragment() {
         loanStatusResult = mainActivity.getloanStatusResult()
         loanStatusResult?.let {
             csv_repay
-                .setTvAmount(it.amount2Account?:"")
+                .setTvLoanMoney("$${it.principal?:""}")
+                .setTvAmount  (it.amount2Account?:"")
+                .setLoanAmount(it.principal?:"")
                 .setAppTime(it.app_time?:"")
                 .setFeesService(it.risk?:"")
                 .setPayFee(it.pay?:"")
-                .setLoanAmount(it.principal?:"")
-                .setPayFee(it.service?:"")
+                .setAuditFee(it.service?:"")
+                .setInterest(it.interest?:"")
+                .setTvLoanTerm(it.duration?:"")
+
+//                .setTvAmount(it.amount2Account?:"")
+//                .setAppTime(it.app_time?:"")
+//                .setFeesService(it.risk?:"")
+//                .setPayFee(it.pay?:"")
+//                .setLoanAmount(it.principal?:"")
+//                .setPayFee(it.service?:"")
+
+
+
 
         }
     }

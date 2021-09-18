@@ -56,9 +56,6 @@ class WorkActivity : BaseVMActivity<WorkVM>(WorkVM::class.java) {
     var cityBeanResults = mutableListOf<CityBeanResult>()
 
 
-
-
-
     // 根据字典 还原及设置
 //    职务
     private fun showJobS() {
@@ -148,17 +145,21 @@ class WorkActivity : BaseVMActivity<WorkVM>(WorkVM::class.java) {
     private fun setIncomeSourType(position: Int) {
         civ_source_income.setTextStr(getStrByIndex(R.array.array_source_of_income, position))
         dataMap["incomeSource"] = "$position"
+       PreferencesHelper. setIncomesource(civ_source_income.getTextStr())
+
     }
 
 
     //选择地址
     private fun setCompCity2(no: String, addressName: String) {
         dataMap["comp_region_2"] = no
+        dataMap["comp_region_2_value"] = addressName
         region_2 = addressName
     }
 
     private fun setCompCity1(no: String, addressName: String) {
         dataMap["comp_region_1"] = no
+        dataMap["comp_region_1_value"] = addressName
         region_1 = addressName
     }
 
@@ -216,29 +217,30 @@ class WorkActivity : BaseVMActivity<WorkVM>(WorkVM::class.java) {
 
         })
 
-        mViewModel.sWorkInfoResult.observe(this, {
-            civ_detail_address.setTextStr(it.comp_address.toString())
-            civ_comp_phone.setTextStr(it.company_tel.toString())
-            civ_comp_name.setTextStr(it.company_name.toString())
-            setJobType(it.custemer_type.toString().toInt())
-            setIdentity(it.position.toString().toInt())
-            setCType(it.industry.toString().toInt())
-            setMonthlyType(it.income_type.toString().toInt())
-            setCompCity1(
-                it.comp_region_1.toString(),
-                it.comp_region_1_value.toString()
-            )
-            setCompCity2(
-                it.comp_region_2.toString(),
-                it.comp_region_2_value.toString()
-            )
+        mViewModel.sWorkInfoResult.observe(this, { result ->
+
+            Slog.d("服务器保存的工作信息 $result")
+
+            result.comp_address?.let { civ_detail_address.setTextStr(it.toString()) }
+            result.company_tel?.let { civ_comp_phone.setTextStr(it.toString()) }
+            result.company_name?.let { civ_comp_name.setTextStr(it.toString()) }
+            result.custemer_type?.let { setJobType(it.toString().toInt()) }
+            result.position?.let { setIdentity(it.toString().toInt()) }
+            result.industry?.let { setCType(it.toString().toInt()) }
+            result.income_type?.let { setMonthlyType(it.toString().toInt()) }
+            result.incomeSource?.let {setIncomeSourType(it.toInt())}
+
+            result.comp_region_1?.let { setCompCity1(it.toString(), result.comp_region_1_value.toString()) }
+            result.comp_region_2?.let { setCompCity2(it.toString(), result.comp_region_2_value.toString())            }
+
 
             if (dataMap["comp_region_1"] != null && dataMap["comp_region_2"] != null) {
                 civ_state.setTextStr("$region_1 $region_2")
             }
 
-        })
 
+
+        })
         mViewModel.isUploadSuccess.observe(this, {
             if (it) {
                 startTo(PersonalInfoActivity::class.java)
