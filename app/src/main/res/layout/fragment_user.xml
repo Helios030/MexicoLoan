@@ -19,7 +19,7 @@
         android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="14dp" />
 
 
     <androidx.cardview.widget.CardView
@@ -29,7 +29,7 @@
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
 
-        android:layout_height="410dp">
+        android:layout_height="400dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                     android:layout_toRightOf="@+id/iv_icon"
                     android:layout_alignTop="@+id/iv_icon"
                     android:layout_marginLeft="18dp"
-                    android:textSize="20dp"
+                    android:textSize="14dp"
 
                     />
 
@@ -76,8 +76,6 @@
 
                     />
 
-
-
             </RelativeLayout>
 
             <TextView
@@ -88,9 +86,10 @@
                 android:drawableLeft="@mipmap/icon_loan"
                 android:drawablePadding="14dp"
                 android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
                 android:text="@string/my_loan"
                 android:drawableRight="@mipmap/icon_arror"
-                android:textSize="20dp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tv_info"
@@ -100,9 +99,10 @@
                 android:drawableLeft="@mipmap/icon_info"
                 android:drawablePadding="14dp"
                 android:text="@string/user_info"
-                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="14dp"
                 android:drawableRight="@mipmap/icon_arror"
-                android:textSize="20dp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tv_money_card"
@@ -111,22 +111,24 @@
                 android:textColor="@color/black_ff0d"
                 android:drawableLeft="@mipmap/icon_card"
                 android:drawablePadding="14dp"
-                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="14dp"
                 android:text="@string/money_caed"
                 android:drawableRight="@mipmap/icon_arror"
-                android:textSize="20dp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tv_call"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black_ff0d"
+                android:gravity="center_vertical"
                 android:drawableLeft="@mipmap/icon_call"
                 android:drawablePadding="14dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="14dp"
                 android:text="@string/call_us"
                 android:drawableRight="@mipmap/icon_arror"
-                android:textSize="20dp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tv_about"
@@ -135,10 +137,11 @@
                 android:textColor="@color/black_ff0d"
                 android:drawableLeft="@mipmap/icon_about"
                 android:drawablePadding="14dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
                 android:text="@string/about_us"
                 android:drawableRight="@mipmap/icon_arror"
-                android:textSize="20dp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tv_exit"
@@ -147,10 +150,11 @@
                 android:textColor="@color/black_ff0d"
                 android:drawableLeft="@mipmap/icon_exit"
                 android:drawablePadding="14dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
                 android:text="@string/exit_app"
                 android:drawableRight="@mipmap/icon_arror"
-                android:textSize="20dp" />
+                android:textSize="14dp" />
 
 
         </LinearLayout>

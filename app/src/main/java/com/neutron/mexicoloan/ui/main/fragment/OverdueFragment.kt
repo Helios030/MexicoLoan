@@ -50,13 +50,16 @@ class OverdueFragment : BaseFragment() {
         val mainActivity = (activity as MainActivity)
         loanStatusResult = mainActivity.getloanStatusResult()
         loanStatusResult?.let {
-            csv_overdue.setTvAmount(it.amount2Account?:"")
+            csv_overdue
+                .setTvLoanMoney("$${it.principal?:""}")
+                .setTvAmount  (it.amount2Account?:"")
+                .setLoanAmount(it.principal?:"")
                 .setAppTime(it.app_time?:"")
                 .setFeesService(it.risk?:"")
                 .setPayFee(it.pay?:"")
-                .setLoanAmount(it.principal?:"")
-                .setPayFee(it.service?:"")
-
+                .setAuditFee(it.service?:"")
+                .setInterest(it.interest?:"")
+                .setTvLoanTerm(it.duration?:"")
 
 
         }

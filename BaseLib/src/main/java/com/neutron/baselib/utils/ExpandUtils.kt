@@ -489,10 +489,23 @@ fun Context.checkNet(): Boolean {
 fun Context.getStr(resId:Int):String = this.resources.getString(resId)
 fun Context.getStrArray(resId:Int):List<String> = this.resources.getStringArray(resId).toList()
 
-fun Context.getStrByIndex(resId:Int,index:Int,offset:Int=1):String = getStrArray(resId)[index-offset]
+fun Context.getStrByIndex(resId:Int,index:Int,offset:Int=1):String {
+    return try{
+        getStrArray(resId)[index-offset]
+    }catch(e:Exception){
+        e.printStackTrace()
+        ""
+    }
+}
 
-fun Context.getIndexByStr(resId:Int,str:String,offset:Int=1):Int = getStrArray(resId).indexOf(str)+offset
-
+fun Context.getIndexByStr(resId:Int,str:String,offset:Int=1):Int {
+    return try {
+        getStrArray(resId).indexOf(str) + offset
+    } catch (e: Exception) {
+        e.printStackTrace()
+        -1
+    }
+}
 
 
 /**

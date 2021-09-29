@@ -14,7 +14,7 @@
         style="@style/textStyle_regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="12dp"
         android:maxLines="1"
         android:text="" />
 
@@ -27,32 +27,27 @@
         android:background="@drawable/shape_input_bg"
         android:hint="@string/plese_input"
         android:maxLines="1"
-        android:paddingStart="6dp"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
+        android:padding="6dp"
+
         android:textCursorDrawable="@drawable/shape_login_color_cursor"
         android:textSize="14dp"
         android:textStyle="bold"
-  />
+        />
 
     <TextView
         android:id="@+id/tv_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginBottom="13dp"
-        android:background="@drawable/shape_input_bg"
+        android:layout_marginTop="8dp"
 
+        android:background="@drawable/shape_input_bg"
         android:maxLines="1"
-        android:paddingStart="6dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="6dp"
+        android:padding="6dp"
         android:text="@string/please_select"
         android:textColor="@color/blue_ff9f"
         android:textSize="16dp"
         android:textStyle="bold"
-      />
+        />
 
     <RelativeLayout
         android:id="@+id/rl_item"
@@ -66,7 +61,7 @@
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-           />
+            />
 
         <TextView
             android:id="@+id/tv_item_right"
@@ -84,7 +79,7 @@
             android:layout_below="@+id/tv_item_left"
             android:background="#FF9FB7FF"
             android:layout_marginBottom="2dp"
-        />
+            />
     </RelativeLayout>
 
 

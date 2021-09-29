@@ -12,8 +12,10 @@ import com.neutron.baselib.bean.BankInfoResult
 import com.neutron.baselib.bean.UserInfo
 import com.neutron.baselib.utils.PreferencesHelper
 import com.neutron.baselib.utils.Slog
+import com.neutron.baselib.utils.startTo
 import com.neutron.baselib.utils.toast
 import com.neutron.mexicoloan.R
+import com.neutron.mexicoloan.ui.face.FaceDetectionActivity
 
 import com.neutron.mexicoloan.util.showBankDialog
 
@@ -227,6 +229,7 @@ class CardActivity : BaseVMActivity<CardVM>(CardVM::class.java) {
 
         mViewModel.isUploadSuccess.observe(this, {
             toast(R.string.submit_ok)
+            startTo(FaceDetectionActivity::class.java,true)
             finish()
         })
 

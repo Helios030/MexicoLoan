@@ -103,7 +103,7 @@ class WorkActivity : BaseVMActivity<WorkVM>(WorkVM::class.java) {
 
     private fun setCType(position: Int) {
         var newPosition = if (position >= 50) position - 50 else position
-        civ_industry.setTextStr(getStrByIndex(R.array.array_industry, newPosition))
+        civ_industry.setTextStr(getStrByIndex(R.array.array_industry, newPosition,offset = 0))
         dataMap["industry"] = "${newPosition + 50}"
     }
 
