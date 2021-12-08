@@ -115,5 +115,6 @@
     <string name="plese_input">请输入</string>
     <string name="confirm_order">确认订单</string>
     <string name="pay">还款</string>
+    <string name="pp_not_check">请勾选隐私政策</string>
 
 </resources>

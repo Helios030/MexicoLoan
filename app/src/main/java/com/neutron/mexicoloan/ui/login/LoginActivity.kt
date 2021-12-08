@@ -4,10 +4,7 @@ package com.neutron.mexicoloan.ui.login
 import android.view.View
 import com.neutron.baselib.base.BaseVMActivity
 import com.neutron.baselib.bean.UserInfo
-import com.neutron.baselib.utils.PreferencesHelper
-import com.neutron.baselib.utils.Slog
-import com.neutron.baselib.utils.startTo
-import com.neutron.baselib.utils.toast
+import com.neutron.baselib.utils.*
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.main.MainActivity
 import com.neutron.mexicoloan.ui.view.LoginVIew
@@ -29,7 +26,7 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
                 mViewModel.sendSmsCode(phone)
             }
         }, {
-            tv_count_down.animateText(it)
+            tv_count_down.text=(it)
         }, {
             Slog.e("输入异常  $it")
             toast(getString(R.string.input_code_error))
@@ -69,6 +66,12 @@ class LoginActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
                     register.toString()
                 )
             )
+
+            if (it.register == false) {
+                trackRegisterEvent(it.phone)
+            }
+            trackLoginEvent(it.phone)
+
             startTo(MainActivity::class.java, true)
         })
     }

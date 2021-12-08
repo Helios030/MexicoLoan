@@ -11,6 +11,7 @@ import com.neutron.baselib.utils.UIUtils.Companion.getColor
 import com.neutron.baselib.utils.startTo
 import com.neutron.mexicoloan.R
 import com.neutron.mexicoloan.ui.authentication.card.CardActivity
+import com.neutron.mexicoloan.ui.authentication.contact.ContactActivity
 import com.neutron.mexicoloan.ui.authentication.idcard.IDCardActivity
 import com.neutron.mexicoloan.ui.authentication.userinfo.PersonalInfoActivity
 import com.neutron.mexicoloan.ui.authentication.work.WorkActivity
@@ -60,7 +61,7 @@ class ProductFragment : BaseVMFragment<ProductVM>(ProductVM::class.java) {
             if (it.person_status == "0") {
                 activity?.startTo(IDCardActivity::class.java)
             } else if (it.contact_status == "0") {
-                activity?.startTo(PersonalInfoActivity::class.java)
+                activity?.startTo(ContactActivity::class.java)
             } else if (it.comp_status == "0") {
                 activity?.startTo(WorkActivity::class.java)
             } else if (it.card_status == "0") {

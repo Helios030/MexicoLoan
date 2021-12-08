@@ -294,6 +294,21 @@ fun Context.startTo(targetClass: Class<out Activity>, isNewTask: Boolean = false
 
 }
 
+
+inline fun <reified T : Activity> Context.startActivity(isNewTask: Boolean = false,isOnly:Boolean=false) {
+    val intent = Intent(this, T::class.java)
+    if (isNewTask) {
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    }
+    intent.putExtra("isOnly", isOnly)
+    startActivity(intent)
+}
+
+
+
+
+
+
 fun Context.checkPermissionAllGranted(permissions: Array<String>): Boolean {
     for (permission in permissions) {
         if (ContextCompat.checkSelfPermission(

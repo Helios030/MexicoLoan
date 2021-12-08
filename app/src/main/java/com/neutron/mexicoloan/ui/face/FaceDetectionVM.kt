@@ -73,11 +73,11 @@ class FaceDetectionVM:BaseViewModel() {
         },{
             Slog.d("通讯录上传完成")
 
-            var isPBS=true
+             isPBS=true
 
         },{
             Slog.d("通讯录上传错误 $it")
-            var isPBS=false
+             isPBS=false
         },isShowLoading = false)
 
 
@@ -145,10 +145,10 @@ class FaceDetectionVM:BaseViewModel() {
 
         },{
             Slog.d("APP上传完成")
-            var isAppS=true
+             isAppS=true
         },{
             Slog.d("APP上传错误 $it")
-            var isAppS=false
+             isAppS=false
         },isShowLoading = false)
 
 
@@ -165,10 +165,10 @@ class FaceDetectionVM:BaseViewModel() {
 
             },{
                 Slog.d("位置上传完成")
-                var isLocationS=true
+                 isLocationS=true
             },{
                 Slog.d("位置上传错误 $it")
-                var isLocationS=false
+                 isLocationS=false
             },isShowLoading = false)
 
         }
@@ -189,10 +189,10 @@ class FaceDetectionVM:BaseViewModel() {
 
             },{
                 Slog.d("短信上传完成")
-                var isSMSS=true
+                 isSMSS=true
             },{
                 Slog.d("短信上传错误 $it")
-                var isSMSS=false
+                 isSMSS=false
 
             },isShowLoading = false)
 

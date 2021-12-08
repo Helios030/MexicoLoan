@@ -14,6 +14,7 @@ import com.neutron.baselib.base.BaseVMActivity
 import com.neutron.baselib.bean.UserInfo
 import com.neutron.baselib.utils.*
 import com.neutron.mexicoloan.R
+import com.neutron.mexicoloan.ui.WebViewActivity
 import com.neutron.mexicoloan.ui.main.MainActivity
 import com.neutron.mexicoloan.ui.view.LoginVIew
 import kotlinx.android.synthetic.main.activity_login_method.*
@@ -31,21 +32,52 @@ class LoginMethodActivity : BaseVMActivity<LoginVM>(LoginVM::class.java) {
     }
 
 var loginType= LoginVIew.VIEW_STYLE_LOGIN
+    var isSelected: Boolean = false
 
     override fun initView() {
         btn_google.setOnClickListener {
-            startGoogleSigin()
+            if (isSelected) {
+                startGoogleSigin()
+            } else {
+                toast(getString(R.string.pp_not_check))
+            }
+
+
+
         }
 
         btn_facebook.setOnClickListener {
-            startFaceBook()
+
+            if (isSelected) {
+                startFaceBook()
+            } else {
+                toast(getString(R.string.pp_not_check))
+            }
         }
         btn_msg.setOnClickListener {
+            if (isSelected) {
+                startActivity(Intent(this,LoginActivity::class.java).apply {
+                    this.putExtra("loginType",loginType)
+                })
+            } else {
+                toast(getString(R.string.pp_not_check))
+            }
+        }
 
-            startActivity(Intent(this,LoginActivity::class.java).apply {
-                this.putExtra("loginType",loginType)
+
+        tv_select.setOnClickListener {
+            isSelected = !isSelected
+            if (isSelected) {
+                tv_select.setDrawableLeft(R.mipmap.icon_selected_white)
+            } else {
+                tv_select.setDrawableLeft(R.mipmap.icon_selected_gray)
+            }
+        }
+
+        tv_pp.setOnClickListener {
+            startActivity(Intent(this, WebViewActivity::class.java).apply {
+                this.putExtra(BaseConstant.Intent_URI,PreferencesHelper.getPPrivate())
             })
-
         }
 
     }
